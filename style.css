@@ -888,3 +888,21 @@ footer code{color:#d48661}
     text-align:left;
   }
 }
+
+
+/* Boss card interaction */
+.boss-card{
+  cursor:pointer;
+  transition:border-color .12s ease, background .12s ease, transform .12s ease;
+}
+.boss-card:hover,
+.boss-card:focus-visible{
+  border-color:#8a8071;
+  background:#35332f;
+  transform:translateY(-1px);
+  outline:none;
+}
+.boss-card:hover h3,
+.boss-card:focus-visible h3{
+  color:#fff0d3;
+}

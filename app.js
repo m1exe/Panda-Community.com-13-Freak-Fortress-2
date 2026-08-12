@@ -80,7 +80,7 @@ function renderBosses(query = ""){
   });
 
   document.querySelector("#boss-list").innerHTML = list.map(b => `
-    <article class="item-card boss-card">
+    <article class="item-card boss-card" data-boss-id="${escapeAttr(b.id || b.name)}" tabindex="0" role="button" aria-label="View ${escapeAttr(b.name)} details">
       ${b.image ? `<img class="item-img" src="${escapeAttr(b.image)}" alt="${escapeAttr(b.name)}" onerror="this.style.display='none'">` : ""}
       <div class="boss-card-head">
         <div>
@@ -98,17 +98,27 @@ function renderBosses(query = ""){
           `<span class="tag">${escapeHtml(typeof a === "string" ? a : (a.name || a.id || "Ability"))}</span>`
         ).join("")}
       </div>
-
-      <button class="boss-details-btn" data-boss-id="${escapeAttr(b.id || b.name)}">View details</button>
     </article>
   `).join("") || `<div class="empty-state">No bosses found.</div>`;
 }
 
 document.querySelector("#boss-list").addEventListener("click", e => {
-  const button = e.target.closest("[data-boss-id]");
-  if(!button) return;
+  const card = e.target.closest("[data-boss-id]");
+  if(!card) return;
 
-  const id = button.dataset.bossId;
+  const id = card.dataset.bossId;
+  const boss = bosses.find(b => String(b.id || b.name) === id);
+  if(boss) showBossDetails(boss);
+});
+
+document.querySelector("#boss-list").addEventListener("keydown", e => {
+  if(e.key !== "Enter" && e.key !== " ") return;
+
+  const card = e.target.closest("[data-boss-id]");
+  if(!card) return;
+
+  e.preventDefault();
+  const id = card.dataset.bossId;
   const boss = bosses.find(b => String(b.id || b.name) === id);
   if(boss) showBossDetails(boss);
 });
