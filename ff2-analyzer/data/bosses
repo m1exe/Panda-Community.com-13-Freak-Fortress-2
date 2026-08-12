@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Example Boss",
+    "author": "Your FF2 Server",
+    "description": "Replace this entry with one of your server's bosses.",
+    "image": "images/bosses/example.png",
+    "abilities": [
+      "Rage",
+      "Super Jump",
+      "Weighdown"
+    ]
+  }
+]
