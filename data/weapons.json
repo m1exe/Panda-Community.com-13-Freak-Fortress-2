@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Rocket Launcher",
+    "classname": "tf_weapon_rocketlauncher",
+    "class": "Soldier",
+    "slot": "Primary",
+    "image": "images/weapons/rocket_launcher.png",
+    "ff2": true
+  },
+  {
+    "name": "Direct Hit",
+    "classname": "tf_weapon_rocketlauncher_directhit",
+    "class": "Soldier",
+    "slot": "Primary",
+    "image": "images/weapons/direct_hit.png",
+    "ff2": true
+  },
+  {
+    "name": "Scattergun",
+    "classname": "tf_weapon_scattergun",
+    "class": "Scout",
+    "slot": "Primary",
+    "image": "images/weapons/scattergun.png",
+    "ff2": true
+  },
+  {
+    "name": "Flame Thrower",
+    "classname": "tf_weapon_flamethrower",
+    "class": "Pyro",
+    "slot": "Primary",
+    "image": "images/weapons/flamethrower.png",
+    "ff2": true
+  },
+  {
+    "name": "Grenade Launcher",
+    "classname": "tf_weapon_grenadelauncher",
+    "class": "Demoman",
+    "slot": "Primary",
+    "image": "images/weapons/grenade_launcher.png",
+    "ff2": true
+  },
+  {
+    "name": "Minigun",
+    "classname": "tf_weapon_minigun",
+    "class": "Heavy",
+    "slot": "Primary",
+    "image": "images/weapons/minigun.png",
+    "ff2": true
+  },
+  {
+    "name": "Syringe Gun",
+    "classname": "tf_weapon_syringegun_medic",
+    "class": "Medic",
+    "slot": "Primary",
+    "image": "images/weapons/syringe_gun.png",
+    "ff2": true
+  },
+  {
+    "name": "Sniper Rifle",
+    "classname": "tf_weapon_sniperrifle",
+    "class": "Sniper",
+    "slot": "Primary",
+    "image": "images/weapons/sniper_rifle.png",
+    "ff2": true
+  },
+  {
+    "name": "Revolver",
+    "classname": "tf_weapon_revolver",
+    "class": "Spy",
+    "slot": "Primary",
+    "image": "images/weapons/revolver.png",
+    "ff2": true
+  }
+]
