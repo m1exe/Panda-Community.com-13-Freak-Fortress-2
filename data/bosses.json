@@ -1,13 +1,99 @@
-[
-  {
-    "name": "Example Boss",
-    "author": "Your FF2 Server",
-    "description": "Replace this entry with one of your server's bosses.",
-    "image": "images/bosses/example.png",
+{
+  "id": "christian_brutal_sniper",
+  "name": "Christian Brutal Sniper",
+  "class": "Sniper",
+  "model": "models/player/saxton_hale/cbs_v6.mdl",
+
+  "healthFormula": "((800*n)^1.035)+1000",
+  "rageDamageFormula": "(40*n)+1800",
+  "maxSpeed": 340,
+  "ff2Version": 2,
+
+  "description": "So much blood and melee weapons!",
+
+  "creators": [
+    {
+      "name": "vasya",
+      "steamId64": "76561197999561668"
+    },
+    {
+      "name": "Lizard of Oz",
+      "steamId64": "76561198022111274"
+    }
+  ],
+
+  "weapons": [
+    {
+      "type": "melee",
+      "classname": "tf_weapon_club",
+      "index": 171,
+      "quality": 11,
+      "rank": 10,
+      "attributes": {
+        "damage bonus": "2.7",
+        "crit mod disabled hidden": "0.1",
+        "damage force reduction": "0.6",
+        "cancel falling damage": "1",
+        "cannot pick up intelligence": "1"
+      }
+    }
+  ],
+
+  "abilities": [
+    {
+      "id": "special_mobility",
+      "name": "Super Jump",
+      "slot": 1,
+      "charge": 1.5,
+      "cooldown": 5,
+      "delay": 5,
+      "upward": "750 + (n * 3.25)",
+      "forward": "1.0 + (n * 0.00275)"
+    },
+    {
+      "id": "special_weighdown",
+      "name": "Weigh-down",
+      "slot": 2,
+      "delay": 3,
+      "gravity": 6,
+      "velocity": 1000
+    },
+    {
+      "id": "special_anchor",
+      "name": "Anchor",
+      "basic": 0.5,
+      "full": 3.5,
+      "speed": 175
+    }
+  ],
+
+  "rage": {
     "abilities": [
-      "Rage",
-      "Super Jump",
-      "Weighdown"
-    ]
-  }
-]
+      "Player Stun",
+      "Building Stun",
+      "Huntsman"
+    ],
+
+    "weapon": {
+      "classname": "tf_weapon_compound_bow",
+      "index": 1005,
+      "ammo": "n",
+      "maxAmmo": 5,
+      "attributes": {
+        "damage bonus": "3.0",
+        "fire rate bonus": "0.5",
+        "hidden primary max ammo bonus": "0.0",
+        "special taunt": "1"
+      }
+    }
+  },
+
+  "music": [
+    {
+      "name": "The Millionaire's Holiday",
+      "artist": "Combustible Edison",
+      "file": "saxton_hale/the_millionaires_holiday.mp3",
+      "duration": 131
+    }
+  ]
+}
