@@ -735,3 +735,238 @@ footer{
 
   footer{flex-direction:column}
 }
+
+
+/* Weapon changes database */
+.weapon-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin:-7px 0 13px;
+  padding:9px 10px;
+  background:#211f1c;
+  border:1px solid var(--line-soft);
+  border-radius:3px;
+}
+.weapon-filter-group{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.weapon-filter-group label{
+  color:#898173;
+  font-size:.66rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.weapon-filter-group select{
+  min-height:34px;
+  padding:6px 29px 6px 9px;
+  color:var(--text);
+  background:#292722;
+  border:1px solid var(--line);
+  border-radius:3px;
+}
+.weapon-db-stats{
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  color:#827a6e;
+  font-size:.68rem;
+}
+.weapon-db-stats strong{
+  color:var(--cream);
+  font-size:.9rem;
+}
+.weapon-grid{
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+}
+.weapon-card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.weapon-card-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+.weapon-card-head h3{
+  margin-bottom:2px;
+}
+.weapon-count-badge{
+  flex:0 0 auto;
+  padding:3px 5px;
+  color:#d7cbb8;
+  background:#24221f;
+  border:1px solid #4c4841;
+  border-radius:3px;
+  font-size:.6rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.weapon-classname{
+  display:block;
+  max-width:100%;
+  margin-top:7px;
+  color:#9e9585;
+  overflow-wrap:anywhere;
+  font-size:.67rem;
+}
+.weapon-badges{
+  margin-top:3px;
+}
+.shared-rule-tag{
+  border-color:#4f7484;
+  color:#a9c2cb;
+}
+.warning-tag{
+  border-color:#8b4c39;
+  color:#dda18a;
+}
+.weapon-details{
+  margin-top:12px;
+  border-top:1px solid var(--line-soft);
+}
+.weapon-details>summary{
+  padding:10px 0 2px;
+  color:#d9865f;
+  cursor:pointer;
+  font-size:.72rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.weapon-details>summary:hover{
+  color:#eda07b;
+}
+.weapon-details-body{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.weapon-rule{
+  padding:10px;
+  background:#272520;
+  border:1px solid #444038;
+  border-left:3px solid var(--red);
+  border-radius:2px;
+}
+.weapon-rule.classname-rule{
+  border-left-color:var(--blu);
+}
+.weapon-rule-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+.weapon-rule-head strong{
+  display:block;
+  color:var(--cream);
+  font-size:.76rem;
+}
+.weapon-rule-head code{
+  display:block;
+  margin-top:3px;
+  color:#8f8779;
+  overflow-wrap:anywhere;
+  font-size:.61rem;
+}
+.weapon-rule-head>span{
+  color:#827a6e;
+  font-size:.6rem;
+  white-space:nowrap;
+}
+.rule-flags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:8px;
+}
+.rule-flag{
+  padding:3px 5px;
+  color:#aaa18f;
+  background:#1e1d1a;
+  border:1px solid #454139;
+  border-radius:2px;
+  font-size:.58rem;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.rule-flag.danger{
+  color:#dda18a;
+  border-color:#784333;
+}
+.attribute-group{
+  margin-top:10px;
+}
+.rule-group-title{
+  margin-bottom:4px;
+  color:#9b9283;
+  font-size:.6rem;
+  font-weight:800;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+}
+.custom-attributes .rule-group-title{
+  color:#d17c56;
+}
+.attribute-list{
+  border-top:1px solid #3f3b35;
+}
+.attribute-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:5px 0;
+  border-bottom:1px solid #3a3731;
+  font-size:.68rem;
+}
+.attribute-row span{
+  color:#aaa18f;
+}
+.attribute-row code{
+  flex:0 0 auto;
+  color:#e0d5c1;
+  font-size:.66rem;
+  text-align:right;
+}
+.class-override-list{
+  margin-top:10px;
+  padding-top:9px;
+  border-top:1px dashed #49453e;
+}
+.class-override{
+  margin-top:7px;
+  padding:8px;
+  background:#211f1c;
+  border:1px solid #403c35;
+}
+.class-override>strong{
+  color:#e0d4bf;
+  font-size:.7rem;
+}
+.weapon-no-change{
+  margin-top:10px!important;
+  color:#81796d!important;
+  font-size:.7rem!important;
+}
+
+@media(max-width:700px){
+  .weapon-toolbar{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .weapon-filter-group{
+    justify-content:space-between;
+  }
+  .weapon-filter-group select{
+    flex:1;
+  }
+  .weapon-card-head{
+    flex-direction:column;
+  }
+}

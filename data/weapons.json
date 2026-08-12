@@ -1,11 +1,643 @@
 [
   {
-    "name": "Rocket Launcher",
+    "name": "Bat",
+    "classname": "tf_weapon_bat",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      0,
+      190,
+      660
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.2",
+          "maxammo secondary increased": "1.25"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "0 190 660",
+        "defindexes": [
+          0,
+          190,
+          660
+        ],
+        "label": "Item #0, #190, #660"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat",
+        "label": "tf_weapon_bat"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Candy Cane",
+    "classname": "tf_weapon_bat",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      317
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "drop health pack on kill": "1",
+          "ubercharge rate bonus for healer": "0.75",
+          "reduced_healing_from_medics": "0.75"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "317",
+        "defindexes": [
+          317
+        ],
+        "label": "Item #317"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat",
+        "label": "tf_weapon_bat"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "Holy Mackerel",
+    "classname": "tf_weapon_bat_fish",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "0.3",
+          "fire rate bonus": "0.4",
+          "heal on hit for rapidfire": "3",
+          "self dmg push force decreased": "0.6",
+          "blast dmg to self increased": "0.5",
+          "melee range multiplier": "4.5",
+          "kill eater score type": "1",
+          "kill eater kill type": "1",
+          "single wep holster time increased": "0.65"
+        },
+        "custom": {
+          "knockback modifier": "0",
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat_fish",
+        "label": "tf_weapon_bat_fish"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Sun-on-a-Stick",
+    "classname": "tf_weapon_bat",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      349
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "crit vs burning players": "1",
+          "Set DamageType Ignite": "1",
+          "dmg taken from fire reduced on active": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "349",
+        "defindexes": [
+          349
+        ],
+        "label": "Item #349"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat",
+        "label": "tf_weapon_bat"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "The Sandman",
+    "classname": "tf_weapon_bat_wood",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "effect bar recharge rate increased": "2.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat_wood",
+        "label": "tf_weapon_bat_wood"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Wrap Assassin",
+    "classname": "tf_weapon_bat_giftwrap",
+    "class": "Scout",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "dmg penalty vs players": "1.5",
+          "effect bar recharge rate increased": "0.75",
+          "maxammo grenades1 increased": "5"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat_giftwrap",
+        "label": "tf_weapon_bat_giftwrap"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Baby Face's Blaster",
+    "classname": "tf_weapon_scattergun",
+    "class": "Scout",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      772
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "19",
+          "move speed penalty": "0.9",
+          "self dmg push force decreased": "0",
+          "Blast radius decreased": "0.3",
+          "Projectile speed increased": "1.8",
+          "mod mini-crit airborne": "1",
+          "blast dmg to self increased": "0.15",
+          "override projectile type": "2",
+          "hype resets on jump": "100",
+          "hype decays over time": "0.3",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "secondary weapon disabled": "1",
+          "knockback modifier": "0.8"
+        },
+        "source": "item",
+        "sourceKey": "772",
+        "defindexes": [
+          772
+        ],
+        "label": "Item #772"
+      },
+      {
+        "attributes": {
+          "weapon spread bonus": "0.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_scattergun",
+        "label": "tf_weapon_scattergun"
+      }
+    ],
+    "changeCount": 14
+  },
+  {
+    "name": "Back Scatter",
+    "classname": "tf_weapon_scattergun",
+    "class": "Scout",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      1103
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "2",
+          "clip size penalty": "0.34",
+          "fire rate penalty": "1.8",
+          "spread penalty": "0.8",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "mod crit type glow": "1",
+          "knockback modifier": "0.5"
+        },
+        "source": "item",
+        "sourceKey": "1103",
+        "defindexes": [
+          1103
+        ],
+        "label": "Item #1103"
+      },
+      {
+        "attributes": {
+          "weapon spread bonus": "0.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_scattergun",
+        "label": "tf_weapon_scattergun"
+      }
+    ],
+    "changeCount": 8
+  },
+  {
+    "name": "Force-a-Nature",
+    "classname": "tf_weapon_scattergun",
+    "class": "Scout",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      45,
+      1078
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.15"
+        },
+        "source": "item",
+        "sourceKey": "45 1078",
+        "defindexes": [
+          45,
+          1078
+        ],
+        "label": "Item #45, #1078"
+      },
+      {
+        "attributes": {
+          "weapon spread bonus": "0.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_scattergun",
+        "label": "tf_weapon_scattergun"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Flying Guillotine",
+    "classname": "tf_weapon_cleaver",
+    "class": "Scout",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "effect bar recharge rate increased": "0.1"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "knockback modifier": "0",
+          "primary weapon disabled": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_cleaver",
+        "label": "tf_weapon_cleaver"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Pistol",
+    "classname": "tf_weapon_pistol_scout",
+    "class": "Scout",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.2",
+          "fire rate bonus": "0.8",
+          "maxammo secondary increased": "2",
+          "deploy time decreased": "0",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_pistol_scout",
+        "label": "tf_weapon_pistol_scout"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Scout Handgun",
+    "classname": "tf_weapon_handgun_scout_secondary",
+    "class": "Scout",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "custom": {
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_handgun_scout_secondary",
+        "label": "tf_weapon_handgun_scout_secondary"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Pistol",
+    "classname": "tf_weapon_pistol",
+    "class": "Scout / Engineer",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "classOverrides": {
+          "Engineer": {
+            "custom": {
+              "mod crit type glow": "2",
+              "knockback modifier": "0.4"
+            }
+          },
+          "Scout": {
+            "attributes": {
+              "damage bonus": "1.2",
+              "fire rate bonus": "0.8",
+              "maxammo secondary increased": "2",
+              "deploy time decreased": "0",
+              "crits_become_minicrits": "1"
+            },
+            "custom": {
+              "mod crit type glow": "1"
+            }
+          }
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_pistol",
+        "label": "tf_weapon_pistol"
+      }
+    ],
+    "changeCount": 8
+  },
+  {
+    "name": "Market Gardener",
+    "classname": "tf_weapon_shovel",
+    "class": "Soldier",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      416
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "heal on hit for rapidfire": "35"
+        },
+        "custom": {
+          "mid-air damage vs bosses": "5.13",
+          "mod crit type on bosses": "2"
+        },
+        "source": "item",
+        "sourceKey": "416",
+        "defindexes": [
+          416
+        ],
+        "label": "Item #416"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shovel",
+        "label": "tf_weapon_shovel"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Shovel",
+    "classname": "tf_weapon_shovel",
+    "class": "Soldier",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      6,
+      196
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.25",
+          "maxammo secondary increased": "1.2"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "6 196",
+        "defindexes": [
+          6,
+          196
+        ],
+        "label": "Item #6, #196"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shovel",
+        "label": "tf_weapon_shovel"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Air Strike",
+    "classname": "tf_weapon_rocketlauncher_airstrike",
+    "class": "Soldier",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      1104
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "0.87",
+          "heal on hit for rapidfire": "2",
+          "self dmg push force decreased": "0.9",
+          "maxammo primary increased": "3",
+          "Reload time decreased": "0.6",
+          "health from packs decreased": "0.6",
+          "rocket jump damage reduction": "0.55",
+          "rocketjump attackrate bonus": "0.1",
+          "clipsize increase on kill": "16",
+          "patient overheal penalty": "0.5",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "knockback modifier": "0.15"
+        },
+        "source": "item",
+        "sourceKey": "1104",
+        "defindexes": [
+          1104
+        ],
+        "label": "Item #1104"
+      }
+    ],
+    "changeCount": 12
+  },
+  {
+    "name": "Beggar's Bazooka",
     "classname": "tf_weapon_rocketlauncher",
     "class": "Soldier",
     "slot": "Primary",
-    "image": "images/weapons/rocket_launcher.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      730
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "0.8",
+          "clip size bonus": "3.75",
+          "maxammo primary increased": "3",
+          "Reload time decreased": "0.35",
+          "Blast radius decreased": "0.7",
+          "Projectile speed increased": "1.5",
+          "fire rate bonus HIDDEN": "0.1",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "knockback modifier": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "730",
+        "defindexes": [
+          730
+        ],
+        "label": "Item #730"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.05",
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "1.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher",
+        "label": "tf_weapon_rocketlauncher"
+      }
+    ],
+    "changeCount": 13
+  },
+  {
+    "name": "Black Box",
+    "classname": "tf_weapon_rocketlauncher",
+    "class": "Soldier",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      228,
+      1085
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "heal on hit for rapidfire": "30",
+          "maxammo primary increased": "1.5"
+        },
+        "custom": {
+          "mod crit type glow": "1"
+        },
+        "source": "item",
+        "sourceKey": "228 1085",
+        "defindexes": [
+          228,
+          1085
+        ],
+        "label": "Item #228, #1085"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.05",
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "1.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher",
+        "label": "tf_weapon_rocketlauncher"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "Cow Mangler 5000",
+    "classname": "tf_weapon_particle_cannon",
+    "class": "Soldier",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      441
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "dmg taken from fire reduced": "0",
+          "weapon burn dmg increased": "1.25",
+          "Reload time decreased": "0.7",
+          "Set DamageType Ignite": "1",
+          "damage bonus vs burning": "1.35",
+          "afterburn duration penalty": "0.5"
+        },
+        "custom": {
+          "knockback modifier": "1.35"
+        },
+        "source": "item",
+        "sourceKey": "441",
+        "defindexes": [
+          441
+        ],
+        "label": "Item #441"
+      }
+    ],
+    "changeCount": 7
   },
   {
     "name": "Direct Hit",
@@ -13,39 +645,2195 @@
     "class": "Soldier",
     "slot": "Primary",
     "image": "images/weapons/direct_hit.png",
-    "ff2": true
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8",
+          "mod mini-crit airborne": "1",
+          "minicrits become crits": "1"
+        },
+        "custom": {
+          "knockback modifier": "1.8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher_directhit",
+        "label": "tf_weapon_rocketlauncher_directhit"
+      }
+    ],
+    "changeCount": 5
   },
   {
-    "name": "Scattergun",
-    "classname": "tf_weapon_scattergun",
-    "class": "Scout",
+    "name": "Liberty Launcher",
+    "classname": "tf_weapon_rocketlauncher",
+    "class": "Soldier",
     "slot": "Primary",
-    "image": "images/weapons/scattergun.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      414
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "1.3"
+        },
+        "source": "item",
+        "sourceKey": "414",
+        "defindexes": [
+          414
+        ],
+        "label": "Item #414"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.05",
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "1.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher",
+        "label": "tf_weapon_rocketlauncher"
+      }
+    ],
+    "changeCount": 7
   },
   {
-    "name": "Flame Thrower",
+    "name": "Rocket Jumper",
+    "classname": "tf_weapon_rocketlauncher",
+    "class": "Soldier",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      237
+    ],
+    "ff2Changes": [
+      {
+        "clip": "100",
+        "attributes": {
+          "clip size bonus": "25",
+          "maxammo primary increased": "5",
+          "Reload time decreased": "0",
+          "health from packs decreased": "0",
+          "ammo regen": "1",
+          "max health additive penalty": "-180",
+          "deploy time decreased": "0",
+          "reduced_healing_from_medics": "0"
+        },
+        "custom": {
+          "secondary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "237",
+        "defindexes": [
+          237
+        ],
+        "label": "Item #237"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.05",
+          "maxammo primary increased": "1.5",
+          "Reload time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "1.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher",
+        "label": "tf_weapon_rocketlauncher"
+      }
+    ],
+    "changeCount": 14
+  },
+  {
+    "name": "Battalion's Backup",
+    "classname": "tf_weapon_buff_item",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      226
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "max health additive bonus": "35"
+        },
+        "source": "item",
+        "sourceKey": "226",
+        "defindexes": [
+          226
+        ],
+        "label": "Item #226"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Buff Banner",
+    "classname": "tf_weapon_buff_item",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      129,
+      1001
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "increase buff duration": "1.5"
+        },
+        "source": "item",
+        "sourceKey": "129 1001",
+        "defindexes": [
+          129,
+          1001
+        ],
+        "label": "Item #129, #1001"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Gunboats",
+    "classname": "tf_wearable",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      133
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "rocket jump damage reduction": "0.3"
+        },
+        "custom": {
+          "dmg taken from fall reduced": "0.3333333333"
+        },
+        "source": "item",
+        "sourceKey": "133",
+        "defindexes": [
+          133
+        ],
+        "label": "Item #133"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Mantreads",
+    "classname": "tf_wearable",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      444
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "self dmg push force increased": "1.25",
+          "rocket jump damage reduction": "0.8",
+          "mod_air_control_blast_jump": "6"
+        },
+        "custom": {
+          "dmg taken from fall reduced": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "444",
+        "defindexes": [
+          444
+        ],
+        "label": "Item #444"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Reserve Shooter",
+    "classname": "tf_weapon_shotgun_soldier",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      415
+    ],
+    "ff2Changes": [
+      {
+        "classOverrides": {
+          "Soldier": {
+            "clip": "3",
+            "attributes": {
+              "damage penalty": "0.75",
+              "clip size penalty": "0.5",
+              "fire rate bonus": "0.5",
+              "Reload time decreased": "0.75",
+              "deploy time decreased": "0"
+            }
+          }
+        },
+        "source": "item",
+        "sourceKey": "415",
+        "defindexes": [
+          415
+        ],
+        "label": "Item #415"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.25",
+          "weapon spread bonus": "0.6",
+          "rocket jump damage reduction": "0.7"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shotgun_soldier",
+        "label": "tf_weapon_shotgun_soldier"
+      }
+    ],
+    "changeCount": 9
+  },
+  {
+    "name": "Righteous Bison",
+    "classname": "tf_weapon_raygun",
+    "class": "Soldier",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "fire rate bonus": "0.5"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_raygun",
+        "label": "tf_weapon_raygun"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Half-Zatoichi",
+    "classname": "tf_weapon_katana",
+    "class": "Soldier / Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "mark for death": "3.5",
+          "restore health on kill": "33",
+          "speed_boost_on_hit": "1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_katana",
+        "label": "tf_weapon_katana"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Pain Train",
+    "classname": "tf_weapon_shovel",
+    "class": "Soldier / Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      154
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "bleeding duration": "0",
+          "hit self on miss": "1",
+          "blast dmg to self increased": "0.8",
+          "crit vs non burning players": "1"
+        },
+        "source": "item",
+        "sourceKey": "154",
+        "defindexes": [
+          154
+        ],
+        "label": "Item #154"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shovel",
+        "label": "tf_weapon_shovel"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "BASE Jumper",
+    "classname": "tf_weapon_parachute",
+    "class": "Soldier / Demoman",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      1101
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "rocket jump damage reduction": "0.8"
+        },
+        "source": "item",
+        "sourceKey": "1101",
+        "defindexes": [
+          1101
+        ],
+        "label": "Item #1101"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Axtinguisher",
+    "classname": "tf_weapon_fireaxe",
+    "class": "Pyro",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      38
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "crit vs burning players": "1",
+          "dmg from melee increased": "0.8",
+          "speed_boost_on_hit_enemy": "1"
+        },
+        "source": "item",
+        "sourceKey": "38",
+        "defindexes": [
+          38
+        ],
+        "label": "Item #38"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fireaxe",
+        "label": "tf_weapon_fireaxe"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Fire Axe",
+    "classname": "tf_weapon_fireaxe",
+    "class": "Pyro",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      2,
+      192
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.2",
+          "maxammo secondary increased": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "2 192",
+        "defindexes": [
+          2,
+          192
+        ],
+        "label": "Item #2, #192"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fireaxe",
+        "label": "tf_weapon_fireaxe"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Hot Hand",
+    "classname": "tf_weapon_slap",
+    "class": "Pyro",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      1181
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "fire rate bonus": "0.4",
+          "melee range multiplier": "3.5",
+          "speed_boost_on_hit_enemy": "2"
+        },
+        "source": "item",
+        "sourceKey": "1181",
+        "defindexes": [
+          1181
+        ],
+        "label": "Item #1181"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Neon Annihilator",
+    "classname": "tf_weapon_breakable_sign",
+    "class": "Pyro",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_breakable_sign",
+        "label": "tf_weapon_breakable_sign"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Sharpened Volcano Fragment",
+    "classname": "tf_weapon_fireaxe",
+    "class": "Pyro",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      348
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "1",
+          "fire rate penalty": "1.2",
+          "max health additive bonus": "25",
+          "mod crit while airborne": "1"
+        },
+        "custom": {
+          "mid-air damage vs bosses": "5.13",
+          "mod crit type on bosses": "2",
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "348",
+        "defindexes": [
+          348
+        ],
+        "label": "Item #348"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fireaxe",
+        "label": "tf_weapon_fireaxe"
+      }
+    ],
+    "changeCount": 8
+  },
+  {
+    "name": "Backburner",
     "classname": "tf_weapon_flamethrower",
     "class": "Pyro",
     "slot": "Primary",
-    "image": "images/weapons/flamethrower.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      40,
+      1146
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "0.75",
+          "heal on hit for rapidfire": "2",
+          "max health additive bonus": "50",
+          "maxammo primary increased": "2",
+          "maxammo secondary reduced": "0.5",
+          "flame life penalty": "0.5",
+          "minicrit vs burning player": "1",
+          "airblast disabled": "1",
+          "patient overheal penalty": "0.65",
+          "flame_spread_degree": "0",
+          "flame_speed": "5000"
+        },
+        "custom": {
+          "mod airblast rage": "8"
+        },
+        "source": "item",
+        "sourceKey": "40 1146",
+        "defindexes": [
+          40,
+          1146
+        ],
+        "label": "Item #40, #1146"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.25",
+          "heal on hit for rapidfire": "3",
+          "airblast cost increased": "2.5",
+          "dmg from melee increased": "0.65",
+          "minicrit vs burning player": "1"
+        },
+        "custom": {
+          "mod airblast rage": "8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_flamethrower",
+        "label": "tf_weapon_flamethrower"
+      }
+    ],
+    "changeCount": 18
   },
   {
-    "name": "Grenade Launcher",
+    "name": "Degreaser",
+    "classname": "tf_weapon_flamethrower",
+    "class": "Pyro",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      215
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "airblast cost increased": "2",
+          "deploy time decreased": "0.2",
+          "switch from wep deploy time decreased": "0.3"
+        },
+        "custom": {
+          "mod airblast rage": "8"
+        },
+        "source": "item",
+        "sourceKey": "215",
+        "defindexes": [
+          215
+        ],
+        "label": "Item #215"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.25",
+          "heal on hit for rapidfire": "3",
+          "airblast cost increased": "2.5",
+          "dmg from melee increased": "0.65",
+          "minicrit vs burning player": "1"
+        },
+        "custom": {
+          "mod airblast rage": "8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_flamethrower",
+        "label": "tf_weapon_flamethrower"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Dragon's Fury",
+    "classname": "tf_weapon_rocketlauncher_fireball",
+    "class": "Pyro",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "airblast cost increased": "2",
+          "minicrit vs burning player": "1",
+          "speed_boost_on_hit": "1",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod airblast rage": "8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketlauncher_fireball",
+        "label": "tf_weapon_rocketlauncher_fireball"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "Phlogistinator",
+    "classname": "tf_weapon_flamethrower",
+    "class": "Pyro",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      594
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "patient overheal penalty": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "594",
+        "defindexes": [
+          594
+        ],
+        "label": "Item #594"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.25",
+          "heal on hit for rapidfire": "3",
+          "airblast cost increased": "2.5",
+          "dmg from melee increased": "0.65",
+          "minicrit vs burning player": "1"
+        },
+        "custom": {
+          "mod airblast rage": "8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_flamethrower",
+        "label": "tf_weapon_flamethrower"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "Detonator",
+    "classname": "tf_weapon_flaregun",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      351
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "hidden secondary max ammo penalty": "0.5",
+          "self dmg push force increased": "3.2",
+          "lunchbox adds minicrits": "1",
+          "blast dmg to self increased": "1.33"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "knockback modifier": "1.2"
+        },
+        "source": "item",
+        "sourceKey": "351",
+        "defindexes": [
+          351
+        ],
+        "label": "Item #351"
+      },
+      {
+        "attributes": {
+          "damage bonus": "3"
+        },
+        "custom": {
+          "knockback modifier": "1.2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_flaregun",
+        "label": "tf_weapon_flaregun"
+      }
+    ],
+    "changeCount": 9
+  },
+  {
+    "name": "Gas Passer",
+    "classname": "tf_weapon_jar_gas",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "heal on hit for rapidfire": "30",
+          "max health additive bonus": "10",
+          "weapon burn dmg increased": "3.25",
+          "weapon burn time increased": "2",
+          "dmg penalty vs players": "0.75",
+          "item_meter_charge_rate": "20",
+          "item_meter_charge_type": "3",
+          "explode_on_ignite": "1",
+          "grenades1_resupply_denied": "0",
+          "item_meter_resupply_denied": "0",
+          "item_meter_damage_for_full_charge": "2800"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_jar_gas",
+        "label": "tf_weapon_jar_gas"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Manmelter",
+    "classname": "tf_weapon_flaregun_revenge",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      595
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "fire rate bonus": "0.3",
+          "dmg from melee increased": "0.55",
+          "patient overheal penalty": "0.6"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "knockback modifier": "1.1",
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "595",
+        "defindexes": [
+          595
+        ],
+        "label": "Item #595"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Pyro Shotgun",
+    "classname": "tf_weapon_shotgun_pyro",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "crit vs burning players": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shotgun_pyro",
+        "label": "tf_weapon_shotgun_pyro"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Scorch Shot",
+    "classname": "tf_weapon_flaregun",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      740
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo secondary reduced": "0.75",
+          "weapon burn dmg increased": "1.25",
+          "weapon burn time increased": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "740",
+        "defindexes": [
+          740
+        ],
+        "label": "Item #740"
+      },
+      {
+        "attributes": {
+          "damage bonus": "3"
+        },
+        "custom": {
+          "knockback modifier": "1.2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_flaregun",
+        "label": "tf_weapon_flaregun"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Thermal Thruster",
+    "classname": "tf_weapon_rocketpack",
+    "class": "Pyro",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "max health additive bonus": "60",
+          "dmg from melee increased": "0.67",
+          "damage force reduction": "0.3"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_rocketpack",
+        "label": "tf_weapon_rocketpack"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Claidheamh Mòr",
+    "classname": "tf_weapon_sword",
+    "class": "Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      327
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "decapitate type": "1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "327",
+        "defindexes": [
+          327
+        ],
+        "label": "Item #327"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sword",
+        "label": "tf_weapon_sword"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Persian Persuader",
+    "classname": "tf_weapon_sword",
+    "class": "Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      404
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "decapitate type": "1",
+          "charge recharge rate increased": "1.85"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "404",
+        "defindexes": [
+          404
+        ],
+        "label": "Item #404"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sword",
+        "label": "tf_weapon_sword"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Scotsman's Skullcutter",
+    "classname": "tf_weapon_sword",
+    "class": "Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      172
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "decapitate type": "1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "172",
+        "defindexes": [
+          172
+        ],
+        "label": "Item #172"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sword",
+        "label": "tf_weapon_sword"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Scottish Handshake",
+    "classname": "tf_weapon_bottle",
+    "class": "Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      609
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "fire rate penalty": "1.2",
+          "heal on hit for rapidfire": "35",
+          "mod crit while airborne": "1"
+        },
+        "custom": {
+          "mid-air damage vs bosses": "5.13",
+          "mod crit type on bosses": "2"
+        },
+        "source": "item",
+        "sourceKey": "609",
+        "defindexes": [
+          609
+        ],
+        "label": "Item #609"
+      },
+      {
+        "attributes": {
+          "maxammo primary increased": "1.2",
+          "maxammo secondary increased": "1.1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bottle",
+        "label": "tf_weapon_bottle"
+      }
+    ],
+    "changeCount": 8
+  },
+  {
+    "name": "Ullapool Caber",
+    "classname": "tf_weapon_stickbomb",
+    "class": "Demoman",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "charge impact damage increased": "5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_stickbomb",
+        "label": "tf_weapon_stickbomb"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Ali Baba's Wee Booties",
+    "classname": "tf_wearable",
+    "class": "Demoman",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      405
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "kill refills meter": "0.15"
+        },
+        "source": "item",
+        "sourceKey": "405",
+        "defindexes": [
+          405
+        ],
+        "label": "Item #405"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Bootlegger",
+    "classname": "tf_wearable",
+    "class": "Demoman",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      608
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "rocket jump damage reduction": "0.4"
+        },
+        "custom": {
+          "dmg taken from fall reduced": "0.3333333333"
+        },
+        "source": "item",
+        "sourceKey": "608",
+        "defindexes": [
+          608
+        ],
+        "label": "Item #608"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Loch-n-Load",
     "classname": "tf_weapon_grenadelauncher",
     "class": "Demoman",
     "slot": "Primary",
-    "image": "images/weapons/grenade_launcher.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      308
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "2.25",
+          "mod mini-crit airborne": "1"
+        },
+        "source": "item",
+        "sourceKey": "308",
+        "defindexes": [
+          308
+        ],
+        "label": "Item #308"
+      },
+      {
+        "attributes": {
+          "damage bonus": "2.25",
+          "Reload time decreased": "0.75",
+          "mod mini-crit airborne": "1",
+          "crits_become_minicrits": "1"
+        },
+        "custom": {
+          "knockback modifier": "1.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_grenadelauncher",
+        "label": "tf_weapon_grenadelauncher"
+      }
+    ],
+    "changeCount": 7
   },
   {
-    "name": "Minigun",
+    "name": "Loose Cannon",
+    "classname": "tf_weapon_cannon",
+    "class": "Demoman",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "Blast radius decreased": "0.65",
+          "Projectile speed increased": "1.4",
+          "rocket jump damage reduction": "0.3",
+          "dmg penalty vs players": "2.35",
+          "crits_become_minicrits": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_cannon",
+        "label": "tf_weapon_cannon"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "Demoman Shield",
+    "classname": "tf_wearable_demoshield",
+    "class": "Demoman",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "backstab shield": "1",
+          "no charge impact range": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_wearable_demoshield",
+        "label": "tf_wearable_demoshield"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Quickiebomb Launcher",
+    "classname": "tf_weapon_pipebomblauncher",
+    "class": "Demoman",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      1150
+    ],
+    "ff2Changes": [
+      {
+        "clip": "5",
+        "attributes": {
+          "damage penalty": "0.75",
+          "clip size penalty": "0.625",
+          "rocket jump damage reduction": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "1150",
+        "defindexes": [
+          1150
+        ],
+        "label": "Item #1150"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Sticky Jumper",
+    "classname": "tf_weapon_pipebomblauncher",
+    "class": "Demoman",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      265
+    ],
+    "ff2Changes": [
+      {
+        "clip": "100",
+        "attributes": {
+          "clip size bonus": "12.5",
+          "maxammo secondary increased": "4.1666666666666666666666666666667",
+          "max pipebombs decreased": "-3",
+          "Reload time decreased": "0",
+          "health from packs decreased": "0",
+          "ammo regen": "1",
+          "max health additive penalty": "-155",
+          "deploy time decreased": "0",
+          "reduced_healing_from_medics": "0"
+        },
+        "custom": {
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "265",
+        "defindexes": [
+          265
+        ],
+        "label": "Item #265"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Eviction Notice",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      426
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "damage penalty": "0.43",
+          "fire rate bonus": "0.3",
+          "move speed bonus": "1.3",
+          "speed_boost_on_hit": "2.25"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "426",
+        "defindexes": [
+          426
+        ],
+        "label": "Item #426"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "Fists of Steel",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      331
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "damage bonus": "1.7",
+          "heal on hit for rapidfire": "35",
+          "maxammo secondary reduced": "0.5",
+          "move speed bonus": "1.3",
+          "deploy time decreased": "0.5",
+          "hit self on miss": "1",
+          "blast dmg to self increased": "0.7"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "331",
+        "defindexes": [
+          331
+        ],
+        "label": "Item #331"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Fists, Apoco-Fists",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      5,
+      195,
+      587
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.3",
+          "maxammo secondary increased": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "5 195 587",
+        "defindexes": [
+          5,
+          195,
+          587
+        ],
+        "label": "Item #5, #195, #587"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "GRU, Festive GRU, Bread Bite",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      239,
+      1084,
+      1100
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "0.5",
+          "move speed bonus": "1.12",
+          "provide on active": "1",
+          "single wep holster time increased": "1.5"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "239 1084 1100",
+        "defindexes": [
+          239,
+          1084,
+          1100
+        ],
+        "label": "Item #239, #1084, #1100"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Holiday Punch",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      656
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "switch from wep deploy time decreased": "0",
+          "single wep deploy time decreased": "0",
+          "crit forces victim to laugh": "0",
+          "crit from behind": "0",
+          "crit does no damage": "0",
+          "tickle enemies wielding same weapon": "0",
+          "deploy time decreased": "0"
+        },
+        "source": "item",
+        "sourceKey": "656",
+        "defindexes": [
+          656
+        ],
+        "label": "Item #656"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 9
+  },
+  {
+    "name": "KGB",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      43
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "health from packs decreased": "0.8",
+          "deploy time increased": "2",
+          "dmg from ranged reduced": "0.5",
+          "dmg from melee increased": "0.47",
+          "ubercharge rate bonus for healer": "0.5",
+          "major move speed bonus": "1.35",
+          "major increased jump height": "1.1",
+          "patient overheal penalty": "0.25"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "43",
+        "defindexes": [
+          43
+        ],
+        "label": "Item #43"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 12
+  },
+  {
+    "name": "Warrior's Spirit",
+    "classname": "tf_weapon_fists",
+    "class": "Heavy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      310
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "provide on active": "1",
+          "dmg taken increased": "0.68",
+          "move speed bonus": "1.33",
+          "fire rate bonus": "0.85",
+          "damage bonus": "1",
+          "speed_boost_on_hit": "1.75"
+        },
+        "custom": {
+          "mod crit type glow": "1",
+          "primary weapon disabled": "1"
+        },
+        "source": "item",
+        "sourceKey": "310",
+        "defindexes": [
+          310
+        ],
+        "label": "Item #310"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_fists",
+        "label": "tf_weapon_fists"
+      }
+    ],
+    "changeCount": 10
+  },
+  {
+    "name": "Brass Beast",
     "classname": "tf_weapon_minigun",
     "class": "Heavy",
     "slot": "Primary",
-    "image": "images/weapons/minigun.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      312
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "dmg from melee increased": "1.25"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "item",
+        "sourceKey": "312",
+        "defindexes": [
+          312
+        ],
+        "label": "Item #312"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "aiming movespeed increased": "2",
+          "minigun spinup time decreased": "0.7",
+          "weapon spread bonus": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_minigun",
+        "label": "tf_weapon_minigun"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "Huo-Long Heater",
+    "classname": "tf_weapon_minigun",
+    "class": "Heavy",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      811
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "crit vs burning players": "1",
+          "damage bonus vs burning": "1.25"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "item",
+        "sourceKey": "811",
+        "defindexes": [
+          811
+        ],
+        "label": "Item #811"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "aiming movespeed increased": "2",
+          "minigun spinup time decreased": "0.7",
+          "weapon spread bonus": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_minigun",
+        "label": "tf_weapon_minigun"
+      }
+    ],
+    "changeCount": 9
+  },
+  {
+    "name": "Natascha",
+    "classname": "tf_weapon_minigun",
+    "class": "Heavy",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      41
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "fire rate bonus": "0.6",
+          "bullets per shot bonus": "0.5",
+          "maxammo primary increased": "1.5",
+          "minigun spinup time increased": "0.85",
+          "weapon spread bonus": "0.5",
+          "attack projectiles": "1"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "item",
+        "sourceKey": "41",
+        "defindexes": [
+          41
+        ],
+        "label": "Item #41"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "aiming movespeed increased": "2",
+          "minigun spinup time decreased": "0.7",
+          "weapon spread bonus": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_minigun",
+        "label": "tf_weapon_minigun"
+      }
+    ],
+    "changeCount": 13
+  },
+  {
+    "name": "Tomislav",
+    "classname": "tf_weapon_minigun",
+    "class": "Heavy",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      424
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "aiming movespeed increased": "2",
+          "minigun spinup time decreased": "0.6"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "item",
+        "sourceKey": "424",
+        "defindexes": [
+          424
+        ],
+        "label": "Item #424"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "aiming movespeed increased": "2",
+          "minigun spinup time decreased": "0.7",
+          "weapon spread bonus": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "0.6"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_minigun",
+        "label": "tf_weapon_minigun"
+      }
+    ],
+    "changeCount": 8
+  },
+  {
+    "name": "Buffalo Steak Sandvich",
+    "classname": "tf_weapon_lunchbox",
+    "class": "Heavy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      311
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "mult_item_meter_charge_rate": "1.65"
+        },
+        "source": "item",
+        "sourceKey": "311",
+        "defindexes": [
+          311
+        ],
+        "label": "Item #311"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Dalokohs Bar",
+    "classname": "tf_weapon_lunchbox",
+    "class": "Heavy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      159
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "health regen": "15"
+        },
+        "source": "item",
+        "sourceKey": "159",
+        "defindexes": [
+          159
+        ],
+        "label": "Item #159"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Family Business",
+    "classname": "tf_weapon_shotgun_hwg",
+    "class": "Heavy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      425
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "provide on active": "1",
+          "fire rate bonus": "0.8",
+          "move speed bonus": "1.2",
+          "Reload time decreased": "0.75"
+        },
+        "custom": {
+          "mod crit type glow": "1"
+        },
+        "source": "item",
+        "sourceKey": "425",
+        "defindexes": [
+          425
+        ],
+        "label": "Item #425"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "Second Banana",
+    "classname": "tf_weapon_lunchbox",
+    "class": "Heavy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      1190
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "provide on active": "1",
+          "gesture speed increase": "3.75",
+          "charge recharge rate increased": "1.9",
+          "item_meter_charge_rate": "0.5",
+          "lunchbox healing decreased": "0.75"
+        },
+        "source": "item",
+        "sourceKey": "1190",
+        "defindexes": [
+          1190
+        ],
+        "label": "Item #1190"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "Eureka Effect",
+    "classname": "tf_weapon_wrench",
+    "class": "Engineer",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      589
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "Construction rate decreased": "0.75",
+          "bidirectional teleport": "1",
+          "mod teleporter cost": "0.5",
+          "metal_pickup_decreased": "0.9"
+        },
+        "source": "item",
+        "sourceKey": "589",
+        "defindexes": [
+          589
+        ],
+        "label": "Item #589"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_wrench",
+        "label": "tf_weapon_wrench"
+      }
+    ],
+    "changeCount": 5
+  },
+  {
+    "name": "Gunslinger",
+    "classname": "tf_weapon_robot_arm",
+    "class": "Engineer",
+    "slot": "Melee",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "move speed bonus": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_robot_arm",
+        "label": "tf_weapon_robot_arm"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Southern Hospitality",
+    "classname": "tf_weapon_wrench",
+    "class": "Engineer",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      155
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "hit self on miss": "1"
+        },
+        "source": "item",
+        "sourceKey": "155",
+        "defindexes": [
+          155
+        ],
+        "label": "Item #155"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_wrench",
+        "label": "tf_weapon_wrench"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Wrench",
+    "classname": "tf_weapon_wrench",
+    "class": "Engineer",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      7,
+      197
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.2",
+          "maxammo secondary increased": "1.05"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "7 197",
+        "defindexes": [
+          7,
+          197
+        ],
+        "label": "Item #7, #197"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_wrench",
+        "label": "tf_weapon_wrench"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Engineer Shotgun",
+    "classname": "tf_weapon_shotgun_primary",
+    "class": "Engineer",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      9
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "minicrits become crits": "1",
+          "weapon spread bonus": "0.8"
+        },
+        "source": "item",
+        "sourceKey": "9",
+        "defindexes": [
+          9
+        ],
+        "label": "Item #9"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Frontier Justice",
+    "classname": "tf_weapon_sentry_revenge",
+    "class": "Engineer",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      141,
+      1004
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "mod sentry killed revenge": "100"
+        },
+        "source": "item",
+        "sourceKey": "141 1004",
+        "defindexes": [
+          141,
+          1004
+        ],
+        "label": "Item #141, #1004"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Pomson 6000",
+    "classname": "tf_weapon_drg_pomson",
+    "class": "Engineer",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "fire rate bonus": "0.5",
+          "Reload time decreased": "0.5",
+          "speed_boost_on_hit": "1.1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_drg_pomson",
+        "label": "tf_weapon_drg_pomson"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Rescue Ranger",
+    "classname": "tf_weapon_shotgun_building_rescue",
+    "class": "Engineer",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shotgun_building_rescue",
+        "label": "tf_weapon_shotgun_building_rescue"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Widowmaker",
+    "classname": "tf_weapon_shotgun_primary",
+    "class": "Engineer",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      527
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus bullet vs sentry target": "1.25"
+        },
+        "source": "item",
+        "sourceKey": "527",
+        "defindexes": [
+          527
+        ],
+        "label": "Item #527"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Short Circuit",
+    "classname": "tf_weapon_mechanical_arm",
+    "class": "Engineer",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "dmg penalty vs players": "4",
+          "minicrits become crits": "1",
+          "blast dmg to self increased": "0.5",
+          "mark for death": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_mechanical_arm",
+        "label": "tf_weapon_mechanical_arm"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Bonesaw",
+    "classname": "tf_weapon_bonesaw",
+    "class": "Medic",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      8,
+      198
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "8 198",
+        "defindexes": [
+          8,
+          198
+        ],
+        "label": "Item #8, #198"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bonesaw",
+        "label": "tf_weapon_bonesaw"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Solemn Vow",
+    "classname": "tf_weapon_bonesaw",
+    "class": "Medic",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      413
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "max health additive penalty": "-25",
+          "add head on hit": "0.04",
+          "ubercharge_preserved_on_spawn_max": "1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "413",
+        "defindexes": [
+          413
+        ],
+        "label": "Item #413"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bonesaw",
+        "label": "tf_weapon_bonesaw"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Vita-Saw",
+    "classname": "tf_weapon_bonesaw",
+    "class": "Medic",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      173
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "add uber charge on hit": "0.15",
+          "max health additive penalty": "-10",
+          "speed_boost_on_hit": "1.5"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "item",
+        "sourceKey": "173",
+        "defindexes": [
+          173
+        ],
+        "label": "Item #173"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bonesaw",
+        "label": "tf_weapon_bonesaw"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Crusader's Crossbow",
+    "classname": "tf_weapon_crossbow",
+    "class": "Medic",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.2",
+          "add uber charge on hit": "0.15"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_crossbow",
+        "label": "tf_weapon_crossbow"
+      }
+    ],
+    "changeCount": 3
   },
   {
     "name": "Syringe Gun",
@@ -53,22 +2841,814 @@
     "class": "Medic",
     "slot": "Primary",
     "image": "images/weapons/syringe_gun.png",
-    "ff2": true
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "add uber charge on hit": "0.03",
+          "lunchbox adds minicrits": "1"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_syringegun_medic",
+        "label": "tf_weapon_syringegun_medic"
+      }
+    ],
+    "changeCount": 3
   },
   {
-    "name": "Sniper Rifle",
+    "name": "Vaccinator",
+    "classname": "tf_weapon_medigun",
+    "class": "Medic",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      998
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "lunchbox adds minicrits": "3",
+          "medigun charge is resists": "3"
+        },
+        "source": "item",
+        "sourceKey": "998",
+        "defindexes": [
+          998
+        ],
+        "label": "Item #998"
+      },
+      {
+        "strip": true,
+        "attributes": {
+          "ubercharge rate bonus": "1.35",
+          "overheal bonus": "1.5",
+          "lunchbox adds minicrits": "2",
+          "switch from wep deploy time decreased": "0.75",
+          "uber duration bonus": "4",
+          "single wep deploy time decreased": "0.75"
+        },
+        "custom": {
+          "medigun charge adds crit boost": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_medigun",
+        "label": "tf_weapon_medigun"
+      }
+    ],
+    "changeCount": 11
+  },
+  {
+    "name": "Kukri",
+    "classname": "tf_weapon_club",
+    "class": "Sniper",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      3,
+      193
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo primary increased": "1.15",
+          "maxammo secondary increased": "1.25"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "melee sickle climb": "25"
+        },
+        "source": "item",
+        "sourceKey": "3 193",
+        "defindexes": [
+          3,
+          193
+        ],
+        "label": "Item #3, #193"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2",
+          "melee sickle climb": "25"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_club",
+        "label": "tf_weapon_club"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Bazaar Bargain",
+    "classname": "tf_weapon_sniperrifle_decap",
+    "class": "Sniper",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "SRifle Charge rate decreased": "0.5",
+          "aiming movespeed increased": "3.75",
+          "deploy time decreased": "0.8"
+        },
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sniperrifle_decap",
+        "label": "tf_weapon_sniperrifle_decap"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Classic",
+    "classname": "tf_weapon_sniperrifle_classic",
+    "class": "Sniper",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2",
+          "charge outlines bosses": "3"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sniperrifle_classic",
+        "label": "tf_weapon_sniperrifle_classic"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Huntsman",
+    "classname": "tf_weapon_compound_bow",
+    "class": "Sniper",
+    "slot": "Primary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.2769",
+          "maxammo primary increased": "2"
+        },
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_compound_bow",
+        "label": "tf_weapon_compound_bow"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Machina",
     "classname": "tf_weapon_sniperrifle",
     "class": "Sniper",
     "slot": "Primary",
-    "image": "images/weapons/sniper_rifle.png",
-    "ff2": true
+    "ff2": true,
+    "defindexes": [
+      526,
+      30665
+    ],
+    "ff2Changes": [
+      {
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2"
+        },
+        "source": "item",
+        "sourceKey": "526 30665",
+        "defindexes": [
+          526,
+          30665
+        ],
+        "label": "Item #526, #30665"
+      },
+      {
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2",
+          "charge outlines bosses": "3"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sniperrifle",
+        "label": "tf_weapon_sniperrifle"
+      }
+    ],
+    "changeCount": 5
   },
   {
-    "name": "Revolver",
+    "name": "Sydney Sleeper",
+    "classname": "tf_weapon_sniperrifle",
+    "class": "Sniper",
+    "slot": "Primary",
+    "ff2": true,
+    "defindexes": [
+      230
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2"
+        },
+        "source": "item",
+        "sourceKey": "230",
+        "defindexes": [
+          230
+        ],
+        "label": "Item #230"
+      },
+      {
+        "custom": {
+          "knockback modifier": "0.5",
+          "mod crit type on bosses": "2",
+          "charge outlines bosses": "3"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_sniperrifle",
+        "label": "tf_weapon_sniperrifle"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Cleaner's Carbine",
+    "classname": "tf_weapon_smg",
+    "class": "Sniper",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      751
+    ],
+    "ff2Changes": [
+      {
+        "clip": "25",
+        "attributes": {
+          "clip size penalty": "1",
+          "fire rate penalty": "1",
+          "max health additive bonus": "80",
+          "bullets per shot bonus": "2",
+          "revolver use hit locations": "1",
+          "aiming movespeed increased": "1.2",
+          "maxammo secondary increased": "2",
+          "weapon spread bonus": "0.5"
+        },
+        "custom": {
+          "primary weapon disabled": "1",
+          "knockback modifier": "0.3"
+        },
+        "source": "item",
+        "sourceKey": "751",
+        "defindexes": [
+          751
+        ],
+        "label": "Item #751"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.1",
+          "maxammo secondary increased": "1.5"
+        },
+        "custom": {
+          "mod crit type glow": "2",
+          "knockback modifier": "0.5"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_smg",
+        "label": "tf_weapon_smg"
+      }
+    ],
+    "changeCount": 15
+  },
+  {
+    "name": "Darwin's Danger Shield",
+    "classname": "tf_wearable_razorback",
+    "class": "Sniper",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      231
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "max health additive bonus": "85",
+          "patient overheal penalty": "0.19",
+          "health from healers reduced": "0.6",
+          "health from packs decreased": "0.6"
+        },
+        "source": "item",
+        "sourceKey": "231",
+        "defindexes": [
+          231
+        ],
+        "label": "Item #231"
+      },
+      {
+        "attributes": {
+          "backstab shield": "1",
+          "item_meter_charge_rate": "90"
+        },
+        "source": "classname",
+        "sourceKey": "tf_wearable_razorback",
+        "label": "tf_wearable_razorback"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Jarate",
+    "classname": "tf_weapon_jar",
+    "class": "Sniper",
+    "slot": "Secondary",
+    "ff2": true,
+    "ff2Changes": [
+      {
+        "custom": {
+          "jarate limit": "1500",
+          "jarate is rage loss": "8"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_jar",
+        "label": "tf_weapon_jar"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Conniver's Kunai",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      356
+    ],
+    "ff2Changes": [
+      {
+        "custom": {
+          "backstab damage": "1000"
+        },
+        "source": "item",
+        "sourceKey": "356",
+        "defindexes": [
+          356
+        ],
+        "label": "Item #356"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Knife, Black Rose",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      4,
+      194,
+      727
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "maxammo secondary increased": "1.2"
+        },
+        "source": "item",
+        "sourceKey": "4 194 727",
+        "defindexes": [
+          4,
+          194,
+          727
+        ],
+        "label": "Item #4, #194, #727"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Sharp Dresser",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      638
+    ],
+    "ff2Changes": [
+      {
+        "custom": {
+          "rtd on backstab": "2",
+          "backstab damage": "750"
+        },
+        "source": "item",
+        "sourceKey": "638",
+        "defindexes": [
+          638
+        ],
+        "label": "Item #638"
+      }
+    ],
+    "changeCount": 2
+  },
+  {
+    "name": "Spy-cicle",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      649
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "freeze backstab victim": "3"
+        },
+        "custom": {
+          "melts on backstab": "1",
+          "backstab damage": "1000"
+        },
+        "source": "item",
+        "sourceKey": "649",
+        "defindexes": [
+          649
+        ],
+        "label": "Item #649"
+      }
+    ],
+    "changeCount": 3
+  },
+  {
+    "name": "Wanga Prick",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      574
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "max health additive penalty": "-15",
+          "mult cloak meter consume rate": "1.5"
+        },
+        "custom": {
+          "backstab damage": "1000",
+          "teleport on backstab": "1",
+          "health loss on backstab teleport": "10"
+        },
+        "source": "item",
+        "sourceKey": "574",
+        "defindexes": [
+          574
+        ],
+        "label": "Item #574"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Your Eternal Reward",
+    "classname": "tf_weapon_knife",
+    "class": "Spy",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      225
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "attributes": {
+          "disguise on backstab": "30",
+          "cannot disguise": "1"
+        },
+        "custom": {
+          "backstab damage": "750"
+        },
+        "source": "item",
+        "sourceKey": "225",
+        "defindexes": [
+          225
+        ],
+        "label": "Item #225"
+      }
+    ],
+    "changeCount": 4
+  },
+  {
+    "name": "Ambassador",
     "classname": "tf_weapon_revolver",
     "class": "Spy",
-    "slot": "Primary",
-    "image": "images/weapons/revolver.png",
-    "ff2": true
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      61,
+      1006
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus": "1.2",
+          "headshot damage increase": "1.3",
+          "crit_dmg_falloff": "0"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "item",
+        "sourceKey": "61 1006",
+        "defindexes": [
+          61,
+          1006
+        ],
+        "label": "Item #61, #1006"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "maxammo secondary increased": "2"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_revolver",
+        "label": "tf_weapon_revolver"
+      }
+    ],
+    "changeCount": 9
+  },
+  {
+    "name": "Diamondback",
+    "classname": "tf_weapon_revolver",
+    "class": "Spy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      525
+    ],
+    "ff2Changes": [
+      {
+        "clip": "1",
+        "attributes": {
+          "override projectile type": "2",
+          "self dmg push force increased": "1.25",
+          "damage bonus": "2.3",
+          "clip size penalty": "0.16666666666666666666666666666667",
+          "fire rate penalty": "1.35",
+          "Reload time increased": "1.35",
+          "rocket jump damage reduction": "0.7",
+          "patient overheal penalty": "0",
+          "sapper kills collect crits": "0",
+          "max health additive penalty": "-25",
+          "cloak consume rate increased": "0.75",
+          "cloak regen rate decreased": "0.5"
+        },
+        "source": "item",
+        "sourceKey": "525",
+        "defindexes": [
+          525
+        ],
+        "label": "Item #525"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "maxammo secondary increased": "2"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_revolver",
+        "label": "tf_weapon_revolver"
+      }
+    ],
+    "changeCount": 17
+  },
+  {
+    "name": "Enforcer",
+    "classname": "tf_weapon_revolver",
+    "class": "Spy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      460
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage bonus while disguised": "2.1"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "item",
+        "sourceKey": "460",
+        "defindexes": [
+          460
+        ],
+        "label": "Item #460"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "maxammo secondary increased": "2"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_revolver",
+        "label": "tf_weapon_revolver"
+      }
+    ],
+    "changeCount": 7
+  },
+  {
+    "name": "L'Etranger",
+    "classname": "tf_weapon_revolver",
+    "class": "Spy",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      224
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "1",
+          "damage bonus": "1.15"
+        },
+        "source": "item",
+        "sourceKey": "224",
+        "defindexes": [
+          224
+        ],
+        "label": "Item #224"
+      },
+      {
+        "attributes": {
+          "damage bonus": "1.15",
+          "maxammo secondary increased": "2"
+        },
+        "custom": {
+          "knockback modifier": "0.6",
+          "mod crit type glow": "1"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_revolver",
+        "label": "tf_weapon_revolver"
+      }
+    ],
+    "changeCount": 6
+  },
+  {
+    "name": "Cloak and Dagger",
+    "classname": "tf_weapon_invis",
+    "class": "Spy",
+    "slot": "Watch",
+    "ff2": true,
+    "defindexes": [
+      60
+    ],
+    "ff2Changes": [
+      {
+        "strip": true,
+        "source": "item",
+        "sourceKey": "60",
+        "defindexes": [
+          60
+        ],
+        "label": "Item #60"
+      }
+    ],
+    "changeCount": 1
+  },
+  {
+    "name": "Frying Pan",
+    "classname": "tf_weapon_bat",
+    "class": "Multi-class",
+    "slot": "Melee",
+    "ff2": true,
+    "defindexes": [
+      264
+    ],
+    "ff2Changes": [
+      {
+        "classOverrides": {
+          "Scout": {
+            "attributes": {
+              "fire rate bonus": "0.6",
+              "heal on hit for rapidfire": "20",
+              "max health additive bonus": "100",
+              "melee range multiplier": "1.5",
+              "healing received penalty": "0.5",
+              "speed_boost_on_hit": "1"
+            },
+            "custom": {
+              "mod crit type glow": "2",
+              "primary weapon disabled": "1",
+              "secondary weapon disabled": "1"
+            }
+          },
+          "Sniper": {
+            "custom": {
+              "mod crit type glow": "2",
+              "melee sickle climb": "25"
+            }
+          }
+        },
+        "source": "item",
+        "sourceKey": "264",
+        "defindexes": [
+          264
+        ],
+        "label": "Item #264"
+      },
+      {
+        "custom": {
+          "mod crit type glow": "2"
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_bat",
+        "label": "tf_weapon_bat"
+      }
+    ],
+    "changeCount": 12
+  },
+  {
+    "name": "Panic Attack",
+    "classname": "tf_weapon_shotgun",
+    "class": "Multi-class",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      1153
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "damage penalty": "1",
+          "clip size penalty": "0.66",
+          "fire rate bonus": "0",
+          "bullets per shot bonus": "1",
+          "weapon spread bonus": "0.8",
+          "auto fires full clip": "1"
+        },
+        "source": "item",
+        "sourceKey": "1153",
+        "defindexes": [
+          1153
+        ],
+        "label": "Item #1153"
+      },
+      {
+        "classOverrides": {
+          "Soldier": {
+            "attributes": {
+              "damage bonus": "1.25",
+              "weapon spread bonus": "0.6",
+              "rocket jump damage reduction": "0.7"
+            }
+          },
+          "Pyro": {
+            "attributes": {
+              "crit vs burning players": "1"
+            }
+          },
+          "Engineer": {
+            "attributes": {
+              "minicrits become crits": "1",
+              "weapon spread bonus": "0.8"
+            }
+          }
+        },
+        "source": "classname",
+        "sourceKey": "tf_weapon_shotgun",
+        "label": "tf_weapon_shotgun"
+      }
+    ],
+    "changeCount": 12
   }
 ]

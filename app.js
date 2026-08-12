@@ -29,23 +29,181 @@ document.querySelectorAll("[data-view-link]").forEach(
   b => b.addEventListener("click", () => showView(b.dataset.viewLink))
 );
 
-function renderWeapons(query = ""){
-  const q = query.toLowerCase().trim();
-  const list = weapons.filter(w =>
-    `${w.name || ""} ${w.classname || ""} ${w.class || ""} ${w.slot || ""}`
-      .toLowerCase()
-      .includes(q)
-  );
+let weaponSearchQuery = "";
+let weaponClassFilter = "all";
 
-  document.querySelector("#weapon-list").innerHTML = list.map(w => `
-    <article class="item-card">
-      ${w.image ? `<img class="item-img" src="${escapeAttr(w.image)}" alt="${escapeAttr(w.name)}" onerror="this.style.display='none'">` : ""}
-      <h3>${escapeHtml(w.name)}</h3>
-      <p>${escapeHtml(w.class || "Unknown class")}${w.slot ? ` · ${escapeHtml(w.slot)}` : ""}</p>
-      ${w.classname ? `<span class="tag">${escapeHtml(w.classname)}</span>` : ""}
-      ${w.ff2 ? `<span class="tag">Panda FF2</span>` : ""}
-    </article>
-  `).join("") || `<div class="empty-state">No weapons found.</div>`;
+function weaponRuleSearchText(rule){
+  if(!rule) return "";
+
+  const attrs = Object.keys(rule.attributes || {}).join(" ");
+  const custom = Object.keys(rule.custom || {}).join(" ");
+  const overrides = Object.entries(rule.classOverrides || {}).map(([className, value]) =>
+    `${className} ${weaponRuleSearchText(value)}`
+  ).join(" ");
+
+  return `${rule.label || ""} ${rule.sourceKey || ""} ${attrs} ${custom} ${overrides}`;
+}
+
+function weaponMatchesClass(weapon, classFilter){
+  if(classFilter === "all") return true;
+  if(classFilter === "Multi-class"){
+    return String(weapon.class || "").includes("/") || weapon.class === "Multi-class";
+  }
+  return String(weapon.class || "").split(" / ").includes(classFilter);
+}
+
+function renderWeapons(){
+  const q = weaponSearchQuery.toLowerCase().trim();
+
+  const list = weapons.filter(w => {
+    const changeText = (w.ff2Changes || []).map(weaponRuleSearchText).join(" ");
+    const text = `
+      ${w.name || ""}
+      ${w.classname || ""}
+      ${w.class || ""}
+      ${w.slot || ""}
+      ${(w.defindexes || []).join(" ")}
+      ${changeText}
+    `.toLowerCase();
+
+    return weaponMatchesClass(w, weaponClassFilter) && text.includes(q);
+  });
+
+  const counter = document.querySelector("#weapon-result-count");
+  if(counter) counter.textContent = list.length;
+
+  document.querySelector("#weapon-list").innerHTML = list.map(w => {
+    const rules = w.ff2Changes || [];
+    const itemRule = rules.find(rule => rule.source === "item");
+    const classnameRule = rules.find(rule => rule.source === "classname");
+
+    return `
+      <article class="item-card weapon-card">
+        ${w.image ? `<img class="item-img" src="${escapeAttr(w.image)}" alt="${escapeAttr(w.name)}" onerror="this.style.display='none'">` : ""}
+
+        <div class="weapon-card-head">
+          <div>
+            <h3>${escapeHtml(w.name)}</h3>
+            <p>${escapeHtml(w.class || "Unknown class")}${w.slot ? ` · ${escapeHtml(w.slot)}` : ""}</p>
+          </div>
+          ${w.changeCount ? `<span class="weapon-count-badge">${escapeHtml(w.changeCount)} changes</span>` : ""}
+        </div>
+
+        ${w.classname ? `<code class="weapon-classname">${escapeHtml(w.classname)}</code>` : ""}
+
+        <div class="weapon-badges">
+          ${(w.defindexes || []).length ? `<span class="tag">Item #${w.defindexes.map(escapeHtml).join(", #")}</span>` : ""}
+          ${classnameRule ? `<span class="tag shared-rule-tag">Shared classname rule</span>` : ""}
+          ${itemRule?.strip || classnameRule?.strip ? `<span class="tag warning-tag">Defaults stripped</span>` : ""}
+          ${itemRule?.clip !== undefined ? `<span class="tag">Clip: ${escapeHtml(itemRule.clip)}</span>` : ""}
+        </div>
+
+        ${rules.length ? `
+          <details class="weapon-details">
+            <summary>Show FF2 changes</summary>
+            <div class="weapon-details-body">
+              ${rules.map(renderWeaponRule).join("")}
+            </div>
+          </details>
+        ` : `<p class="weapon-no-change">No FF2 override data in the imported config.</p>`}
+      </article>
+    `;
+  }).join("") || `<div class="empty-state">No weapons match the current filters.</div>`;
+}
+
+function renderWeaponRule(rule){
+  const title = rule.source === "item"
+    ? (rule.label || "Item-specific rule")
+    : "Shared classname rule";
+
+  const source = rule.source === "classname"
+    ? (rule.sourceKey || rule.label || "")
+    : (rule.sourceKey ? `Indexes: ${rule.sourceKey}` : "");
+
+  return `
+    <section class="weapon-rule ${rule.source === "classname" ? "classname-rule" : "item-rule"}">
+      <div class="weapon-rule-head">
+        <div>
+          <strong>${escapeHtml(title)}</strong>
+          ${source ? `<code>${escapeHtml(source)}</code>` : ""}
+        </div>
+        <span>${escapeHtml(ruleChangeCount(rule))} changes</span>
+      </div>
+
+      ${renderRuleFlags(rule)}
+      ${renderAttributeGroup("Standard attributes", rule.attributes, false)}
+      ${renderAttributeGroup("FF2 custom attributes", rule.custom, true)}
+
+      ${Object.keys(rule.classOverrides || {}).length ? `
+        <div class="class-override-list">
+          <div class="rule-group-title">Class overrides</div>
+          ${Object.entries(rule.classOverrides).map(([className, override]) => `
+            <div class="class-override">
+              <strong>${escapeHtml(className)}</strong>
+              ${renderRuleFlags(override)}
+              ${renderAttributeGroup("Standard attributes", override.attributes, false)}
+              ${renderAttributeGroup("FF2 custom attributes", override.custom, true)}
+            </div>
+          `).join("")}
+        </div>
+      ` : ""}
+    </section>
+  `;
+}
+
+function renderRuleFlags(rule){
+  const flags = [];
+  if(rule.strip !== undefined){
+    flags.push(`<span class="rule-flag ${rule.strip ? "danger" : ""}">Strip defaults: ${rule.strip ? "Yes" : "No"}</span>`);
+  }
+  if(rule.clip !== undefined){
+    flags.push(`<span class="rule-flag">Clip: ${escapeHtml(rule.clip)}</span>`);
+  }
+  return flags.length ? `<div class="rule-flags">${flags.join("")}</div>` : "";
+}
+
+function renderAttributeGroup(title, attributes, custom){
+  if(!attributes || !Object.keys(attributes).length) return "";
+
+  return `
+    <div class="attribute-group ${custom ? "custom-attributes" : ""}">
+      <div class="rule-group-title">${escapeHtml(title)}</div>
+
+      <div class="attribute-list">
+        ${Object.entries(attributes).map(([name, value]) => `
+          <div class="attribute-row">
+            <span title="${escapeAttr(name)}">${escapeHtml(prettyWeaponAttribute(name))}</span>
+            <code>${escapeHtml(value)}</code>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function ruleChangeCount(rule){
+  let total = Object.keys(rule.attributes || {}).length + Object.keys(rule.custom || {}).length;
+  if(rule.strip !== undefined) total++;
+  if(rule.clip !== undefined) total++;
+  Object.values(rule.classOverrides || {}).forEach(override => {
+    total += ruleChangeCount(override);
+  });
+  return total;
+}
+
+function prettyWeaponAttribute(name){
+  return String(name || "")
+    .replace(/_/g, " ")
+    .replace(/\bSRifle\b/gi, "Sniper Rifle")
+    .replace(/\bdmg\b/gi, "damage")
+    .replace(/\bwep\b/gi, "weapon")
+    .replace(/\bmod\b/gi, "modifier")
+    .replace(/\bmaxammo\b/gi, "max ammo")
+    .replace(/\bminicrits\b/gi, "mini-crits")
+    .replace(/\bcrits\b/gi, "crits")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, char => char.toUpperCase());
 }
 
 function abilityName(ability){
@@ -151,7 +309,15 @@ function renderChangelog(filter = activeChangeFilter){
   `).join("") || `<div class="empty-state">No changelog entries in this category yet.</div>`;
 }
 
-document.querySelector("#weapon-search").addEventListener("input", e => renderWeapons(e.target.value));
+document.querySelector("#weapon-search").addEventListener("input", e => {
+  weaponSearchQuery = e.target.value;
+  renderWeapons();
+});
+
+document.querySelector("#weapon-class-filter").addEventListener("change", e => {
+  weaponClassFilter = e.target.value;
+  renderWeapons();
+});
 document.querySelector("#boss-search").addEventListener("input", e => renderBosses(e.target.value));
 document.querySelector("#command-search").addEventListener("input", e => renderCommands(e.target.value));
 
