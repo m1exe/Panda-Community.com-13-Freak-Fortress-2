@@ -37,7 +37,8 @@
         "label": "tf_weapon_bat"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Bat.png"
   },
   {
     "name": "Candy Cane",
@@ -139,7 +140,8 @@
         "label": "tf_weapon_bat"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/Sun_on_a_Stick.png"
   },
   {
     "name": "The Sandman",
@@ -183,7 +185,8 @@
         "label": "tf_weapon_bat_giftwrap"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Wrap_Assassin.png"
   },
   {
     "name": "Baby Face's Blaster",
@@ -229,7 +232,8 @@
         "label": "tf_weapon_scattergun"
       }
     ],
-    "changeCount": 14
+    "changeCount": 14,
+    "image": "data/images/weapons/BabyFacesBlaster.png"
   },
   {
     "name": "Back Scatter",
@@ -269,7 +273,8 @@
         "label": "tf_weapon_scattergun"
       }
     ],
-    "changeCount": 8
+    "changeCount": 8,
+    "image": "data/images/weapons/BackScatter.png"
   },
   {
     "name": "Force-a-Nature",
@@ -303,7 +308,8 @@
         "label": "tf_weapon_scattergun"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/ForceANature.png"
   },
   {
     "name": "Flying Guillotine",
@@ -326,7 +332,8 @@
         "label": "tf_weapon_cleaver"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/FlyingGuillotine.png"
   },
   {
     "name": "Pistol",
@@ -351,7 +358,8 @@
         "label": "tf_weapon_pistol_scout"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Pistol.png"
   },
   {
     "name": "Scout Handgun",
@@ -404,7 +412,8 @@
         "label": "tf_weapon_pistol"
       }
     ],
-    "changeCount": 8
+    "changeCount": 8,
+    "image": "data/images/weapons/Pistol.png"
   },
   {
     "name": "Market Gardener",
@@ -440,7 +449,8 @@
         "label": "tf_weapon_shovel"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Market_Gardener.png"
   },
   {
     "name": "Shovel",
@@ -478,7 +488,8 @@
         "label": "tf_weapon_shovel"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Shovel.png"
   },
   {
     "name": "Air Strike",
@@ -515,7 +526,8 @@
         "label": "Item #1104"
       }
     ],
-    "changeCount": 12
+    "changeCount": 12,
+    "image": "data/images/weapons/Air_Strike.png"
   },
   {
     "name": "Beggar's Bazooka",
@@ -605,7 +617,8 @@
         "label": "tf_weapon_rocketlauncher"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/BlackBox.png"
   },
   {
     "name": "Cow Mangler 5000",
@@ -644,7 +657,6 @@
     "classname": "tf_weapon_rocketlauncher_directhit",
     "class": "Soldier",
     "slot": "Primary",
-    "image": "images/weapons/direct_hit.png",
     "ff2": true,
     "ff2Changes": [
       {
@@ -662,7 +674,8 @@
         "label": "tf_weapon_rocketlauncher_directhit"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/DirectHit.png"
   },
   {
     "name": "Liberty Launcher",
@@ -703,7 +716,8 @@
         "label": "tf_weapon_rocketlauncher"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/Liberty_Launcher.png"
   },
   {
     "name": "Rocket Jumper",
@@ -751,7 +765,8 @@
         "label": "tf_weapon_rocketlauncher"
       }
     ],
-    "changeCount": 14
+    "changeCount": 14,
+    "image": "data/images/weapons/Rocket_Jumper.png"
   },
   {
     "name": "Battalion's Backup",
@@ -801,7 +816,8 @@
         "label": "Item #129, #1001"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/BuffBanner.png"
   },
   {
     "name": "Gunboats",
@@ -828,7 +844,8 @@
         "label": "Item #133"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Gunboats.png"
   },
   {
     "name": "Mantreads",
@@ -857,7 +874,8 @@
         "label": "Item #444"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Mantreads.png"
   },
   {
     "name": "Reserve Shooter",
@@ -900,7 +918,8 @@
         "label": "tf_weapon_shotgun_soldier"
       }
     ],
-    "changeCount": 9
+    "changeCount": 9,
+    "image": "data/images/weapons/Reserve_Shooter.png"
   },
   {
     "name": "Righteous Bison",
@@ -944,7 +963,8 @@
         "label": "tf_weapon_katana"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/HalfZatoichi.png"
   },
   {
     "name": "Pain Train",
@@ -979,7 +999,8 @@
         "label": "tf_weapon_shovel"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/Pain_Train.png"
   },
   {
     "name": "BASE Jumper",
@@ -1003,7 +1024,8 @@
         "label": "Item #1101"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/B.A.S.E.Jumper.png"
   },
   {
     "name": "Axtinguisher",
@@ -1037,7 +1059,8 @@
         "label": "tf_weapon_fireaxe"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Axtinguisher.png"
   },
   {
     "name": "Fire Axe",
@@ -1075,7 +1098,8 @@
         "label": "tf_weapon_fireaxe"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/FireAxe.png"
   },
   {
     "name": "Hot Hand",
@@ -1101,7 +1125,8 @@
         "label": "Item #1181"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Hot_Hand.png"
   },
   {
     "name": "Neon Annihilator",
@@ -1119,7 +1144,8 @@
         "label": "tf_weapon_breakable_sign"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/Neon_Annihilator.png"
   },
   {
     "name": "Sharpened Volcano Fragment",
@@ -1159,7 +1185,8 @@
         "label": "tf_weapon_fireaxe"
       }
     ],
-    "changeCount": 8
+    "changeCount": 8,
+    "image": "data/images/weapons/Sharpened_Volcano_Fragment.png"
   },
   {
     "name": "Backburner",
@@ -1213,7 +1240,8 @@
         "label": "tf_weapon_flamethrower"
       }
     ],
-    "changeCount": 18
+    "changeCount": 18,
+    "image": "data/images/weapons/Backburner.png"
   },
   {
     "name": "Degreaser",
@@ -1258,7 +1286,8 @@
         "label": "tf_weapon_flamethrower"
       }
     ],
-    "changeCount": 11
+    "changeCount": 11,
+    "image": "data/images/weapons/Degreaser.png"
   },
   {
     "name": "Dragon's Fury",
@@ -1323,7 +1352,8 @@
         "label": "tf_weapon_flamethrower"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/Phlogistinator.png"
   },
   {
     "name": "Detonator",
@@ -1366,7 +1396,8 @@
         "label": "tf_weapon_flaregun"
       }
     ],
-    "changeCount": 9
+    "changeCount": 9,
+    "image": "data/images/weapons/Detonator.png"
   },
   {
     "name": "Gas Passer",
@@ -1394,7 +1425,8 @@
         "label": "tf_weapon_jar_gas"
       }
     ],
-    "changeCount": 11
+    "changeCount": 11,
+    "image": "data/images/weapons/GasPasser.png"
   },
   {
     "name": "Manmelter",
@@ -1425,7 +1457,8 @@
         "label": "Item #595"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Manmelter.png"
   },
   {
     "name": "Pyro Shotgun",
@@ -1483,7 +1516,8 @@
         "label": "tf_weapon_flaregun"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Scorch_Shot.png"
   },
   {
     "name": "Thermal Thruster",
@@ -1503,7 +1537,8 @@
         "label": "tf_weapon_rocketpack"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Thermal_Thruster.png"
   },
   {
     "name": "Claidheamh Mòr",
@@ -1574,7 +1609,8 @@
         "label": "tf_weapon_sword"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Persian_Persuader.png"
   },
   {
     "name": "Scotsman's Skullcutter",
@@ -1609,7 +1645,8 @@
         "label": "tf_weapon_sword"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Scotsmans_Skullcutter.png"
   },
   {
     "name": "Scottish Handshake",
@@ -1651,7 +1688,8 @@
         "label": "tf_weapon_bottle"
       }
     ],
-    "changeCount": 8
+    "changeCount": 8,
+    "image": "data/images/weapons/Scottish_Handshake.png"
   },
   {
     "name": "Ullapool Caber",
@@ -1669,7 +1707,8 @@
         "label": "tf_weapon_stickbomb"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/Ullapool_Caber.png"
   },
   {
     "name": "Ali Baba's Wee Booties",
@@ -1693,7 +1732,8 @@
         "label": "Item #405"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/AliBabasWeeBooties.png"
   },
   {
     "name": "Bootlegger",
@@ -1721,7 +1761,8 @@
         "label": "Item #608"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Bootlegger.png"
   },
   {
     "name": "Loch-n-Load",
@@ -1760,7 +1801,8 @@
         "label": "tf_weapon_grenadelauncher"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/Loch-n-Load.png"
   },
   {
     "name": "Loose Cannon",
@@ -1782,7 +1824,8 @@
         "label": "tf_weapon_cannon"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/Loose_Cannon.png"
   },
   {
     "name": "Demoman Shield",
@@ -1864,7 +1907,8 @@
         "label": "Item #265"
       }
     ],
-    "changeCount": 11
+    "changeCount": 11,
+    "image": "data/images/weapons/Sticky_Jumper.png"
   },
   {
     "name": "Eviction Notice",
@@ -1903,7 +1947,8 @@
         "label": "tf_weapon_fists"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/EvictionNotice.png"
   },
   {
     "name": "Fists of Steel",
@@ -1946,7 +1991,8 @@
         "label": "tf_weapon_fists"
       }
     ],
-    "changeCount": 11
+    "changeCount": 11,
+    "image": "data/images/weapons/FistsofSteel.png"
   },
   {
     "name": "Fists, Apoco-Fists",
@@ -2067,7 +2113,8 @@
         "label": "tf_weapon_fists"
       }
     ],
-    "changeCount": 9
+    "changeCount": 9,
+    "image": "data/images/weapons/Holiday_Punch.png"
   },
   {
     "name": "KGB",
@@ -2153,7 +2200,8 @@
         "label": "tf_weapon_fists"
       }
     ],
-    "changeCount": 10
+    "changeCount": 10,
+    "image": "data/images/weapons/Warriors_Spirit.png"
   },
   {
     "name": "Brass Beast",
@@ -2194,7 +2242,8 @@
         "label": "tf_weapon_minigun"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/BrassBeast.png"
   },
   {
     "name": "Huo-Long Heater",
@@ -2237,7 +2286,8 @@
         "label": "tf_weapon_minigun"
       }
     ],
-    "changeCount": 9
+    "changeCount": 9,
+    "image": "data/images/weapons/HuoLong_Heater.png"
   },
   {
     "name": "Natascha",
@@ -2284,7 +2334,8 @@
         "label": "tf_weapon_minigun"
       }
     ],
-    "changeCount": 13
+    "changeCount": 13,
+    "image": "data/images/weapons/Natascha.png"
   },
   {
     "name": "Tomislav",
@@ -2326,7 +2377,8 @@
         "label": "tf_weapon_minigun"
       }
     ],
-    "changeCount": 8
+    "changeCount": 8,
+    "image": "data/images/weapons/Tomislav.png"
   },
   {
     "name": "Buffalo Steak Sandvich",
@@ -2350,7 +2402,8 @@
         "label": "Item #311"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/BuffaloSteakSandvich.png"
   },
   {
     "name": "Dalokohs Bar",
@@ -2374,7 +2427,8 @@
         "label": "Item #159"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/DalokohsBar.png"
   },
   {
     "name": "Family Business",
@@ -2404,7 +2458,8 @@
         "label": "Item #425"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/FamilyBusiness.png"
   },
   {
     "name": "Second Banana",
@@ -2432,7 +2487,8 @@
         "label": "Item #1190"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/Second_Banana.png"
   },
   {
     "name": "Eureka Effect",
@@ -2467,7 +2523,8 @@
         "label": "tf_weapon_wrench"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/EurekaEffect.png"
   },
   {
     "name": "Gunslinger",
@@ -2488,7 +2545,8 @@
         "label": "tf_weapon_robot_arm"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Gunslinger.png"
   },
   {
     "name": "Southern Hospitality",
@@ -2520,7 +2578,8 @@
         "label": "tf_weapon_wrench"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Southern_Hospitality.png"
   },
   {
     "name": "Wrench",
@@ -2558,7 +2617,8 @@
         "label": "tf_weapon_wrench"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Wrench.png"
   },
   {
     "name": "Engineer Shotgun",
@@ -2632,7 +2692,8 @@
         "label": "tf_weapon_drg_pomson"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Pomson_6000.png"
   },
   {
     "name": "Rescue Ranger",
@@ -2653,7 +2714,8 @@
         "label": "tf_weapon_shotgun_building_rescue"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Rescue_Ranger.png"
   },
   {
     "name": "Widowmaker",
@@ -2677,7 +2739,8 @@
         "label": "Item #527"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/Widowmaker.png"
   },
   {
     "name": "Short Circuit",
@@ -2698,7 +2761,8 @@
         "label": "tf_weapon_mechanical_arm"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Short_Circuit.png"
   },
   {
     "name": "Bonesaw",
@@ -2735,7 +2799,8 @@
         "label": "tf_weapon_bonesaw"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Bonesaw.png"
   },
   {
     "name": "Solemn Vow",
@@ -2773,7 +2838,8 @@
         "label": "tf_weapon_bonesaw"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Solemn_Vow.png"
   },
   {
     "name": "Vita-Saw",
@@ -2811,7 +2877,8 @@
         "label": "tf_weapon_bonesaw"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Vita-Saw.png"
   },
   {
     "name": "Crusader's Crossbow",
@@ -2833,14 +2900,14 @@
         "label": "tf_weapon_crossbow"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/CrusadersCrossbow.png"
   },
   {
     "name": "Syringe Gun",
     "classname": "tf_weapon_syringegun_medic",
     "class": "Medic",
     "slot": "Primary",
-    "image": "images/weapons/syringe_gun.png",
     "ff2": true,
     "ff2Changes": [
       {
@@ -2856,7 +2923,8 @@
         "label": "tf_weapon_syringegun_medic"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Syringe_Gun.png"
   },
   {
     "name": "Vaccinator",
@@ -2899,7 +2967,8 @@
         "label": "tf_weapon_medigun"
       }
     ],
-    "changeCount": 11
+    "changeCount": 11,
+    "image": "data/images/weapons/Vaccinator.png"
   },
   {
     "name": "Kukri",
@@ -2939,7 +3008,8 @@
         "label": "tf_weapon_club"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Kukri.png"
   },
   {
     "name": "Bazaar Bargain",
@@ -2964,7 +3034,8 @@
         "label": "tf_weapon_sniperrifle_decap"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/BazaarBargain.png"
   },
   {
     "name": "Classic",
@@ -2984,7 +3055,8 @@
         "label": "tf_weapon_sniperrifle_classic"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Classic.png"
   },
   {
     "name": "Huntsman",
@@ -3006,7 +3078,8 @@
         "label": "tf_weapon_compound_bow"
       }
     ],
-    "changeCount": 3
+    "changeCount": 3,
+    "image": "data/images/weapons/Huntsman.png"
   },
   {
     "name": "Machina",
@@ -3043,7 +3116,8 @@
         "label": "tf_weapon_sniperrifle"
       }
     ],
-    "changeCount": 5
+    "changeCount": 5,
+    "image": "data/images/weapons/Machina.png"
   },
   {
     "name": "Sydney Sleeper",
@@ -3079,7 +3153,8 @@
         "label": "tf_weapon_sniperrifle"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Sydney_Sleeper.png"
   },
   {
     "name": "Cleaner's Carbine",
@@ -3128,7 +3203,8 @@
         "label": "tf_weapon_smg"
       }
     ],
-    "changeCount": 15
+    "changeCount": 15,
+    "image": "data/images/weapons/CleanersCarbine.png"
   },
   {
     "name": "Darwin's Danger Shield",
@@ -3183,7 +3259,8 @@
         "label": "tf_weapon_jar"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Jarate.png"
   },
   {
     "name": "Conniver's Kunai",
@@ -3207,7 +3284,8 @@
         "label": "Item #356"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/ConniversKunai.png"
   },
   {
     "name": "Knife, Black Rose",
@@ -3260,7 +3338,8 @@
         "label": "Item #638"
       }
     ],
-    "changeCount": 2
+    "changeCount": 2,
+    "image": "data/images/weapons/Sharp_Dresser.png"
   },
   {
     "name": "Spy-cicle",
@@ -3319,7 +3398,8 @@
         "label": "Item #574"
       }
     ],
-    "changeCount": 6
+    "changeCount": 6,
+    "image": "data/images/weapons/Wanga_Prick.png"
   },
   {
     "name": "Your Eternal Reward",
@@ -3348,7 +3428,8 @@
         "label": "Item #225"
       }
     ],
-    "changeCount": 4
+    "changeCount": 4,
+    "image": "data/images/weapons/Your_Eternal_Reward.png"
   },
   {
     "name": "Ambassador",
@@ -3393,7 +3474,8 @@
         "label": "tf_weapon_revolver"
       }
     ],
-    "changeCount": 9
+    "changeCount": 9,
+    "image": "data/images/weapons/Ambassador.png"
   },
   {
     "name": "Diamondback",
@@ -3442,7 +3524,8 @@
         "label": "tf_weapon_revolver"
       }
     ],
-    "changeCount": 17
+    "changeCount": 17,
+    "image": "data/images/weapons/Diamondback.png"
   },
   {
     "name": "Enforcer",
@@ -3483,7 +3566,8 @@
         "label": "tf_weapon_revolver"
       }
     ],
-    "changeCount": 7
+    "changeCount": 7,
+    "image": "data/images/weapons/Enforcer.png"
   },
   {
     "name": "L'Etranger",
@@ -3543,7 +3627,8 @@
         "label": "Item #60"
       }
     ],
-    "changeCount": 1
+    "changeCount": 1,
+    "image": "data/images/weapons/CloakandDagger.png"
   },
   {
     "name": "Frying Pan",
@@ -3595,7 +3680,8 @@
         "label": "tf_weapon_bat"
       }
     ],
-    "changeCount": 12
+    "changeCount": 12,
+    "image": "data/images/weapons/FryingPan.png"
   },
   {
     "name": "Panic Attack",
@@ -3649,6 +3735,7 @@
         "label": "tf_weapon_shotgun"
       }
     ],
-    "changeCount": 12
+    "changeCount": 12,
+    "image": "data/images/weapons/Panic_Attack.png"
   }
 ]
