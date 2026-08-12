@@ -49,7 +49,7 @@
         </div>
 
         <aside class="server-board">
-          <div class="board-label">SERVER INTELLIGENCE</div>
+          <div class="board-label">SERVER INFO</div>
           <div class="server-row">
             <span>Server</span>
             <strong>#13 Freak Fortress 2</strong>
@@ -69,25 +69,25 @@
 
       <div class="home-panels">
         <button class="feature red-feature" data-view-link="weapons">
-          <span class="feature-kicker">LOADOUT INTEL</span>
+          <span class="feature-kicker">WEAPONS</span>
           <strong>Weapons</strong>
           <span>Browse TF2 weapons and Panda FF2-specific information.</span>
         </button>
 
         <button class="feature blu-feature" data-view-link="bosses">
-          <span class="feature-kicker">TARGET FILES</span>
+          <span class="feature-kicker">BOSSES</span>
           <strong>Bosses</strong>
           <span>Build a searchable roster for the bosses currently used on the server.</span>
         </button>
 
         <button class="feature neutral-feature" data-view-link="commands">
-          <span class="feature-kicker">FIELD MANUAL</span>
+          <span class="feature-kicker">COMMANDS</span>
           <strong>Commands</strong>
           <span>Quick access to FF2, Engineer, camera and map-vote commands.</span>
         </button>
 
         <button class="feature neutral-feature" data-view-link="changelog">
-          <span class="feature-kicker">PATCH BOARD</span>
+          <span class="feature-kicker">CHANGELOG</span>
           <strong>Changelog</strong>
           <span>Track completed weapon and boss changes from Panda's FF2 forum.</span>
         </button>
@@ -115,13 +115,14 @@
         </div>
         <input id="boss-search" class="search" placeholder="Search bosses, authors, abilities…" autocomplete="off">
       </div>
+      <div id="boss-detail" class="boss-detail hidden"></div>
       <div id="boss-list" class="grid"></div>
     </section>
 
     <section id="commands" class="view">
       <div class="section-head">
         <div>
-          <p class="eyebrow">FIELD MANUAL</p>
+          <p class="eyebrow">COMMANDS</p>
           <h2>Useful Commands</h2>
           <p class="section-copy">
             Common player commands collected from Panda's FF2 command threads.
@@ -141,7 +142,7 @@
     <section id="changelog" class="view">
       <div class="section-head changelog-head">
         <div>
-          <p class="eyebrow">PANDA FF2 PATCH BOARD</p>
+          <p class="eyebrow">PANDA FF2 CHANGELOG</p>
           <h2>Weapons & Bosses Changelog</h2>
           <p class="section-copy">
             Completed Panda FF2 forum changes. Dates below are forum thread dates unless an explicit completion date is known.
@@ -169,7 +170,7 @@
     <section id="analyzer" class="view">
       <div class="section-head">
         <div>
-          <p class="eyebrow">ENGINEER'S WORKBENCH</p>
+          <p class="eyebrow">CONFIG TOOLS</p>
           <h2>CFG Analyzer</h2>
           <p class="section-copy">Inspect FF2 / TF2 KeyValues-style configs locally in your browser.</p>
         </div>
