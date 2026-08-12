@@ -3,70 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FF2 Analyzer</title>
+  <meta name="theme-color" content="#2b2926">
+  <title>Panda Community #13 · Freak Fortress 2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">⚔ FF2 <span>ANALYZER</span></div>
-  <nav>
-    <button class="nav-btn active" data-view="home">Home</button>
-    <button class="nav-btn" data-view="weapons">Weapons</button>
-    <button class="nav-btn" data-view="bosses">Bosses</button>
-    <button class="nav-btn" data-view="analyzer">Config Analyzer</button>
-  </nav>
-</header>
+  <div class="team-stripe" aria-hidden="true">
+    <span class="red-stripe"></span>
+    <span class="neutral-stripe"></span>
+    <span class="blu-stripe"></span>
+  </div>
 
-<main>
-  <section id="home" class="view active">
-    <div class="hero">
-      <p class="eyebrow">TEAM FORTRESS 2 · FREAK FORTRESS 2</p>
-      <h1>TF2 / FF2 <span>Analyzer</span></h1>
-      <p>Explore weapons, FF2 attributes and bosses, or upload a configuration and inspect what it contains.</p>
-      <div class="hero-actions">
-        <button class="primary" data-view-link="analyzer">Analyze a CFG</button>
-        <button class="secondary" data-view-link="weapons">Browse weapons</button>
-        <button class="secondary" data-view-link="bosses">Browse bosses</button>
+  <header class="topbar">
+    <button class="brand" data-view-link="home" aria-label="Go to home">
+      <span class="brand-small">PANDA COMMUNITY · SERVER #13</span>
+      <span class="brand-main">FREAK FORTRESS 2</span>
+    </button>
+
+    <nav aria-label="Main navigation">
+      <button class="nav-btn active" data-view="home">Home</button>
+      <button class="nav-btn" data-view="weapons">Weapons</button>
+      <button class="nav-btn" data-view="bosses">Bosses</button>
+      <button class="nav-btn" data-view="commands">Commands</button>
+      <button class="nav-btn" data-view="changelog">Changelog</button>
+      <button class="nav-btn" data-view="analyzer">CFG Analyzer</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="view active">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">PANDA COMMUNITY · TEAM FORTRESS 2</p>
+          <h1>FREAK<br><span>FORTRESS 2</span></h1>
+          <p class="hero-lead">
+            A practical reference for Panda's FF2 server: weapon changes, boss information,
+            useful commands and a browser-side config analyzer.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary" data-view-link="changelog">View latest changes</button>
+            <button class="secondary" data-view-link="commands">Useful commands</button>
+            <button class="secondary" data-view-link="analyzer">Analyze a CFG</button>
+          </div>
+        </div>
+
+        <aside class="server-board">
+          <div class="board-label">SERVER INTELLIGENCE</div>
+          <div class="server-row">
+            <span>Server</span>
+            <strong>#13 Freak Fortress 2</strong>
+          </div>
+          <div class="server-row">
+            <span>Address</span>
+            <code>193.38.251.81:27015</code>
+          </div>
+          <div class="server-row">
+            <span>Mode</span>
+            <strong>Freak Fortress 2</strong>
+          </div>
+          <a class="connect-btn" href="steam://connect/193.38.251.81:27015">CONNECT THROUGH STEAM</a>
+          <p class="board-note">Server details can change; the Panda forum remains the canonical source.</p>
+        </aside>
       </div>
-    </div>
-    <div class="cards">
-      <article class="feature"><b>🔫 Weapons</b><span>TF2 weapon classnames, slots and attribute information.</span></article>
-      <article class="feature"><b>👹 Bosses</b><span>A dedicated FF2 boss database ready for your server's roster.</span></article>
-      <article class="feature"><b>📄 CFG Analyzer</b><span>Parse VDF/KeyValues-style FF2 configs directly in your browser.</span></article>
-    </div>
-  </section>
 
-  <section id="weapons" class="view">
-    <div class="section-head">
-      <div><p class="eyebrow">DATABASE</p><h2>Weapons</h2></div>
-      <input id="weapon-search" class="search" placeholder="Search weapons or classnames…">
-    </div>
-    <div id="weapon-list" class="grid"></div>
-  </section>
+      <div class="home-panels">
+        <button class="feature red-feature" data-view-link="weapons">
+          <span class="feature-kicker">LOADOUT INTEL</span>
+          <strong>Weapons</strong>
+          <span>Browse TF2 weapons and Panda FF2-specific information.</span>
+        </button>
 
-  <section id="bosses" class="view">
-    <div class="section-head">
-      <div><p class="eyebrow">FREAK FORTRESS 2</p><h2>Bosses</h2></div>
-      <input id="boss-search" class="search" placeholder="Search bosses…">
-    </div>
-    <div id="boss-list" class="grid"></div>
-  </section>
+        <button class="feature blu-feature" data-view-link="bosses">
+          <span class="feature-kicker">TARGET FILES</span>
+          <strong>Bosses</strong>
+          <span>Build a searchable roster for the bosses currently used on the server.</span>
+        </button>
 
-  <section id="analyzer" class="view">
-    <div class="section-head">
-      <div><p class="eyebrow">LOCAL BROWSER PROCESSING</p><h2>Config Analyzer</h2></div>
-    </div>
-    <div id="dropzone" class="dropzone">
-      <div class="drop-icon">📄</div>
-      <h3>Drop an FF2 / TF2 .cfg here</h3>
-      <p>Nothing is uploaded to a server. The file is parsed locally in your browser.</p>
-      <label class="primary file-label">Choose CFG <input id="cfg-file" type="file" accept=".cfg,.txt"></label>
-    </div>
-    <div id="analysis-output" class="hidden"></div>
-  </section>
-</main>
+        <button class="feature neutral-feature" data-view-link="commands">
+          <span class="feature-kicker">FIELD MANUAL</span>
+          <strong>Commands</strong>
+          <span>Quick access to FF2, Engineer, camera and map-vote commands.</span>
+        </button>
 
-<footer>FF2 Analyzer · Static GitHub Pages project · Customize the weapon and boss data in <code>/data</code>.</footer>
-<script type="module" src="app.js"></script>
+        <button class="feature neutral-feature" data-view-link="changelog">
+          <span class="feature-kicker">PATCH BOARD</span>
+          <strong>Changelog</strong>
+          <span>Track completed weapon and boss changes from Panda's FF2 forum.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="weapons" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">MANN CO. ARMORY</p>
+          <h2>Weapons</h2>
+          <p class="section-copy">Search the weapon database by name, class or classname.</p>
+        </div>
+        <input id="weapon-search" class="search" placeholder="Search weapons, classes, classnames…" autocomplete="off">
+      </div>
+      <div id="weapon-list" class="grid"></div>
+    </section>
+
+    <section id="bosses" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">FREAK DOSSIERS</p>
+          <h2>Bosses</h2>
+          <p class="section-copy">Search the Panda FF2 roster as the boss database is filled out.</p>
+        </div>
+        <input id="boss-search" class="search" placeholder="Search bosses, authors, abilities…" autocomplete="off">
+      </div>
+      <div id="boss-list" class="grid"></div>
+    </section>
+
+    <section id="commands" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">FIELD MANUAL</p>
+          <h2>Useful Commands</h2>
+          <p class="section-copy">
+            Common player commands collected from Panda's FF2 command threads.
+            Some behavior can change when plugins are updated.
+          </p>
+        </div>
+        <input id="command-search" class="search" placeholder="Search commands or descriptions…" autocomplete="off">
+      </div>
+
+      <div class="command-note">
+        <strong>TIP</strong>
+        <span>Most chat commands can also be entered with <code>/</code> instead of <code>!</code>, depending on the plugin.</span>
+      </div>
+      <div id="command-list" class="command-grid"></div>
+    </section>
+
+    <section id="changelog" class="view">
+      <div class="section-head changelog-head">
+        <div>
+          <p class="eyebrow">PANDA FF2 PATCH BOARD</p>
+          <h2>Weapons & Bosses Changelog</h2>
+          <p class="section-copy">
+            Completed Panda FF2 forum changes. Dates below are forum thread dates unless an explicit completion date is known.
+          </p>
+        </div>
+
+        <div class="filters" aria-label="Changelog filters">
+          <button class="filter-btn active" data-change-filter="all">All</button>
+          <button class="filter-btn" data-change-filter="boss">Bosses</button>
+          <button class="filter-btn" data-change-filter="weapon">Weapons</button>
+          <button class="filter-btn" data-change-filter="gameplay">Gameplay</button>
+        </div>
+      </div>
+
+      <div id="changelog-list" class="timeline"></div>
+
+      <div class="source-card">
+        <span class="feature-kicker">CANONICAL REFERENCE</span>
+        <strong>Current FF2 Weapon Changes</strong>
+        <p>Panda maintains a sticky forum thread for the current weapon-change reference. Use it as the authority when the local database falls behind.</p>
+        <a href="https://www.panda-community.com/threads/current-ff2-weapon-changes.35005/" target="_blank" rel="noreferrer">Open Panda weapon thread</a>
+      </div>
+    </section>
+
+    <section id="analyzer" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">ENGINEER'S WORKBENCH</p>
+          <h2>CFG Analyzer</h2>
+          <p class="section-copy">Inspect FF2 / TF2 KeyValues-style configs locally in your browser.</p>
+        </div>
+      </div>
+
+      <div id="dropzone" class="dropzone">
+        <div class="drop-stamp">CFG</div>
+        <h3>DROP A CONFIG FILE HERE</h3>
+        <p>Nothing is uploaded. The file is parsed locally in your browser.</p>
+        <label class="primary file-label">
+          Choose CFG
+          <input id="cfg-file" type="file" accept=".cfg,.txt">
+        </label>
+      </div>
+
+      <div id="analysis-output" class="hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>PANDA COMMUNITY · FREAK FORTRESS 2</strong>
+    <span>Unofficial static reference · GitHub Pages · Data in <code>/data</code></span>
+  </footer>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
