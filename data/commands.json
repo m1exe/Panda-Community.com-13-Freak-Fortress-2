@@ -1,0 +1,74 @@
+[
+  {
+    "command": "!ff2",
+    "title": "Open the FF2 menu",
+    "description": "Opens the main Freak Fortress 2 menu with many of the important player settings and options.",
+    "category": "FF2"
+  },
+  {
+    "command": "!ff2boss",
+    "title": "Boss selection",
+    "description": "Opens boss-selection options. On newer FF2 Rewrite setups the selection system may use a boss whitelist rather than one permanently selected boss.",
+    "category": "FF2"
+  },
+  {
+    "command": "!halenext",
+    "title": "Boss queue / preference",
+    "description": "Check your position for becoming the boss and access related boss-preference options when available.",
+    "category": "FF2"
+  },
+  {
+    "command": "!ff2music",
+    "title": "Boss music toggle",
+    "description": "Turns Freak Fortress boss music on or off.",
+    "category": "Audio"
+  },
+  {
+    "command": "!haledmg on",
+    "title": "Damage leaderboard",
+    "description": "Displays the top damage players for the round. Use the corresponding off option if you no longer want the display.",
+    "category": "HUD"
+  },
+  {
+    "command": "!tp",
+    "title": "Third person",
+    "description": "Switches your camera to third person.",
+    "category": "Camera"
+  },
+  {
+    "command": "!fp",
+    "title": "First person",
+    "description": "Returns your camera to first person.",
+    "category": "Camera"
+  },
+  {
+    "command": "!pad",
+    "title": "Engineer pads",
+    "description": "Lets Engineer choose the pad replacement for teleporters, such as speed / jump-pad functionality.",
+    "category": "Engineer"
+  },
+  {
+    "command": "!padteam",
+    "title": "Team pad access",
+    "description": "Enables or disables your Engineer pads for teammates.",
+    "category": "Engineer"
+  },
+  {
+    "command": "!amp",
+    "title": "Engineer amplifier",
+    "description": "Lets Engineer replace the normal dispenser behavior with the amplifier / crit-beacon option when the server supports it.",
+    "category": "Engineer"
+  },
+  {
+    "command": "rtv",
+    "title": "Rock the vote",
+    "description": "Votes to start the map-change / map-vote process. The chat form !rtv may also work depending on the server plugin.",
+    "category": "Maps"
+  },
+  {
+    "command": "nominate",
+    "title": "Nominate a map",
+    "description": "Choose a map to be considered for the next map vote. The chat form !nominate may also work.",
+    "category": "Maps"
+  }
+]
