@@ -30,6 +30,12 @@
     "category": "HUD"
   },
   {
+    "command": "!3",
+    "title": "Third person & First person in 1 command",
+    "description": "Switches your camera between third person & first person.",
+    "category": "Camera"
+  },
+  {
     "command": "!tp",
     "title": "Third person",
     "description": "Switches your camera to third person.",
@@ -45,12 +51,6 @@
     "command": "!pad",
     "title": "Engineer pads",
     "description": "Lets Engineer choose the pad replacement for teleporters, such as speed / jump-pad functionality.",
-    "category": "Engineer"
-  },
-  {
-    "command": "!padteam",
-    "title": "Team pad access",
-    "description": "Enables or disables your Engineer pads for teammates.",
     "category": "Engineer"
   },
   {
