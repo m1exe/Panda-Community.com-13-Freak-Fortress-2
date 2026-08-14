@@ -13,7 +13,7 @@
   },
   {
     "command": "!ff2respawn",
-    "title": "Boss selection",
+    "title": "Respawn RED team",
     "description": "Respawns the RED team. Command only works as Hale & when there's 3 RED left",
     "category": "FF2"
   },
