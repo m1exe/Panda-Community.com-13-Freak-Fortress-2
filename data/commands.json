@@ -12,6 +12,12 @@
     "category": "FF2"
   },
   {
+    "command": "!ff2respawn",
+    "title": "Boss selection",
+    "description": "Respawns the RED team. Command only works as Hale & when there's 3 RED left",
+    "category": "FF2"
+  },
+  {
     "command": "!halenext",
     "title": "Boss queue / preference",
     "description": "Check your position for becoming the boss and access related boss-preference options when available.",
