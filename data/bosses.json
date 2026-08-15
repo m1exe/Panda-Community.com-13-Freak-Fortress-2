@@ -1,169 +1,58 @@
-[
-  {
-    "id": "christian_brutal_sniper",
-    "name": "Christian Brutal Sniper",
-    "class": "Sniper",
-    "healthFormula": "((800*n)^1.035)+1000",
-    "rageDamageFormula": "(40*n)+1800",
-    "maxSpeed": 340,
-    "description": "So much blood and melee weapons!",
-    "creators": [
-      "vasya",
-      "Lizard of Oz"
-    ],
-    "weapons": [
-      {
-        "type": "Melee",
-        "index": 171,
-        "attributes": {
-          "damage bonus": "2.7",
-          "crit mod disabled hidden": "0.1",
-          "damage force reduction": "0.6",
-          "cancel falling damage": "1",
-          "cannot pick up intelligence": "1"
-        }
-      }
-    ],
-    "abilities": [
-      {
-        "name": "Super Jump",
-        "description": "Alt-fire while looking up and standing."
-      },
-      {
-        "name": "Weigh-down",
-        "description": "While airborne, look down and crouch."
-      },
-      {
-        "name": "Anchor",
-        "description": "Crouch while on the ground."
-      }
-    ],
-    "rage": {
-      "description": "Call for Medic when the Rage Meter is full.",
-      "abilities": [
-        {
-          "name": "Player Stun"
-        },
-        {
-          "name": "Building Stun"
-        }
-      ],
-      "weapon": {
-        "name": "Huntsman",
-        "index": 1005,
-        "maxAmmo": 5,
-        "attributes": {
-          "damage bonus": "3.0",
-          "fire rate bonus": "0.5",
-          "hidden primary max ammo bonus": "0.0",
-          "special taunt": "1"
-        }
-      }
-    }
-  },
-  {
-    "id": "the_blightcaller",
-    "name": "The Blightcaller",
-    "class": "Medic",
-    "healthFormula": "(((1125*n)^1.035)+1000)",
-    "rageDamageFormula": "(220.6+n)*((n-1)^0.7050)+2500",
-    "maxSpeed": 355,
-    "description": "The healing is not rewarding; the hurting ...is rewarding.",
-    "weapons": [
-      {
-        "type": "Melee",
-        "index": 37,
-        "attributes": {
-          "damage bonus": "3.2",
-          "crit mod disabled": "0",
-          "attach particle effect": "9",
-          "dmg bonus vs buildings": "3.1",
-          "damage force reduction": "0.5",
-          "mod see enemy health": "1",
-          "cancel falling damage": "1",
-          "airblast vulnerability multiplier": "0.6",
-          "cannot pick up intelligence": "1",
-          "special taunt": "0",
-          "SPELL: Halloween green flames": "1"
-        }
-      }
-    ],
-    "abilities": [
-      {
-        "name": "Point Teleportation",
-        "description": "Look in any direction and press MOUSE2."
-      },
-      {
-        "name": "Weigh-down",
-        "description": "Look down and crouch while airborne."
-      }
-    ],
-    "rage": {
-      "description": "Medic: Telekinesis · Reload: Green Flames · Special: Diseased Touch.",
-      "abilities": [
-        {
-          "name": "Telekinesis",
-          "description": "Gain invincibility for 10 seconds."
-        },
-        {
-          "name": "Green Flames",
-          "description": "Engulf nearby enemies in flames."
-        },
-        {
-          "name": "Diseased Touch",
-          "description": "Infect enemies by hitting them."
-        }
-      ]
-    }
-  },
-  {
-    "id": "bomberz",
-    "name": "BomberZ",
-    "class": "Demoman",
-    "healthFormula": "(((975*n)^1.035)+1000)",
-    "rageDamageFormula": "(95*n)+1800",
-    "maxSpeed": 340,
-    "description": "BOMBS?",
-    "weapons": [
-      {
-        "type": "Melee",
-        "index": 307,
-        "attributes": {
-          "damage bonus": "1.5",
-          "fire rate penalty": "1",
-          "crit mod disabled": "0",
-          "dmg bonus vs buildings": "1.5",
-          "damage force reduction": "0.5",
-          "cancel falling damage": "1"
-        }
-      }
-    ],
-    "abilities": [
-      {
-        "name": "Super Jump",
-        "description": "Hold MOUSE2, look up and release."
-      },
-      {
-        "name": "Weigh-down",
-        "description": "Look down and crouch while airborne."
-      }
-    ],
-    "rage": {
-      "description": "Explode enemies around you and summon multiple Sentry Busters.",
-      "abilities": [
-        {
-          "name": "Kamikaze"
-        },
-        {
-          "name": "Sentry Buster Summon"
-        },
-        {
-          "name": "Building Stun"
-        },
-        {
-          "name": "Damage Reduction"
-        }
-      ]
-    }
-  }
-]
+{
+  "solo": [
+    "Ass Pancakes",
+    "BomberZ",
+    "Captain Rattleton",
+    "Christian Brutal Sniper",
+    "Count Heavnich",
+    "Cuddly Heavy",
+    "DeGroot Royal",
+    "Demonman",
+    "Demopan",
+    "Dic Soupcan",
+    "Easter Bunny",
+    "Energineer",
+    "Fedorable",
+    "Female Pyro",
+    "Gabe Newell",
+    "GentleSpy",
+    "Gray Mann",
+    "Handsome Jack",
+    "Handsome Rogue",
+    "Hatsune Miku",
+    "Horseless Headless Horsemann Jr.",
+    "Hotline Sniper",
+    "Intelligent Heavy",
+    "Ja_bot_rc9",
+    "Koishi Komeiji",
+    "Lovebear",
+    "MeeM",
+    "MLG Sniper",
+    "Mr. Meeseeks",
+    "Nightmare Medic",
+    "Ninja Spy",
+    "Painis Cupcake",
+    "Pepsiman",
+    "Piss Cakehole",
+    "Rabid Heavy",
+    "Ronald McDonald",
+    "Samur-eye",
+    "Saxton Hale",
+    "Seeldier",
+    "Senator Armstrong",
+    "Sexually Challenged Spy",
+    "Sexy Medic",
+    "Stylish Raptor Spy",
+    "The Administrator",
+    "The Blightcaller",
+    "The Rock",
+    "Vagineer",
+    "Zerstorer",
+    "Ｂｅｅｐ Ｍａｎ"
+  ],
+  "duos": [
+    "Seeman (DUO)",
+    "Sexy Heavy (DUO)",
+    "Taming Engineer (DUO)"
+  ]
+}
