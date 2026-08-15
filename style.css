@@ -1270,4 +1270,37 @@ footer{
   .weapon-card-head{
     flex-direction:column;
   }
+/* Boss stats layout: smaller Move Speed box */
+.boss-info-grid{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+}
+
+/* Health / Rage Damage */
+.boss-info-grid > .boss-info-box:nth-child(1){
+  grid-column:span 4;
+}
+
+/* Move Speed */
+.boss-info-grid > .boss-info-box:nth-child(2){
+  grid-column:span 2;
+}
+
+/* Mobility */
+.boss-info-grid > .boss-info-box:nth-child(3){
+  grid-column:span 3;
+}
+
+/* Rage */
+.boss-info-grid > .boss-info-box:nth-child(4){
+  grid-column:span 3;
+}
+
+@media(max-width:700px){
+  .boss-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .boss-info-grid > .boss-info-box:nth-child(n){
+    grid-column:auto;
+  }
 }
