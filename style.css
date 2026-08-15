@@ -394,10 +394,14 @@ main{
 /* Bosses */
 
 .boss-grid{
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(440px,1fr));
+  align-items:start;
 }
 
 .boss-card{
+  align-self:start;
+  padding:0;
+  overflow:hidden;
   border-left:3px solid #625d55;
   border-top:1px solid var(--line);
 }
@@ -405,29 +409,326 @@ main{
 .boss-card:nth-child(odd){border-left-color:var(--red)}
 .boss-card:nth-child(even){border-left-color:var(--blu)}
 
-.boss-title-row{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:12px;
+.boss-card-detailed{
+  min-height:0;
 }
 
-.boss-title-row h3{font-size:1.08rem}
+/* Only this header button opens/closes a boss. */
+.boss-title-toggle{
+  width:100%;
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:11px 12px;
+  color:inherit;
+  background:#292722;
+  border:0;
+  border-bottom:1px solid #49453e;
+  cursor:pointer;
+  text-align:left;
+}
+
+.boss-title-toggle:hover{
+  background:#34312c;
+}
+
+.boss-title-toggle:focus-visible{
+  outline:2px solid var(--orange);
+  outline-offset:-2px;
+}
+
+.boss-title-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.boss-title-name{
+  color:var(--cream);
+  font-size:1.06rem;
+  line-height:1.2;
+}
 
 .boss-class{
   color:#998f80;
-  font-size:.66rem;
+  font-size:.63rem;
   font-weight:800;
   text-transform:uppercase;
 }
 
-.boss-creators{
-  margin-top:10px !important;
-  color:#8f8778 !important;
-  font-size:.7rem !important;
+.boss-title-action{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
-.boss-ability-tag{border-color:#61584f}
+.boss-toggle-label{
+  color:#c78262;
+  font-size:.6rem;
+  font-weight:800;
+  letter-spacing:.35px;
+  text-transform:uppercase;
+}
+
+.boss-toggle-indicator{
+  width:27px;
+  height:27px;
+  flex:0 0 27px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:#f0dfc4;
+  background:#211f1c;
+  border:1px solid #685b50;
+  border-radius:3px;
+  font-size:1rem;
+  font-weight:800;
+  line-height:1;
+}
+
+.boss-title-toggle:hover .boss-toggle-indicator{
+  border-color:#a35a42;
+  background:#322721;
+}
+
+.boss-open .boss-title-toggle{
+  border-bottom-color:#765143;
+}
+
+.boss-open .boss-toggle-label,
+.boss-open .boss-toggle-indicator{
+  color:#e3a085;
+}
+
+.boss-description{
+  margin:0 !important;
+  padding:10px 12px 12px;
+  color:var(--muted) !important;
+  font-size:.79rem !important;
+  line-height:1.42 !important;
+}
+
+.boss-collapsible{
+  padding:0 12px 13px;
+}
+
+.boss-info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+}
+
+.boss-info-box{
+  min-width:0;
+  padding:10px;
+  background:#292722;
+  border:1px solid #48443e;
+  border-radius:3px;
+}
+
+.boss-info-title,
+.boss-section-title{
+  color:#d88660;
+  font-size:.64rem;
+  font-weight:800;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+}
+
+.boss-stat-line{
+  display:grid;
+  grid-template-columns:78px minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+  margin-top:8px;
+}
+
+.boss-stat-line span{
+  color:#9d9485;
+  font-size:.68rem;
+  font-weight:700;
+}
+
+.boss-stat-line code{
+  color:#ddd1bb;
+  font-size:.67rem;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+
+.boss-info-box small{
+  display:block;
+  margin-top:8px;
+  color:#7f786d;
+  font-size:.6rem;
+}
+
+.boss-big-value{
+  display:block;
+  margin-top:10px;
+  color:var(--cream);
+  font-size:1.08rem;
+}
+
+.boss-mini-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:8px;
+}
+
+.boss-mini-list span{
+  padding:4px 6px;
+  color:#c9bfad;
+  background:#211f1c;
+  border:1px solid #49453e;
+  border-radius:2px;
+  font-size:.64rem;
+  font-weight:700;
+}
+
+.boss-mini-list .boss-none{
+  color:#81796d;
+}
+
+.boss-weapons{
+  margin-top:13px;
+  padding-top:11px;
+  border-top:1px solid var(--line-soft);
+}
+
+.boss-section-title{
+  margin-bottom:7px;
+}
+
+.boss-weapon-card{
+  padding:10px;
+  margin-top:7px;
+  background:#25231f;
+  border:1px solid #48443e;
+  border-left:3px solid #665d52;
+  border-radius:3px;
+}
+
+.boss-weapon-card:last-child{
+  border-left-color:var(--red);
+}
+
+.boss-weapon-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:7px;
+  border-bottom:1px solid #3f3b35;
+}
+
+.boss-weapon-head strong{
+  color:var(--cream);
+  font-size:.75rem;
+}
+
+.boss-weapon-head span{
+  color:#8f8779;
+  font-size:.6rem;
+  font-weight:700;
+  text-align:right;
+  text-transform:uppercase;
+}
+
+.boss-attribute-list{
+  display:grid;
+  gap:4px;
+  margin-top:7px;
+}
+
+.boss-attribute-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:5px 6px;
+  background:#2b2925;
+  border:1px solid #3f3b35;
+}
+
+.boss-attribute-row span{
+  min-width:0;
+  color:#bdb3a1;
+  font-size:.67rem;
+  line-height:1.35;
+}
+
+.boss-attribute-row code{
+  color:#e1d5bf;
+  font-size:.67rem;
+  white-space:nowrap;
+}
+
+.boss-no-attributes{
+  margin:8px 0 0 !important;
+  color:#81796d !important;
+  font-size:.67rem !important;
+}
+
+.boss-rage-note{
+  display:grid;
+  gap:3px;
+  margin-top:10px;
+  padding:8px 9px;
+  background:#2a2421;
+  border-left:3px solid var(--red);
+}
+
+.boss-rage-note strong{
+  color:#d98561;
+  font-size:.64rem;
+  text-transform:uppercase;
+}
+
+.boss-rage-note span{
+  color:#aaa08f;
+  font-size:.69rem;
+  line-height:1.4;
+}
+
+.boss-creators{
+  margin:11px 0 0 !important;
+  color:#8f8778 !important;
+  font-size:.69rem !important;
+}
+
+@media(max-width:700px){
+  .boss-grid{
+    grid-template-columns:1fr;
+  }
+
+  .boss-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .boss-title-toggle{
+    align-items:flex-start;
+  }
+
+  .boss-toggle-label{
+    display:none;
+  }
+
+  .boss-weapon-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:3px;
+  }
+
+  .boss-weapon-head span{
+    text-align:left;
+  }
+}
 
 /* Commands */
 
@@ -968,89 +1269,5 @@ footer{
   }
   .weapon-card-head{
     flex-direction:column;
-  }
-}
-
-/* =========================================================
-   Boss cards: compact collapsed state + proper grid sizing
-   ========================================================= */
-
-.boss-grid{
-  align-items:start;
-}
-
-.boss-card{
-  align-self:start;
-  cursor:pointer;
-}
-
-.boss-card-detailed{
-  transition:background-color .12s ease,border-color .12s ease;
-}
-
-.boss-card-detailed:hover{
-  background:#34312c;
-}
-
-.boss-card-detailed:focus-visible{
-  outline:2px solid var(--orange);
-  outline-offset:2px;
-}
-
-/* Keep collapsed cards compact even when another boss in the same row is open. */
-.boss-card-detailed.boss-collapsed{
-  align-self:start;
-  min-height:0;
-  padding:13px 14px;
-}
-
-.boss-card-detailed.boss-collapsed .boss-description{
-  margin:7px 0 0 !important;
-}
-
-/* Make + / − look like a real expand control. */
-.boss-toggle-indicator{
-  width:26px;
-  height:26px;
-  flex:0 0 26px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  color:#e8dcc6;
-  background:#25231f;
-  border:1px solid #575149;
-  border-radius:3px;
-  font-size:1rem;
-  font-weight:800;
-  line-height:1;
-}
-
-.boss-card-detailed:hover .boss-toggle-indicator{
-  background:#2e2b26;
-  border-color:#74695e;
-}
-
-.boss-card-detailed.boss-open .boss-toggle-indicator{
-  color:#f0c0a8;
-  border-color:#96513d;
-}
-
-/* The expanded content begins a little more clearly below the summary. */
-.boss-collapsible:not(.hidden){
-  margin-top:12px;
-  padding-top:2px;
-}
-
-/* Prevent a future boss image from making the collapsed card huge. */
-.boss-card-detailed.boss-collapsed > .item-img{
-  height:90px;
-  margin-bottom:9px;
-}
-
-@media(max-width:700px){
-  .boss-toggle-indicator{
-    width:28px;
-    height:28px;
-    flex-basis:28px;
   }
 }
