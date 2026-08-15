@@ -1270,6 +1270,8 @@ footer{
   .weapon-card-head{
     flex-direction:column;
   }
+}
+
 /* Boss stats layout: smaller Move Speed box */
 .boss-info-grid{
   grid-template-columns:repeat(6,minmax(0,1fr));
