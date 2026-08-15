@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#24231f">
-  <title>Panda FF2 · Unofficial Community Reference</title>
-  <link rel="stylesheet" href="style.css?v=20260815-1457">
+  <title>Panda FF2 · Wikipedia</title>
+  <link rel="stylesheet" href="style.css?v=20260815-1537">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <button class="brand" data-view-link="home" aria-label="Go to home">
-        <span class="brand-title">PANDA FF2</span>
-        <span class="brand-note">unofficial community reference</span>
+        <span class="brand-title">Panda FF2 Wikipedia</span>
+        <span class="brand-note">Unofficial Community Project</span>
       </button>
 
       <nav aria-label="Main navigation">
@@ -38,7 +38,7 @@
           <p class="eyebrow">PANDA COMMUNITY · SERVER #13</p>
           <h1>Freak Fortress 2</h1>
           <p class="hero-text">
-            A small community-made reference for Panda's FF2 server.
+            Communit made wikipedia for FreakFortress 2 #013 Panda-Community.
             Browse bosses and weapons, check useful commands, follow changes,
             or inspect a config directly in your browser.
           </p>
@@ -79,7 +79,7 @@
 
         <button class="home-card blu-card" data-view-link="bosses">
           <strong>Bosses</strong>
-          <span>Short summaries of the current boss roster.</span>
+          <span>Browse the current solo and duo boss roster.</span>
         </button>
 
         <button class="home-card" data-view-link="commands">
@@ -94,7 +94,7 @@
       </div>
 
       <div class="community-note">
-        <strong>Unofficial community project.</strong>
+        <strong>Unofficial Community Project.</strong>
         This site is not affiliated with Valve and is maintained as a Panda FF2 reference.
       </div>
     </section>
@@ -147,18 +147,40 @@
         <div>
           <p class="eyebrow">FF2 ROSTER</p>
           <h2>Bosses</h2>
-          <p>Quick summaries of the bosses used on the server.</p>
+          <p>Browse the current solo and duo boss roster.</p>
         </div>
 
         <input
           id="boss-search"
           class="search"
-          placeholder="Search bosses, classes, abilities..."
+          placeholder="Search boss names..."
           autocomplete="off"
         >
       </div>
 
-      <div id="boss-list" class="grid boss-grid"></div>
+      <section class="boss-category solo-category">
+        <div class="boss-category-head">
+          <h3>Solo Bosses</h3>
+          <div class="boss-category-count">
+            <strong id="solo-boss-count">0</strong>
+            <span>shown</span>
+          </div>
+        </div>
+
+        <div id="solo-boss-list" class="boss-grid"></div>
+      </section>
+
+      <section class="boss-category duo-category">
+        <div class="boss-category-head">
+          <h3>Duo Bosses</h3>
+          <div class="boss-category-count">
+            <strong id="duo-boss-count">0</strong>
+            <span>shown</span>
+          </div>
+        </div>
+
+        <div id="duo-boss-list" class="boss-grid"></div>
+      </section>
     </section>
 
     <section id="commands" class="view">
@@ -244,10 +266,10 @@
   </main>
 
   <footer>
-    <span>Panda FF2 · unofficial community reference</span>
+    <span>Panda Freak Fortress 2 Wikipedia · GitHub Page maintained by m1.exe & Kruphixx</span>
     <span>Team Fortress 2 and related trademarks belong to their respective owners.</span>
   </footer>
 
-  <script type="module" src="app.js?v=20260815-1457"></script>
+  <script type="module" src="app.js?v=20260815-1537"></script>
 </body>
 </html>
