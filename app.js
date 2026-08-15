@@ -251,6 +251,15 @@ function bossAbilitySearchText(ability){
   `;
 }
 
+const expandedBossCards = new Set();
+
+function bossCardId(boss, index){
+  return String(boss.id || boss.name || `boss-${index}`)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function renderBosses(query = ""){
   const q = query.toLowerCase().trim();
 
@@ -277,15 +286,23 @@ function renderBosses(query = ""){
     `.toLowerCase().includes(q);
   });
 
-  document.querySelector("#boss-list").innerHTML = list.map(b => {
+  document.querySelector("#boss-list").innerHTML = list.map((b, index) => {
     const creators = (b.creators || []).map(creatorName).filter(Boolean);
     const mobility = (b.abilities || []).map(abilityName).filter(Boolean);
     const rageAbilities = (b.rage?.abilities || []).map(abilityName).filter(Boolean);
     const normalWeapons = b.weapons || [];
     const rageWeapon = b.rage?.weapon || null;
+    const cardId = bossCardId(b, index);
+    const expanded = expandedBossCards.has(cardId);
 
     return `
-      <article class="item-card boss-card boss-card-detailed">
+      <article
+        class="item-card boss-card boss-card-detailed ${expanded ? "boss-open" : "boss-collapsed"}"
+        data-boss-toggle="${escapeAttr(cardId)}"
+        role="button"
+        tabindex="0"
+        aria-expanded="${expanded ? "true" : "false"}"
+      >
         ${b.image ? `<img class="item-img" src="${escapeAttr(b.image)}" alt="${escapeAttr(b.name)}" onerror="this.style.display='none'">` : ""}
 
         <div class="boss-title-row">
@@ -293,71 +310,75 @@ function renderBosses(query = ""){
             <h3>${escapeHtml(b.name)}</h3>
             <span class="boss-class">${escapeHtml(b.class || "Boss")}</span>
           </div>
+
+          <span class="boss-toggle-indicator" aria-hidden="true">${expanded ? "−" : "+"}</span>
         </div>
 
         <p class="boss-description">${escapeHtml(b.description || "No description yet.")}</p>
 
-        <div class="boss-info-grid">
-          <section class="boss-info-box">
-            <div class="boss-info-title">Health / Rage Damage</div>
+        <div class="boss-collapsible ${expanded ? "" : "hidden"}">
+          <div class="boss-info-grid">
+            <section class="boss-info-box">
+              <div class="boss-info-title">Health / Rage Damage</div>
 
-            <div class="boss-stat-line">
-              <span>Health</span>
-              <code>${escapeHtml(bossFormula(b.healthFormula))}</code>
+              <div class="boss-stat-line">
+                <span>Health</span>
+                <code>${escapeHtml(bossFormula(b.healthFormula))}</code>
+              </div>
+
+              <div class="boss-stat-line">
+                <span>Rage damage</span>
+                <code>${escapeHtml(bossFormula(b.rageDamageFormula))}</code>
+              </div>
+
+              ${(b.healthFormula || b.rageDamageFormula) ? `<small>players = current player count</small>` : ""}
+            </section>
+
+            <section class="boss-info-box">
+              <div class="boss-info-title">Move Speed</div>
+              <strong class="boss-big-value">${b.maxSpeed ? `${escapeHtml(b.maxSpeed)} HU/s` : "Not specified"}</strong>
+            </section>
+
+            <section class="boss-info-box">
+              <div class="boss-info-title">Mobility</div>
+              <div class="boss-mini-list">
+                ${mobility.length
+                  ? mobility.map(name => `<span>${escapeHtml(name)}</span>`).join("")
+                  : `<span class="boss-none">None listed</span>`}
+              </div>
+            </section>
+
+            <section class="boss-info-box">
+              <div class="boss-info-title">Rage</div>
+              <div class="boss-mini-list">
+                ${rageAbilities.map(name => `<span>${escapeHtml(name)}</span>`).join("")}
+                ${rageWeapon?.name ? `<span>Weapon: ${escapeHtml(rageWeapon.name)}</span>` : ""}
+                ${!rageAbilities.length && !rageWeapon?.name ? `<span class="boss-none">None listed</span>` : ""}
+              </div>
+            </section>
+          </div>
+
+          ${(normalWeapons.length || rageWeapon) ? `
+            <div class="boss-weapons">
+              <div class="boss-section-title">Weapon Attributes</div>
+
+              ${normalWeapons.map((weapon, weaponIndex) =>
+                renderBossWeapon(weapon, weapon.type || `Weapon ${weaponIndex + 1}`)
+              ).join("")}
+
+              ${rageWeapon ? renderBossWeapon(rageWeapon, rageWeapon.name ? `Rage Weapon · ${rageWeapon.name}` : "Rage Weapon") : ""}
             </div>
+          ` : ""}
 
-            <div class="boss-stat-line">
-              <span>Rage damage</span>
-              <code>${escapeHtml(bossFormula(b.rageDamageFormula))}</code>
+          ${b.rage?.description ? `
+            <div class="boss-rage-note">
+              <strong>How to use Rage</strong>
+              <span>${escapeHtml(b.rage.description)}</span>
             </div>
+          ` : ""}
 
-            ${(b.healthFormula || b.rageDamageFormula) ? `<small>players = current player count</small>` : ""}
-          </section>
-
-          <section class="boss-info-box">
-            <div class="boss-info-title">Move Speed</div>
-            <strong class="boss-big-value">${b.maxSpeed ? `${escapeHtml(b.maxSpeed)} HU/s` : "Not specified"}</strong>
-          </section>
-
-          <section class="boss-info-box">
-            <div class="boss-info-title">Mobility</div>
-            <div class="boss-mini-list">
-              ${mobility.length
-                ? mobility.map(name => `<span>${escapeHtml(name)}</span>`).join("")
-                : `<span class="boss-none">None listed</span>`}
-            </div>
-          </section>
-
-          <section class="boss-info-box">
-            <div class="boss-info-title">Rage</div>
-            <div class="boss-mini-list">
-              ${rageAbilities.map(name => `<span>${escapeHtml(name)}</span>`).join("")}
-              ${rageWeapon?.name ? `<span>Weapon: ${escapeHtml(rageWeapon.name)}</span>` : ""}
-              ${!rageAbilities.length && !rageWeapon?.name ? `<span class="boss-none">None listed</span>` : ""}
-            </div>
-          </section>
+          ${creators.length ? `<p class="boss-creators">Created by ${creators.map(escapeHtml).join(", ")}</p>` : ""}
         </div>
-
-        ${(normalWeapons.length || rageWeapon) ? `
-          <div class="boss-weapons">
-            <div class="boss-section-title">Weapon Attributes</div>
-
-            ${normalWeapons.map((weapon, index) =>
-              renderBossWeapon(weapon, weapon.type || `Weapon ${index + 1}`)
-            ).join("")}
-
-            ${rageWeapon ? renderBossWeapon(rageWeapon, rageWeapon.name ? `Rage Weapon · ${rageWeapon.name}` : "Rage Weapon") : ""}
-          </div>
-        ` : ""}
-
-        ${b.rage?.description ? `
-          <div class="boss-rage-note">
-            <strong>How to use Rage</strong>
-            <span>${escapeHtml(b.rage.description)}</span>
-          </div>
-        ` : ""}
-
-        ${creators.length ? `<p class="boss-creators">Created by ${creators.map(escapeHtml).join(", ")}</p>` : ""}
       </article>
     `;
   }).join("") || `<div class="empty-state">No bosses found.</div>`;
@@ -451,6 +472,40 @@ document.querySelector("#weapon-class-filter").addEventListener("change", e => {
   renderWeapons();
 });
 document.querySelector("#boss-search").addEventListener("input", e => renderBosses(e.target.value));
+
+document.querySelector("#boss-list").addEventListener("click", e => {
+  const card = e.target.closest("[data-boss-toggle]");
+  if(!card) return;
+
+  const id = card.dataset.bossToggle;
+
+  if(expandedBossCards.has(id)){
+    expandedBossCards.delete(id);
+  }else{
+    expandedBossCards.add(id);
+  }
+
+  renderBosses(document.querySelector("#boss-search").value);
+});
+
+document.querySelector("#boss-list").addEventListener("keydown", e => {
+  if(e.key !== "Enter" && e.key !== " ") return;
+
+  const card = e.target.closest("[data-boss-toggle]");
+  if(!card) return;
+
+  e.preventDefault();
+  const id = card.dataset.bossToggle;
+
+  if(expandedBossCards.has(id)){
+    expandedBossCards.delete(id);
+  }else{
+    expandedBossCards.add(id);
+  }
+
+  renderBosses(document.querySelector("#boss-search").value);
+});
+
 document.querySelector("#command-search").addEventListener("input", e => renderCommands(e.target.value));
 
 document.querySelectorAll("[data-change-filter]").forEach(btn => {
