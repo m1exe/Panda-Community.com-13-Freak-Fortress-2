@@ -216,52 +216,184 @@ function creatorName(creator){
   return creator?.name || "";
 }
 
+function bossFormula(value){
+  if(value === undefined || value === null || value === "") return "Not specified";
+
+  return String(value)
+    .replace(/\bn\b/gi, "players")
+    .replace(/\*/g, " × ");
+}
+
+function bossWeaponSearchText(weapon){
+  if(!weapon) return "";
+
+  return `
+    ${weapon.name || ""}
+    ${weapon.type || ""}
+    ${weapon.index || ""}
+    ${Object.keys(weapon.attributes || {}).join(" ")}
+    ${Object.values(weapon.attributes || {}).join(" ")}
+  `;
+}
+
+function bossAbilitySearchText(ability){
+  if(!ability) return "";
+  if(typeof ability === "string") return ability;
+
+  return `
+    ${ability.name || ""}
+    ${ability.id || ""}
+    ${ability.description || ""}
+    ${Object.entries(ability)
+      .filter(([key]) => !["name", "id", "description"].includes(key))
+      .map(([key, value]) => `${key} ${value}`)
+      .join(" ")}
+  `;
+}
+
 function renderBosses(query = ""){
   const q = query.toLowerCase().trim();
 
   const list = bosses.filter(b => {
-    const abilities = (b.abilities || []).map(abilityName).join(" ");
+    const abilities = (b.abilities || []).map(bossAbilitySearchText).join(" ");
     const creators = (b.creators || []).map(creatorName).join(" ");
-    const rage = [
-      ...(b.rage?.abilities || []).map(abilityName),
-      b.rage?.weapon?.name || "",
-      b.rage?.weapon?.classname || ""
-    ].join(" ");
+    const normalWeapons = (b.weapons || []).map(bossWeaponSearchText).join(" ");
+    const rageAbilities = (b.rage?.abilities || []).map(bossAbilitySearchText).join(" ");
+    const rageWeapon = bossWeaponSearchText(b.rage?.weapon);
 
     return `
       ${b.name || ""}
       ${b.class || ""}
       ${b.description || ""}
+      ${b.healthFormula || ""}
+      ${b.rageDamageFormula || ""}
+      ${b.maxSpeed || ""}
       ${abilities}
       ${creators}
-      ${rage}
+      ${normalWeapons}
+      ${b.rage?.description || ""}
+      ${rageAbilities}
+      ${rageWeapon}
     `.toLowerCase().includes(q);
   });
 
   document.querySelector("#boss-list").innerHTML = list.map(b => {
     const creators = (b.creators || []).map(creatorName).filter(Boolean);
-    const abilities = (b.abilities || []).slice(0, 5);
+    const mobility = (b.abilities || []).map(abilityName).filter(Boolean);
+    const rageAbilities = (b.rage?.abilities || []).map(abilityName).filter(Boolean);
+    const normalWeapons = b.weapons || [];
+    const rageWeapon = b.rage?.weapon || null;
 
     return `
-      <article class="item-card boss-card">
+      <article class="item-card boss-card boss-card-detailed">
         ${b.image ? `<img class="item-img" src="${escapeAttr(b.image)}" alt="${escapeAttr(b.name)}" onerror="this.style.display='none'">` : ""}
 
         <div class="boss-title-row">
-          <h3>${escapeHtml(b.name)}</h3>
-          <span class="boss-class">${escapeHtml(b.class || "Boss")}${b.maxSpeed ? ` · ${escapeHtml(b.maxSpeed)} HU/s` : ""}</span>
+          <div>
+            <h3>${escapeHtml(b.name)}</h3>
+            <span class="boss-class">${escapeHtml(b.class || "Boss")}</span>
+          </div>
         </div>
 
-        <p>${escapeHtml(b.description || "No description yet.")}</p>
+        <p class="boss-description">${escapeHtml(b.description || "No description yet.")}</p>
 
-        <div>
-          ${abilities.map(a => `<span class="tag boss-ability-tag">${escapeHtml(abilityName(a))}</span>`).join("")}
-          ${b.rage?.weapon?.name ? `<span class="tag boss-ability-tag">Rage: ${escapeHtml(b.rage.weapon.name)}</span>` : ""}
+        <div class="boss-info-grid">
+          <section class="boss-info-box">
+            <div class="boss-info-title">Health / Rage Damage</div>
+
+            <div class="boss-stat-line">
+              <span>Health</span>
+              <code>${escapeHtml(bossFormula(b.healthFormula))}</code>
+            </div>
+
+            <div class="boss-stat-line">
+              <span>Rage damage</span>
+              <code>${escapeHtml(bossFormula(b.rageDamageFormula))}</code>
+            </div>
+
+            ${(b.healthFormula || b.rageDamageFormula) ? `<small>players = current player count</small>` : ""}
+          </section>
+
+          <section class="boss-info-box">
+            <div class="boss-info-title">Move Speed</div>
+            <strong class="boss-big-value">${b.maxSpeed ? `${escapeHtml(b.maxSpeed)} HU/s` : "Not specified"}</strong>
+          </section>
+
+          <section class="boss-info-box">
+            <div class="boss-info-title">Mobility</div>
+            <div class="boss-mini-list">
+              ${mobility.length
+                ? mobility.map(name => `<span>${escapeHtml(name)}</span>`).join("")
+                : `<span class="boss-none">None listed</span>`}
+            </div>
+          </section>
+
+          <section class="boss-info-box">
+            <div class="boss-info-title">Rage</div>
+            <div class="boss-mini-list">
+              ${rageAbilities.map(name => `<span>${escapeHtml(name)}</span>`).join("")}
+              ${rageWeapon?.name ? `<span>Weapon: ${escapeHtml(rageWeapon.name)}</span>` : ""}
+              ${!rageAbilities.length && !rageWeapon?.name ? `<span class="boss-none">None listed</span>` : ""}
+            </div>
+          </section>
         </div>
+
+        ${(normalWeapons.length || rageWeapon) ? `
+          <div class="boss-weapons">
+            <div class="boss-section-title">Weapon Attributes</div>
+
+            ${normalWeapons.map((weapon, index) =>
+              renderBossWeapon(weapon, weapon.type || `Weapon ${index + 1}`)
+            ).join("")}
+
+            ${rageWeapon ? renderBossWeapon(rageWeapon, rageWeapon.name ? `Rage Weapon · ${rageWeapon.name}` : "Rage Weapon") : ""}
+          </div>
+        ` : ""}
+
+        ${b.rage?.description ? `
+          <div class="boss-rage-note">
+            <strong>How to use Rage</strong>
+            <span>${escapeHtml(b.rage.description)}</span>
+          </div>
+        ` : ""}
 
         ${creators.length ? `<p class="boss-creators">Created by ${creators.map(escapeHtml).join(", ")}</p>` : ""}
       </article>
     `;
   }).join("") || `<div class="empty-state">No bosses found.</div>`;
+}
+
+function renderBossWeapon(weapon, title){
+  if(!weapon) return "";
+
+  const attributes = weapon.attributes || {};
+  const meta = [];
+
+  if(weapon.index !== undefined) meta.push(`Item #${escapeHtml(weapon.index)}`);
+  if(weapon.type && !String(title).toLowerCase().includes(String(weapon.type).toLowerCase())){
+    meta.push(escapeHtml(weapon.type));
+  }
+  if(weapon.maxAmmo !== undefined) meta.push(`Max ammo: ${escapeHtml(weapon.maxAmmo)}`);
+
+  return `
+    <section class="boss-weapon-card">
+      <div class="boss-weapon-head">
+        <strong>${escapeHtml(title || weapon.name || "Weapon")}</strong>
+        ${meta.length ? `<span>${meta.join(" · ")}</span>` : ""}
+      </div>
+
+      ${Object.keys(attributes).length ? `
+        <div class="boss-attribute-list">
+          ${Object.entries(attributes).map(([name, value]) => `
+            <div class="boss-attribute-row">
+              <span title="${escapeAttr(name)}">${escapeHtml(prettyWeaponAttribute(name))}</span>
+              <code>${escapeHtml(value)}</code>
+            </div>
+          `).join("")}
+        </div>
+      ` : `<p class="boss-no-attributes">No custom weapon attributes listed.</p>`}
+    </section>
+  `;
 }
 
 function renderCommands(query = ""){
