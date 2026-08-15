@@ -296,23 +296,25 @@ function renderBosses(query = ""){
     const expanded = expandedBossCards.has(cardId);
 
     return `
-      <article
-        class="item-card boss-card boss-card-detailed ${expanded ? "boss-open" : "boss-collapsed"}"
-        data-boss-toggle="${escapeAttr(cardId)}"
-        role="button"
-        tabindex="0"
-        aria-expanded="${expanded ? "true" : "false"}"
-      >
+      <article class="item-card boss-card boss-card-detailed ${expanded ? "boss-open" : "boss-collapsed"}">
         ${b.image ? `<img class="item-img" src="${escapeAttr(b.image)}" alt="${escapeAttr(b.name)}" onerror="this.style.display='none'">` : ""}
 
-        <div class="boss-title-row">
-          <div>
-            <h3>${escapeHtml(b.name)}</h3>
+        <button
+          class="boss-title-toggle"
+          type="button"
+          data-boss-toggle="${escapeAttr(cardId)}"
+          aria-expanded="${expanded ? "true" : "false"}"
+        >
+          <span class="boss-title-copy">
+            <strong class="boss-title-name">${escapeHtml(b.name)}</strong>
             <span class="boss-class">${escapeHtml(b.class || "Boss")}</span>
-          </div>
+          </span>
 
-          <span class="boss-toggle-indicator" aria-hidden="true">${expanded ? "−" : "+"}</span>
-        </div>
+          <span class="boss-title-action">
+            <span class="boss-toggle-label">${expanded ? "Hide details" : "View details"}</span>
+            <span class="boss-toggle-indicator" aria-hidden="true">${expanded ? "−" : "+"}</span>
+          </span>
+        </button>
 
         <p class="boss-description">${escapeHtml(b.description || "No description yet.")}</p>
 
@@ -474,28 +476,10 @@ document.querySelector("#weapon-class-filter").addEventListener("change", e => {
 document.querySelector("#boss-search").addEventListener("input", e => renderBosses(e.target.value));
 
 document.querySelector("#boss-list").addEventListener("click", e => {
-  const card = e.target.closest("[data-boss-toggle]");
-  if(!card) return;
+  const button = e.target.closest("[data-boss-toggle]");
+  if(!button) return;
 
-  const id = card.dataset.bossToggle;
-
-  if(expandedBossCards.has(id)){
-    expandedBossCards.delete(id);
-  }else{
-    expandedBossCards.add(id);
-  }
-
-  renderBosses(document.querySelector("#boss-search").value);
-});
-
-document.querySelector("#boss-list").addEventListener("keydown", e => {
-  if(e.key !== "Enter" && e.key !== " ") return;
-
-  const card = e.target.closest("[data-boss-toggle]");
-  if(!card) return;
-
-  e.preventDefault();
-  const id = card.dataset.bossToggle;
+  const id = button.dataset.bossToggle;
 
   if(expandedBossCards.has(id)){
     expandedBossCards.delete(id);
