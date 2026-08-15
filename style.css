@@ -394,7 +394,7 @@ main{
 /* Bosses */
 
 .boss-grid{
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(440px,1fr));
 }
 
 .boss-card{
@@ -405,14 +405,21 @@ main{
 .boss-card:nth-child(odd){border-left-color:var(--red)}
 .boss-card:nth-child(even){border-left-color:var(--blu)}
 
+.boss-card-detailed{
+  padding:16px;
+}
+
 .boss-title-row{
   display:flex;
-  align-items:baseline;
+  align-items:flex-start;
   justify-content:space-between;
   gap:12px;
 }
 
-.boss-title-row h3{font-size:1.08rem}
+.boss-title-row h3{
+  margin-bottom:3px;
+  font-size:1.12rem;
+}
 
 .boss-class{
   color:#998f80;
@@ -421,13 +428,220 @@ main{
   text-transform:uppercase;
 }
 
+.boss-description{
+  margin:10px 0 12px !important;
+}
+
+.boss-info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin-top:12px;
+}
+
+.boss-info-box{
+  min-width:0;
+  padding:10px;
+  background:#292722;
+  border:1px solid #48443e;
+  border-radius:3px;
+}
+
+.boss-info-title,
+.boss-section-title{
+  color:#d88660;
+  font-size:.64rem;
+  font-weight:800;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+}
+
+.boss-stat-line{
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr);
+  gap:8px;
+  align-items:start;
+  margin-top:8px;
+}
+
+.boss-stat-line span{
+  color:#9d9485;
+  font-size:.69rem;
+  font-weight:700;
+}
+
+.boss-stat-line code{
+  color:#ddd1bb;
+  font-size:.68rem;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+
+.boss-info-box small{
+  display:block;
+  margin-top:8px;
+  color:#7f786d;
+  font-size:.61rem;
+}
+
+.boss-big-value{
+  display:block;
+  margin-top:10px;
+  color:var(--cream);
+  font-size:1.12rem;
+}
+
+.boss-mini-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:8px;
+}
+
+.boss-mini-list span{
+  padding:4px 6px;
+  color:#c9bfad;
+  background:#211f1c;
+  border:1px solid #49453e;
+  border-radius:2px;
+  font-size:.65rem;
+  font-weight:700;
+}
+
+.boss-mini-list .boss-none{
+  color:#81796d;
+}
+
+.boss-weapons{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--line-soft);
+}
+
+.boss-section-title{
+  margin-bottom:7px;
+}
+
+.boss-weapon-card{
+  padding:10px;
+  margin-top:7px;
+  background:#25231f;
+  border:1px solid #48443e;
+  border-left:3px solid #665d52;
+  border-radius:3px;
+}
+
+.boss-weapon-card:last-child{
+  border-left-color:var(--red);
+}
+
+.boss-weapon-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:7px;
+  border-bottom:1px solid #3f3b35;
+}
+
+.boss-weapon-head strong{
+  color:var(--cream);
+  font-size:.76rem;
+}
+
+.boss-weapon-head span{
+  color:#8f8779;
+  font-size:.61rem;
+  font-weight:700;
+  text-align:right;
+  text-transform:uppercase;
+}
+
+.boss-attribute-list{
+  display:grid;
+  gap:4px;
+  margin-top:7px;
+}
+
+.boss-attribute-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:5px 6px;
+  background:#2b2925;
+  border:1px solid #3f3b35;
+}
+
+.boss-attribute-row span{
+  min-width:0;
+  color:#bdb3a1;
+  font-size:.68rem;
+  line-height:1.35;
+}
+
+.boss-attribute-row code{
+  color:#e1d5bf;
+  font-size:.68rem;
+  white-space:nowrap;
+}
+
+.boss-no-attributes{
+  margin:8px 0 0 !important;
+  color:#81796d !important;
+  font-size:.68rem !important;
+}
+
+.boss-rage-note{
+  display:grid;
+  gap:3px;
+  margin-top:10px;
+  padding:8px 9px;
+  background:#2a2421;
+  border-left:3px solid var(--red);
+}
+
+.boss-rage-note strong{
+  color:#d98561;
+  font-size:.65rem;
+  text-transform:uppercase;
+}
+
+.boss-rage-note span{
+  color:#aaa08f;
+  font-size:.7rem;
+  line-height:1.4;
+}
+
 .boss-creators{
-  margin-top:10px !important;
+  margin-top:11px !important;
   color:#8f8778 !important;
   font-size:.7rem !important;
 }
 
-.boss-ability-tag{border-color:#61584f}
+@media(max-width:700px){
+  .boss-grid{
+    grid-template-columns:1fr;
+  }
+
+  .boss-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .boss-weapon-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:3px;
+  }
+
+  .boss-weapon-head span{
+    text-align:left;
+  }
+
+  .boss-stat-line{
+    grid-template-columns:82px minmax(0,1fr);
+  }
+}
 
 /* Commands */
 
