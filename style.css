@@ -1272,37 +1272,35 @@ footer{
   }
 }
 
-/* Boss stats layout: smaller Move Speed box */
+/* Boss stats layout: wide Health box + compact Move Speed box */
 .boss-info-grid{
-  grid-template-columns:repeat(6,minmax(0,1fr));
+  display:grid;
+  grid-template-columns:repeat(8,minmax(0,1fr)) !important;
+  gap:7px;
 }
 
-/* Health / Rage Damage */
+/* Health / Rage Damage: 62.5% */
 .boss-info-grid > .boss-info-box:nth-child(1){
-  grid-column:span 4;
+  grid-column:span 5 !important;
 }
 
-/* Move Speed */
+/* Move Speed: 37.5% */
 .boss-info-grid > .boss-info-box:nth-child(2){
-  grid-column:span 2;
+  grid-column:span 3 !important;
 }
 
-/* Mobility */
-.boss-info-grid > .boss-info-box:nth-child(3){
-  grid-column:span 3;
-}
-
-/* Rage */
+/* Mobility and Rage remain 50/50 */
+.boss-info-grid > .boss-info-box:nth-child(3),
 .boss-info-grid > .boss-info-box:nth-child(4){
-  grid-column:span 3;
+  grid-column:span 4 !important;
 }
 
-@media(max-width:700px){
+@media(max-width:560px){
   .boss-info-grid{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr !important;
   }
 
   .boss-info-grid > .boss-info-box:nth-child(n){
-    grid-column:auto;
+    grid-column:auto !important;
   }
 }
