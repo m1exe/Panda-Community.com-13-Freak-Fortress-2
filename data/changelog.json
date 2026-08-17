@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-08-17",
+    "type": "Maps",
+    "status": "Completed",
+    "title": "Maps Update",
+    "summary": "Maps added: vsh_chemical_v1, vsh_farm_feud_rc2_panda, vsh_leak, vsh_north_mountain_pb_panda, vsh_portal_v2, Updated maps: vsh_oh_multimaps_b1_panda2
+    "source": "Discord Post"
+  },
+  {
     "date": "2026-05-22",
     "type": "boss",
     "status": "Completed",
