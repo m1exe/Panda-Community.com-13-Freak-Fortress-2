@@ -3258,6 +3258,29 @@
     "image": "data/images/weapons/Darwins_Danger_shield.png"
   },
   {
+    "name": "Razorback",
+    "classname": "tf_wearable_razorback",
+    "class": "Sniper",
+    "slot": "Secondary",
+    "ff2": true,
+    "defindexes": [
+      57
+    ],
+    "ff2Changes": [
+      {
+        "attributes": {
+          "backstab shield": "1",
+          "item_meter_charge_rate": "90"
+        },
+        "source": "classname",
+        "sourceKey": "tf_wearable_razorback",
+        "label": "tf_wearable_razorback"
+      }
+    ],
+    "changeCount": 2,
+    "image": "data/images/weapons/Razorback.png"
+  },
+  {
     "name": "Jarate",
     "classname": "tf_weapon_jar",
     "class": "Sniper",
