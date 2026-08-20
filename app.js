@@ -1,28 +1,11 @@
 import { parseKeyValues, extractItems } from "./parser/cfg-parser.js";
 
-const [weaponsData, bossesData, commandsData, changelogData, mapsData, mapImagesData] = await Promise.all([
-  fetch("./data/weapons.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/bosses.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/commands.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/changelog.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/maps.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/map-images.json", { cache: "no-store" })
-    .then(r => r.ok ? r.json() : {})
-    .catch(() => ({}))
-]);
+/*
+  Navigation is initialized BEFORE any JSON is loaded.
 
-const weapons = Array.isArray(weaponsData) ? weaponsData : [weaponsData];
-const bosses = {
-  solo: Array.isArray(bossesData?.solo) ? bossesData.solo : [],
-  duos: Array.isArray(bossesData?.duos) ? bossesData.duos : []
-};
-const commands = Array.isArray(commandsData) ? commandsData : [commandsData];
-const changelog = Array.isArray(changelogData) ? changelogData : [changelogData];
-const maps = Array.isArray(mapsData) ? mapsData : [];
-const mapImages = mapImagesData && typeof mapImagesData === "object" && !Array.isArray(mapImagesData)
-  ? mapImagesData
-  : {};
-
+  This is intentional: a malformed data file (especially weapons.json) should
+  never disable the rest of the website.
+*/
 const views = [...document.querySelectorAll(".view")];
 
 function showView(id){
@@ -39,6 +22,45 @@ document.querySelectorAll("[data-view]").forEach(
 document.querySelectorAll("[data-view-link]").forEach(
   b => b.addEventListener("click", () => showView(b.dataset.viewLink))
 );
+
+const dataLoadErrors = new Map();
+
+async function loadJson(path, fallback){
+  try{
+    const response = await fetch(path, { cache: "no-store" });
+
+    if(!response.ok){
+      throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    }
+
+    return await response.json();
+  }catch(error){
+    console.error(`Could not load ${path}:`, error);
+    dataLoadErrors.set(path, error);
+    return fallback;
+  }
+}
+
+const [weaponsData, bossesData, commandsData, changelogData, mapsData, mapImagesData] = await Promise.all([
+  loadJson("./data/weapons.json", []),
+  loadJson("./data/bosses.json", { solo: [], duos: [] }),
+  loadJson("./data/commands.json", []),
+  loadJson("./data/changelog.json", []),
+  loadJson("./data/maps.json", []),
+  loadJson("./data/map-images.json", {})
+]);
+
+const weapons = Array.isArray(weaponsData) ? weaponsData : [];
+const bosses = {
+  solo: Array.isArray(bossesData?.solo) ? bossesData.solo : [],
+  duos: Array.isArray(bossesData?.duos) ? bossesData.duos : []
+};
+const commands = Array.isArray(commandsData) ? commandsData : [];
+const changelog = Array.isArray(changelogData) ? changelogData : [];
+const maps = Array.isArray(mapsData) ? mapsData : [];
+const mapImages = mapImagesData && typeof mapImagesData === "object" && !Array.isArray(mapImagesData)
+  ? mapImagesData
+  : {};
 
 let weaponSearchQuery = "";
 let weaponClassFilter = "all";
@@ -65,6 +87,23 @@ function weaponMatchesClass(weapon, classFilter){
 
 function renderWeapons(){
   const q = weaponSearchQuery.toLowerCase().trim();
+  const weaponList = document.querySelector("#weapon-list");
+  const counter = document.querySelector("#weapon-result-count");
+
+  if(dataLoadErrors.has("./data/weapons.json")){
+    if(counter) counter.textContent = "0";
+
+    if(weaponList){
+      weaponList.innerHTML = `
+        <div class="empty-state">
+          Weapon data could not be loaded. Check <code>data/weapons.json</code>
+          for invalid JSON syntax.
+        </div>
+      `;
+    }
+
+    return;
+  }
 
   const list = weapons.filter(w => {
     const changeText = (w.ff2Changes || []).map(weaponRuleSearchText).join(" ");
@@ -80,10 +119,11 @@ function renderWeapons(){
     return weaponMatchesClass(w, weaponClassFilter) && text.includes(q);
   });
 
-  const counter = document.querySelector("#weapon-result-count");
   if(counter) counter.textContent = list.length;
 
-  document.querySelector("#weapon-list").innerHTML = list.map(w => {
+  if(!weaponList) return;
+
+  weaponList.innerHTML = list.map(w => {
     const rules = w.ff2Changes || [];
     const itemRule = rules.find(rule => rule.source === "item");
     const classnameRule = rules.find(rule => rule.source === "classname");
