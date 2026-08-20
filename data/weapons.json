@@ -3425,7 +3425,7 @@
         "strip": true,
         "attributes": {
           "mult cloak meter consume rate": "1.5",
-          "cloak consume rate increased": "0.75"
+          "cloak consume rate increased": "1.75"
         },
         "custom": {
           "backstab damage": "1000",
