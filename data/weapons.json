@@ -1712,7 +1712,7 @@
       {
         "attributes": {
           "charge impact damage increased": "7",
-          "blast dmg to self increased": "1.1"
+          "blast dmg to self increased": "2"
         },
         "source": "classname",
         "sourceKey": "tf_weapon_stickbomb",
