@@ -248,7 +248,8 @@ function renderBosses(query = ""){
 }
 
 let mapSearchQuery = "";
-let expandedMap = null;
+let mapViewerIndex = -1;
+let mapViewerAnimating = false;
 
 function renderMaps(query = mapSearchQuery){
   mapSearchQuery = query;
@@ -265,43 +266,258 @@ function renderMaps(query = mapSearchQuery){
   const target = document.querySelector("#map-list");
   if(!target) return;
 
-  target.innerHTML = list.map(({ map, cycleIndex }) => {
-    const image = String(mapImages[map] || "").trim();
-    const open = expandedMap === map;
+  target.innerHTML = list.map(({ map, cycleIndex }) => `
+    <article class="map-entry">
+      <button
+        class="map-name-item map-toggle"
+        type="button"
+        data-map-open="${cycleIndex}"
+        aria-haspopup="dialog"
+        aria-label="Open preview for ${escapeAttr(map)}"
+      >
+        <span class="map-number">${cycleIndex + 1}</span>
+        <code>${escapeHtml(map)}</code>
+        <span class="map-view-label">View</span>
+        <span class="map-toggle-indicator" aria-hidden="true">↗</span>
+      </button>
+    </article>
+  `).join("") || `<div class="empty-state">No maps found.</div>`;
+}
 
-    return `
-      <article class="map-entry ${open ? "map-open" : ""}">
+function ensureMapViewer(){
+  let viewer = document.querySelector("#map-viewer");
+  if(viewer) return viewer;
+
+  viewer = document.createElement("div");
+  viewer.id = "map-viewer";
+  viewer.className = "map-viewer";
+  viewer.hidden = true;
+  viewer.setAttribute("aria-hidden", "true");
+
+  viewer.innerHTML = `
+    <div class="map-viewer-backdrop" data-map-viewer-close></div>
+
+    <div
+      class="map-viewer-shell"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="map-viewer-title"
+    >
+      <header class="map-viewer-header">
+        <div class="map-viewer-heading">
+          <span id="map-viewer-counter" class="map-viewer-counter"></span>
+          <code id="map-viewer-title" class="map-viewer-title"></code>
+        </div>
+
         <button
-          class="map-name-item map-toggle"
+          class="map-viewer-close"
           type="button"
-          data-map-toggle="${escapeAttr(map)}"
-          aria-expanded="${open ? "true" : "false"}"
-        >
-          <span class="map-number">${cycleIndex + 1}</span>
-          <code>${escapeHtml(map)}</code>
-          <span class="map-toggle-indicator" aria-hidden="true">${open ? "−" : "+"}</span>
-        </button>
+          data-map-viewer-close
+          aria-label="Close map preview"
+        >×</button>
+      </header>
 
-        ${open ? `
-          <div class="map-preview">
-            ${image ? `
-              <img
-                class="map-preview-img"
-                src="${escapeAttr(image)}"
-                alt="Preview of ${escapeAttr(map)}"
-                loading="lazy"
-                decoding="async"
-                onerror="this.hidden=true;this.nextElementSibling.hidden=false"
-              >
-              <div class="map-no-image" hidden>Image could not be loaded.</div>
-            ` : `
-              <div class="map-no-image">No image available for this map yet.</div>
-            `}
-          </div>
-        ` : ""}
-      </article>
-    `;
-  }).join("") || `<div class="empty-state">No maps found.</div>`;
+      <button
+        class="map-viewer-nav map-viewer-prev"
+        type="button"
+        data-map-viewer-prev
+        aria-label="Previous map"
+      >
+        <span class="map-viewer-arrow" aria-hidden="true">‹</span>
+        <span class="map-viewer-nav-label">Previous</span>
+      </button>
+
+      <div class="map-viewer-stage">
+        <div id="map-viewer-slide" class="map-viewer-slide">
+          <img
+            id="map-viewer-image"
+            class="map-viewer-image"
+            alt=""
+            decoding="async"
+          >
+          <div id="map-viewer-fallback" class="map-viewer-fallback" hidden></div>
+        </div>
+      </div>
+
+      <button
+        class="map-viewer-nav map-viewer-next"
+        type="button"
+        data-map-viewer-next
+        aria-label="Next map"
+      >
+        <span class="map-viewer-nav-label">Next</span>
+        <span class="map-viewer-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <div class="map-viewer-hint">
+        <span>← / → Next map</span>
+        <span>Esc Close</span>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(viewer);
+
+  viewer.querySelectorAll("[data-map-viewer-close]").forEach(button => {
+    button.addEventListener("click", closeMapViewer);
+  });
+
+  viewer.querySelector("[data-map-viewer-prev]").addEventListener("click", () => {
+    changeMapViewer(-1);
+  });
+
+  viewer.querySelector("[data-map-viewer-next]").addEventListener("click", () => {
+    changeMapViewer(1);
+  });
+
+  return viewer;
+}
+
+function openMapViewer(index){
+  if(!maps.length) return;
+
+  mapViewerIndex = Math.max(0, Math.min(Number(index) || 0, maps.length - 1));
+
+  const viewer = ensureMapViewer();
+  viewer.hidden = false;
+  viewer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("map-viewer-open");
+
+  setMapViewerContent(mapViewerIndex, 0);
+
+  requestAnimationFrame(() => {
+    viewer.classList.add("map-viewer-visible");
+    viewer.querySelector(".map-viewer-close")?.focus({ preventScroll: true });
+  });
+}
+
+function closeMapViewer(){
+  const viewer = document.querySelector("#map-viewer");
+  if(!viewer || viewer.hidden) return;
+
+  viewer.classList.remove("map-viewer-visible");
+  document.body.classList.remove("map-viewer-open");
+  mapViewerAnimating = false;
+
+  window.setTimeout(() => {
+    if(!viewer.classList.contains("map-viewer-visible")){
+      viewer.hidden = true;
+      viewer.setAttribute("aria-hidden", "true");
+    }
+  }, 180);
+}
+
+function changeMapViewer(direction){
+  if(mapViewerAnimating || !maps.length) return;
+
+  const nextIndex = (mapViewerIndex + direction + maps.length) % maps.length;
+  setMapViewerContent(nextIndex, direction);
+}
+
+function setMapViewerContent(index, direction = 0){
+  const viewer = ensureMapViewer();
+  const slide = viewer.querySelector("#map-viewer-slide");
+
+  if(direction === 0){
+    mapViewerIndex = index;
+    updateMapViewerMedia(index);
+    return;
+  }
+
+  mapViewerAnimating = true;
+
+  slide.classList.remove(
+    "map-slide-out-left",
+    "map-slide-out-right",
+    "map-slide-in-left",
+    "map-slide-in-right"
+  );
+
+  slide.classList.add(direction > 0 ? "map-slide-out-left" : "map-slide-out-right");
+
+  window.setTimeout(() => {
+    mapViewerIndex = index;
+    updateMapViewerMedia(index);
+
+    slide.classList.remove("map-slide-out-left", "map-slide-out-right");
+    slide.classList.add(direction > 0 ? "map-slide-in-right" : "map-slide-in-left");
+
+    // Force the incoming transform to apply before animating back to center.
+    void slide.offsetWidth;
+
+    requestAnimationFrame(() => {
+      slide.classList.remove("map-slide-in-left", "map-slide-in-right");
+
+      window.setTimeout(() => {
+        mapViewerAnimating = false;
+      }, 190);
+    });
+  }, 150);
+}
+
+function updateMapViewerMedia(index){
+  const viewer = ensureMapViewer();
+  const map = maps[index];
+  const imageUrl = String(mapImages[map] || "").trim();
+
+  const title = viewer.querySelector("#map-viewer-title");
+  const counter = viewer.querySelector("#map-viewer-counter");
+  const image = viewer.querySelector("#map-viewer-image");
+  const fallback = viewer.querySelector("#map-viewer-fallback");
+
+  title.textContent = map;
+  counter.textContent = `${index + 1} / ${maps.length}`;
+
+  image.onload = null;
+  image.onerror = null;
+  image.removeAttribute("src");
+  image.alt = `Preview of ${map}`;
+  image.hidden = true;
+  fallback.hidden = true;
+  fallback.textContent = "";
+
+  if(imageUrl){
+    image.onload = () => {
+      image.hidden = false;
+      fallback.hidden = true;
+    };
+
+    image.onerror = () => {
+      image.hidden = true;
+      fallback.textContent = "Image could not be loaded.";
+      fallback.hidden = false;
+    };
+
+    image.src = imageUrl;
+
+    // Cached images may already be complete before the load handler fires.
+    if(image.complete && image.naturalWidth > 0){
+      image.hidden = false;
+      fallback.hidden = true;
+    }
+  }else{
+    fallback.textContent = "No image available for this map yet.";
+    fallback.hidden = false;
+  }
+
+  preloadMapViewerNeighbours(index);
+}
+
+function preloadMapViewerNeighbours(index){
+  if(maps.length < 2) return;
+
+  const indexes = [
+    (index - 1 + maps.length) % maps.length,
+    (index + 1) % maps.length
+  ];
+
+  indexes.forEach(i => {
+    const url = String(mapImages[maps[i]] || "").trim();
+    if(!url) return;
+
+    const preload = new Image();
+    preload.src = url;
+  });
 }
 
 function renderCommands(query = ""){
@@ -365,12 +581,32 @@ document.querySelector("#map-search")?.addEventListener("input", e => {
 });
 
 document.querySelector("#map-list")?.addEventListener("click", e => {
-  const button = e.target.closest("[data-map-toggle]");
+  const button = e.target.closest("[data-map-open]");
   if(!button) return;
 
-  const map = button.dataset.mapToggle;
-  expandedMap = expandedMap === map ? null : map;
-  renderMaps();
+  openMapViewer(Number(button.dataset.mapOpen));
+});
+
+document.addEventListener("keydown", e => {
+  const viewer = document.querySelector("#map-viewer");
+  if(!viewer || viewer.hidden) return;
+
+  if(e.key === "Escape"){
+    e.preventDefault();
+    closeMapViewer();
+    return;
+  }
+
+  if(e.key === "ArrowLeft"){
+    e.preventDefault();
+    changeMapViewer(-1);
+    return;
+  }
+
+  if(e.key === "ArrowRight"){
+    e.preventDefault();
+    changeMapViewer(1);
+  }
 });
 
 
