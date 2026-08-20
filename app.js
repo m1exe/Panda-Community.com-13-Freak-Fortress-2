@@ -1,11 +1,14 @@
 import { parseKeyValues, extractItems } from "./parser/cfg-parser.js";
 
-const [weaponsData, bossesData, commandsData, changelogData, mapsData] = await Promise.all([
+const [weaponsData, bossesData, commandsData, changelogData, mapsData, mapImagesData] = await Promise.all([
   fetch("./data/weapons.json", { cache: "no-store" }).then(r => r.json()),
   fetch("./data/bosses.json", { cache: "no-store" }).then(r => r.json()),
   fetch("./data/commands.json", { cache: "no-store" }).then(r => r.json()),
   fetch("./data/changelog.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/maps.json", { cache: "no-store" }).then(r => r.json())
+  fetch("./data/maps.json", { cache: "no-store" }).then(r => r.json()),
+  fetch("./data/map-images.json", { cache: "no-store" })
+    .then(r => r.ok ? r.json() : {})
+    .catch(() => ({}))
 ]);
 
 const weapons = Array.isArray(weaponsData) ? weaponsData : [weaponsData];
@@ -16,6 +19,9 @@ const bosses = {
 const commands = Array.isArray(commandsData) ? commandsData : [commandsData];
 const changelog = Array.isArray(changelogData) ? changelogData : [changelogData];
 const maps = Array.isArray(mapsData) ? mapsData : [];
+const mapImages = mapImagesData && typeof mapImagesData === "object" && !Array.isArray(mapImagesData)
+  ? mapImagesData
+  : {};
 
 const views = [...document.querySelectorAll(".view")];
 
@@ -241,12 +247,17 @@ function renderBosses(query = ""){
   if(duoCount) duoCount.textContent = duoList.length;
 }
 
-function renderMaps(query = ""){
+let mapSearchQuery = "";
+let expandedMap = null;
+
+function renderMaps(query = mapSearchQuery){
+  mapSearchQuery = query;
+
   const q = query.toLowerCase().trim();
 
-  const list = maps.filter(map =>
-    String(map).toLowerCase().includes(q)
-  );
+  const list = maps
+    .map((map, cycleIndex) => ({ map, cycleIndex }))
+    .filter(({ map }) => String(map).toLowerCase().includes(q));
 
   const count = document.querySelector("#map-result-count");
   if(count) count.textContent = list.length;
@@ -254,12 +265,43 @@ function renderMaps(query = ""){
   const target = document.querySelector("#map-list");
   if(!target) return;
 
-  target.innerHTML = list.map((map, index) => `
-    <div class="map-name-item">
-      <span class="map-number">${index + 1}</span>
-      <code>${escapeHtml(map)}</code>
-    </div>
-  `).join("") || `<div class="empty-state">No maps found.</div>`;
+  target.innerHTML = list.map(({ map, cycleIndex }) => {
+    const image = String(mapImages[map] || "").trim();
+    const open = expandedMap === map;
+
+    return `
+      <article class="map-entry ${open ? "map-open" : ""}">
+        <button
+          class="map-name-item map-toggle"
+          type="button"
+          data-map-toggle="${escapeAttr(map)}"
+          aria-expanded="${open ? "true" : "false"}"
+        >
+          <span class="map-number">${cycleIndex + 1}</span>
+          <code>${escapeHtml(map)}</code>
+          <span class="map-toggle-indicator" aria-hidden="true">${open ? "−" : "+"}</span>
+        </button>
+
+        ${open ? `
+          <div class="map-preview">
+            ${image ? `
+              <img
+                class="map-preview-img"
+                src="${escapeAttr(image)}"
+                alt="Preview of ${escapeAttr(map)}"
+                loading="lazy"
+                decoding="async"
+                onerror="this.hidden=true;this.nextElementSibling.hidden=false"
+              >
+              <div class="map-no-image" hidden>Image could not be loaded.</div>
+            ` : `
+              <div class="map-no-image">No image available for this map yet.</div>
+            `}
+          </div>
+        ` : ""}
+      </article>
+    `;
+  }).join("") || `<div class="empty-state">No maps found.</div>`;
 }
 
 function renderCommands(query = ""){
@@ -318,7 +360,17 @@ document.querySelector("#weapon-class-filter").addEventListener("change", e => {
 });
 document.querySelector("#boss-search").addEventListener("input", e => renderBosses(e.target.value));
 document.querySelector("#map-search")?.addEventListener("input", e => {
-  renderMaps(e.target.value);
+  mapSearchQuery = e.target.value;
+  renderMaps();
+});
+
+document.querySelector("#map-list")?.addEventListener("click", e => {
+  const button = e.target.closest("[data-map-toggle]");
+  if(!button) return;
+
+  const map = button.dataset.mapToggle;
+  expandedMap = expandedMap === map ? null : map;
+  renderMaps();
 });
 
 
