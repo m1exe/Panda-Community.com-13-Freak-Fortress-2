@@ -744,7 +744,7 @@
           "ammo regen": "1",
           "max health additive penalty": "-180",
           "deploy time decreased": "0",
-          "reduced_healing_from_medics": "0"
+          "reduced_healing_from_medics": "0",
           "dmg taken from bullets reduced": "0.75"
         },
         "custom": {
@@ -1711,7 +1711,7 @@
     "ff2Changes": [
       {
         "attributes": {
-          "charge impact damage increased": "7"
+          "charge impact damage increased": "7",
           "blast dmg to self increased": "1"
         },
         "source": "classname",
@@ -3424,12 +3424,12 @@
       {
         "strip": true,
         "attributes": {
-          "mult cloak meter consume rate": "1.5"
+          "mult cloak meter consume rate": "1.5",
           "cloak consume rate increased": "0.75"
         },
         "custom": {
           "backstab damage": "1000",
-          "teleport on backstab": "1",
+          "teleport on backstab": "1"
         },
         "source": "item",
         "sourceKey": "574",
