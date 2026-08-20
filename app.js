@@ -164,32 +164,575 @@ function renderWeaponRule(rule){
 
 function renderRuleFlags(rule){
   const flags = [];
+
   if(rule.strip !== undefined){
-    flags.push(`<span class="rule-flag ${rule.strip ? "danger" : ""}">Strip defaults: ${rule.strip ? "Yes" : "No"}</span>`);
+    flags.push(`
+      <span class="rule-flag ${rule.strip ? "danger" : ""}">
+        ${rule.strip ? "Default weapon stats removed" : "Default weapon stats kept"}
+      </span>
+    `);
   }
+
   if(rule.clip !== undefined){
-    flags.push(`<span class="rule-flag">Clip: ${escapeHtml(rule.clip)}</span>`);
+    flags.push(`<span class="rule-flag">Clip size: ${escapeHtml(rule.clip)}</span>`);
   }
+
   return flags.length ? `<div class="rule-flags">${flags.join("")}</div>` : "";
 }
 
 function renderAttributeGroup(title, attributes, custom){
   if(!attributes || !Object.keys(attributes).length) return "";
 
+  const entries = Object.entries(attributes);
+  const readable = entries
+    .map(([name, value]) => describeWeaponAttribute(name, value, custom))
+    .filter(Boolean)
+    .filter(item => !item.technicalOnly);
+
   return `
     <div class="attribute-group ${custom ? "custom-attributes" : ""}">
-      <div class="rule-group-title">${escapeHtml(title)}</div>
+      <div class="rule-group-title">${custom ? "FF2 effects" : "Gameplay changes"}</div>
 
-      <div class="attribute-list">
-        ${Object.entries(attributes).map(([name, value]) => `
-          <div class="attribute-row">
-            <span title="${escapeAttr(name)}">${escapeHtml(prettyWeaponAttribute(name))}</span>
-            <code>${escapeHtml(value)}</code>
-          </div>
-        `).join("")}
-      </div>
+      ${readable.length ? `
+        <div class="player-attribute-list">
+          ${readable.map(renderPlayerAttribute).join("")}
+        </div>
+      ` : `
+        <div class="attribute-group-note">
+          This rule only contains technical/internal settings.
+        </div>
+      `}
+
+      <details class="technical-values">
+        <summary>Technical values (${entries.length})</summary>
+        <div class="attribute-list">
+          ${entries.map(([name, value]) => `
+            <div class="attribute-row">
+              <span title="${escapeAttr(name)}">${escapeHtml(prettyWeaponAttribute(name))}</span>
+              <code>${escapeHtml(value)}</code>
+            </div>
+          `).join("")}
+        </div>
+      </details>
     </div>
   `;
+}
+
+function renderPlayerAttribute(item){
+  return `
+    <div class="player-attribute-row ${item.kind ? `attribute-${escapeAttr(item.kind)}` : ""}">
+      <span class="player-attribute-label">${escapeHtml(item.label)}</span>
+      <strong class="player-attribute-value">${escapeHtml(item.value)}</strong>
+      ${item.note ? `<small class="player-attribute-note">${escapeHtml(item.note)}</small>` : ""}
+    </div>
+  `;
+}
+
+function describeWeaponAttribute(name, value, custom = false){
+  const key = normalizeWeaponAttribute(name);
+  const n = weaponAttributeNumber(value);
+
+  const row = (label, displayValue, note = "", kind = "") => ({
+    label,
+    value: displayValue,
+    note,
+    kind,
+    technicalOnly: false
+  });
+
+  const technicalOnly = () => ({
+    label: prettyWeaponAttribute(name),
+    value: "",
+    note: "",
+    kind: "",
+    technicalOnly: true
+  });
+
+  const enabled = n === null ? String(value) !== "0" : n !== 0;
+
+  // ---------------------------------------------------------------
+  // Damage dealt
+  // ---------------------------------------------------------------
+  if(["damage bonus", "damage penalty"].includes(key) && n !== null){
+    return row("Damage", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "dmg penalty vs players" && n !== null){
+    return row("Damage vs players", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "damage bonus vs burning" && n !== null){
+    return row("Damage vs burning enemies", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "damage bonus bullet vs sentry target" && n !== null){
+    return row("Bullet damage vs Sentry target", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "headshot damage increase" && n !== null){
+    return row("Headshot damage", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "weapon burn dmg increased" && n !== null){
+    return row("Afterburn damage", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "charge impact damage increased" && n !== null){
+    return row("Shield charge impact damage", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  // ---------------------------------------------------------------
+  // Damage taken / knockback
+  // ---------------------------------------------------------------
+  if(["dmg from melee increased", "dmg from ranged reduced", "dmg taken increased"].includes(key) && n !== null){
+    const label = key === "dmg from melee increased"
+      ? "Melee damage taken"
+      : key === "dmg from ranged reduced"
+        ? "Ranged damage taken"
+        : "Damage taken";
+    return row(label, multiplierTaken(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(["dmg taken from fire reduced", "dmg taken from fire reduced on active"].includes(key) && n !== null){
+    return row(
+      key.endsWith("on active") ? "Fire damage taken while active" : "Fire damage taken",
+      multiplierTaken(n),
+      "",
+      n < 1 ? "positive" : n > 1 ? "negative" : ""
+    );
+  }
+
+  if(key === "rocket jump damage reduction" && n !== null){
+    return row("Rocket-jump self damage", multiplierTaken(n), "", n < 1 ? "positive" : "negative");
+  }
+
+  if(key === "blast dmg to self increased" && n !== null){
+    return row("Self blast damage", multiplierTaken(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "damage force reduction" && n !== null){
+    return row("Knockback taken", multiplierTaken(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "self dmg push force decreased" && n !== null){
+    return row("Self-knockback", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(key === "self dmg push force increased" && n !== null){
+    return row("Self-knockback", multiplierPercent(n), "", n > 1 ? "positive" : "negative");
+  }
+
+  // ---------------------------------------------------------------
+  // Attack / reload / handling speed
+  // ---------------------------------------------------------------
+  if(["fire rate bonus", "fire rate penalty", "fire rate bonus hidden"].includes(key) && n !== null){
+    return row("Attack speed", rateSpeedText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "rocketjump attackrate bonus" && n !== null){
+    return row("Attack speed while rocket jumping", rateSpeedText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(["reload time decreased", "reload time increased"].includes(key) && n !== null){
+    return row("Reload time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(["deploy time decreased", "single wep deploy time decreased"].includes(key) && n !== null){
+    return row("Weapon draw time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "deploy time increased" && n !== null){
+    return row("Weapon draw time", timeMultiplierText(n), "", n < 1 ? "positive" : "negative");
+  }
+
+  if(key === "switch from wep deploy time decreased" && n !== null){
+    return row("Switch-away time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "single wep holster time increased" && n !== null){
+    return row("Weapon holster time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(["minigun spinup time decreased", "minigun spinup time increased"].includes(key) && n !== null){
+    return row("Minigun spin-up time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "srifle charge rate decreased" && n !== null){
+    return row("Sniper Rifle charge time", timeMultiplierText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  // ---------------------------------------------------------------
+  // Ammo / clip
+  // ---------------------------------------------------------------
+  if(key === "maxammo primary increased" && n !== null){
+    return row("Primary ammo", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(["maxammo secondary increased", "maxammo secondary reduced", "hidden secondary max ammo penalty"].includes(key) && n !== null){
+    return row("Secondary ammo", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "maxammo grenades1 increased" && n !== null){
+    return row("Grenade ammo", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(["clip size bonus", "clip size penalty"].includes(key) && n !== null){
+    return row("Clip size", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "bullets per shot bonus" && n !== null){
+    return row("Pellets per shot", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "clipsize increase on kill" && n !== null){
+    return row("Clip size on kill", `${signedNumber(n)} rounds`, "", n > 0 ? "positive" : "negative");
+  }
+
+  if(key === "ammo regen"){
+    return row("Ammo regeneration", enabled ? "Enabled" : "Disabled", "", enabled ? "positive" : "");
+  }
+
+  // ---------------------------------------------------------------
+  // Accuracy / projectile behavior
+  // ---------------------------------------------------------------
+  if(["weapon spread bonus", "spread penalty"].includes(key) && n !== null){
+    return row("Weapon spread", spreadText(n), "", n < 1 ? "positive" : n > 1 ? "negative" : "");
+  }
+
+  if(key === "projectile speed increased" && n !== null){
+    return row("Projectile speed", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "blast radius decreased" && n !== null){
+    return row("Blast radius", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(key === "melee range multiplier" && n !== null){
+    return row("Melee range", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "flame life penalty" && n !== null){
+    return row("Flame lifetime", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(key === "flame speed" && n !== null){
+    return row("Flame speed", `${formatAttributeNumber(n)} units/s`);
+  }
+
+  if(key === "flame spread degree" && n !== null){
+    return row("Flame spread", `${formatAttributeNumber(n)}°`);
+  }
+
+  if(key === "afterburn duration penalty" && n !== null){
+    return row("Afterburn duration", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  // ---------------------------------------------------------------
+  // Movement
+  // ---------------------------------------------------------------
+  if(["move speed bonus", "move speed penalty", "major move speed bonus"].includes(key) && n !== null){
+    return row("Move speed", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "aiming movespeed increased" && n !== null){
+    return row("Move speed while aiming", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "major increased jump height" && n !== null){
+    return row("Jump height", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(["speed boost on hit", "speed boost on hit enemy"].includes(key) && n !== null){
+    return row("Speed boost on hit", `${formatAttributeNumber(n)} sec`, "", "positive");
+  }
+
+  if(key === "mod air control blast jump" && n !== null){
+    return row("Blast-jump air control", `×${formatAttributeNumber(n)}`, "", n > 1 ? "positive" : "");
+  }
+
+  // ---------------------------------------------------------------
+  // Health / healing
+  // ---------------------------------------------------------------
+  if(["max health additive bonus", "max health additive penalty"].includes(key) && n !== null){
+    return row("Max health", `${signedNumber(n)} HP`, "", n > 0 ? "positive" : n < 0 ? "negative" : "");
+  }
+
+  if(key === "health regen" && n !== null){
+    return row("Health regeneration", `${signedNumber(n)} HP/sec`, "", n > 0 ? "positive" : "negative");
+  }
+
+  if(key === "restore health on kill" && n !== null){
+    return row("Health on kill", `+${formatAttributeNumber(Math.abs(n))} HP`, "", "positive");
+  }
+
+  if(key === "heal on hit for rapidfire" && n !== null){
+    return row("Health on hit", `+${formatAttributeNumber(Math.abs(n))} HP`, "", "positive");
+  }
+
+  if(key === "health from packs decreased" && n !== null){
+    return row("Health from packs", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(["health from healers reduced", "healing received penalty", "reduced healing from medics"].includes(key) && n !== null){
+    return row("Healing received", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(key === "patient overheal penalty" && n !== null){
+    return row("Overheal received", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  if(key === "overheal bonus" && n !== null){
+    return row("Overheal amount", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "lunchbox healing decreased" && n !== null){
+    return row("Lunchbox healing", multiplierPercent(n), "", n < 1 ? "negative" : "positive");
+  }
+
+  // ---------------------------------------------------------------
+  // Über / meters
+  // ---------------------------------------------------------------
+  if(key === "add uber charge on hit" && n !== null){
+    return row("ÜberCharge on hit", `+${formatAttributeNumber(n * 100)}%`, "", "positive");
+  }
+
+  if(["ubercharge rate bonus", "ubercharge rate bonus for healer"].includes(key) && n !== null){
+    return row("ÜberCharge build rate", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "uber duration bonus" && n !== null){
+    return row("Über duration", `×${formatAttributeNumber(n)}`, "", n > 1 ? "positive" : "");
+  }
+
+  if(key === "effect bar recharge rate increased" && n !== null){
+    return row("Item meter recharge", `×${formatAttributeNumber(n)}`);
+  }
+
+  if(key === "charge recharge rate increased" && n !== null){
+    return row("Charge recharge", `×${formatAttributeNumber(n)}`);
+  }
+
+  if(key === "item meter charge rate" && n !== null){
+    return row("Item meter charge rate", formatAttributeNumber(n));
+  }
+
+  if(key === "mult item meter charge rate" && n !== null){
+    return row("Item meter charge rate", `×${formatAttributeNumber(n)}`);
+  }
+
+  // ---------------------------------------------------------------
+  // Crit / mini-crit effects and common toggles
+  // ---------------------------------------------------------------
+  const toggleEffects = {
+    "crits become minicrits": ["Critical hits", "Become mini-crits"],
+    "minicrits become crits": ["Mini-crits", "Become critical hits"],
+    "crit vs burning players": ["Burning enemies", "Critical hits"],
+    "minicrit vs burning player": ["Burning enemies", "Mini-crits"],
+    "crit vs non burning players": ["Non-burning enemies", "Critical hits"],
+    "mod mini-crit airborne": ["Airborne enemies", "Mini-crits"],
+    "mod crit while airborne": ["While airborne", "Critical hits"],
+    "set damagetype ignite": ["On hit", "Ignites enemies"],
+    "drop health pack on kill": ["On kill", "Drops a health pack"],
+    "airblast disabled": ["Airblast", "Disabled"],
+    "backstab shield": ["Backstab shield", "Enabled"],
+    "cannot disguise": ["Disguise", "Disabled"],
+    "bidirectional teleport": ["Teleporters", "Two-way"],
+    "revolver use hit locations": ["Revolver hit locations", "Enabled"],
+    "auto fires full clip": ["Firing mode", "Automatically fires full clip"]
+  };
+
+  if(toggleEffects[key]){
+    const [label, activeText] = toggleEffects[key];
+    return row(label, enabled ? activeText : "Disabled", "", enabled ? "special" : "");
+  }
+
+  if(key === "hit self on miss"){
+    return row("Missing a melee swing", enabled ? "Hurts you" : "No self-damage", "", enabled ? "negative" : "");
+  }
+
+  if(key === "weapon burn time increased" && n !== null){
+    return row("Afterburn duration", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  if(key === "airblast cost increased" && n !== null){
+    return row("Airblast ammo cost", multiplierPercent(n), "", n > 1 ? "negative" : "positive");
+  }
+
+  if(key === "increase buff duration" && n !== null){
+    return row("Buff duration", multiplierPercent(n), "", multiplierKind(n));
+  }
+
+  // ---------------------------------------------------------------
+  // FF2 custom attributes
+  // ---------------------------------------------------------------
+  if(custom){
+    if(key === "knockback modifier" && n !== null){
+      return row("Knockback modifier", `×${formatAttributeNumber(n)}`);
+    }
+
+    if(key === "backstab damage" && n !== null){
+      return row("Backstab damage", `${formatAttributeNumber(n)} damage`, "", "positive");
+    }
+
+    if(key === "dmg taken from fall reduced" && n !== null){
+      return row("Fall damage taken", multiplierTaken(n), "", n < 1 ? "positive" : "negative");
+    }
+
+    if(key === "primary weapon disabled"){
+      return row("Primary weapon", enabled ? "Disabled" : "Enabled", "", enabled ? "negative" : "");
+    }
+
+    if(key === "secondary weapon disabled"){
+      return row("Secondary weapon", enabled ? "Disabled" : "Enabled", "", enabled ? "negative" : "");
+    }
+
+    if(key === "mid-air damage vs bosses" && n !== null){
+      return row("Mid-air damage vs bosses", `×${formatAttributeNumber(n)}`, "", n > 1 ? "positive" : "");
+    }
+
+    if(key === "medigun charge adds crit boost"){
+      return row("Medi Gun charge", enabled ? "Also grants crit boost" : "Normal", "", enabled ? "positive" : "");
+    }
+
+    if(key === "melts on backstab"){
+      return row("Backstab effect", enabled ? "Melts the victim" : "Disabled", "", "special");
+    }
+
+    if(key === "teleport on backstab"){
+      return row("Backstab effect", enabled ? "Teleports you" : "Disabled", "", "special");
+    }
+
+    if(key === "health loss on backstab teleport" && n !== null){
+      return row("Teleport backstab health cost", `${formatAttributeNumber(n)} HP`, "", n > 0 ? "negative" : "");
+    }
+
+    if(key === "rtd on backstab"){
+      return row("Backstab effect", enabled ? "Triggers an RTD effect" : "Disabled", "", "special");
+    }
+
+    // These are implementation/display settings rather than useful player stats.
+    if([
+      "mod crit type glow",
+      "mod crit type on bosses",
+      "mod airblast rage",
+      "charge outlines bosses"
+    ].includes(key)){
+      return technicalOnly();
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // Explicitly technical/internal standard attributes
+  // ---------------------------------------------------------------
+  if([
+    "kill eater score type",
+    "kill eater kill type",
+    "item meter charge type",
+    "item meter resupply denied",
+    "grenades1 resupply denied",
+    "decapitate type",
+    "override projectile type"
+  ].includes(key)){
+    return technicalOnly();
+  }
+
+  // Unknown attributes stay readable without pretending we know what the
+  // numeric value means. The exact raw value is still available below.
+  return row(
+    prettyWeaponAttribute(name),
+    custom ? "Custom FF2 effect" : "Modified",
+    "Exact technical value is available below.",
+    "neutral"
+  );
+}
+
+function normalizeWeaponAttribute(name){
+  return String(name || "")
+    .replace(/_/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function weaponAttributeNumber(value){
+  const n = Number.parseFloat(String(value));
+  return Number.isFinite(n) ? n : null;
+}
+
+function formatAttributeNumber(value, maxDecimals = 1){
+  if(!Number.isFinite(value)) return String(value);
+
+  const rounded = Math.round(value * (10 ** maxDecimals)) / (10 ** maxDecimals);
+  return Number.isInteger(rounded)
+    ? String(rounded)
+    : String(rounded).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+function signedNumber(value){
+  const text = formatAttributeNumber(value);
+  return value > 0 ? `+${text}` : text;
+}
+
+function multiplierPercent(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+
+  const pct = (multiplier - 1) * 100;
+  if(Math.abs(pct) < 0.05) return "Normal";
+
+  return `${pct > 0 ? "+" : ""}${formatAttributeNumber(pct)}%`;
+}
+
+function multiplierTaken(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+
+  const pct = (multiplier - 1) * 100;
+  if(Math.abs(pct) < 0.05) return "Normal";
+
+  return pct < 0
+    ? `${formatAttributeNumber(Math.abs(pct))}% less`
+    : `${formatAttributeNumber(pct)}% more`;
+}
+
+function multiplierKind(multiplier){
+  if(multiplier > 1) return "positive";
+  if(multiplier < 1) return "negative";
+  return "";
+}
+
+function rateSpeedText(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+  if(multiplier === 0) return "No attack delay";
+  if(multiplier < 0) return `×${formatAttributeNumber(multiplier)}`;
+
+  const rateChange = ((1 / multiplier) - 1) * 100;
+  if(Math.abs(rateChange) < 0.05) return "Normal";
+
+  return rateChange > 0
+    ? `${formatAttributeNumber(rateChange)}% faster`
+    : `${formatAttributeNumber(Math.abs(rateChange))}% slower`;
+}
+
+function timeMultiplierText(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+  if(multiplier === 0) return "Instant";
+
+  const pct = (multiplier - 1) * 100;
+  if(Math.abs(pct) < 0.05) return "Normal";
+
+  return pct < 0
+    ? `${formatAttributeNumber(Math.abs(pct))}% shorter`
+    : `${formatAttributeNumber(pct)}% longer`;
+}
+
+function spreadText(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+
+  const pct = (multiplier - 1) * 100;
+  if(Math.abs(pct) < 0.05) return "Normal";
+
+  return pct < 0
+    ? `${formatAttributeNumber(Math.abs(pct))}% tighter`
+    : `${formatAttributeNumber(pct)}% wider`;
 }
 
 function ruleChangeCount(rule){
