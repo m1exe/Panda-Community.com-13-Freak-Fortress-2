@@ -327,8 +327,8 @@ function describeWeaponAttribute(name, value, custom = false){
   // ---------------------------------------------------------------
   if(key === "mult cloak meter consume rate" && n !== null){
     return row(
-      "Cloak drain multiplier",
-      `${formatAttributeNumber(n)}×`,
+      "Cloak drain rate",
+      signedMultiplierPercent(n),
       "",
       n < 1 ? "positive" : n > 1 ? "negative" : ""
     );
@@ -336,8 +336,8 @@ function describeWeaponAttribute(name, value, custom = false){
 
   if(["cloak consume rate increased", "cloak consume rate decreased"].includes(key) && n !== null){
     return row(
-      "Cloak drain multiplier",
-      `${formatAttributeNumber(n)}×`,
+      "Cloak drain rate",
+      signedMultiplierPercent(n),
       "",
       n < 1 ? "positive" : n > 1 ? "negative" : ""
     );
@@ -345,8 +345,8 @@ function describeWeaponAttribute(name, value, custom = false){
 
   if(["mult cloak meter regen rate", "cloak regen rate increased", "cloak regen rate decreased"].includes(key) && n !== null){
     return row(
-      "Cloak regeneration multiplier",
-      `${formatAttributeNumber(n)}×`,
+      "Cloak regeneration rate",
+      signedMultiplierPercent(n),
       "",
       n > 1 ? "positive" : n < 1 ? "negative" : ""
     );
@@ -758,6 +758,19 @@ function formatAttributeNumber(value, maxDecimals = 1){
 function signedNumber(value){
   const text = formatAttributeNumber(value);
   return value > 0 ? `+${text}` : text;
+}
+
+function signedMultiplierPercent(multiplier){
+  if(!Number.isFinite(multiplier)) return String(multiplier);
+
+  const percent = (multiplier - 1) * 100;
+  const rounded = Math.abs(percent) < 0.000001
+    ? 0
+    : Math.round(percent * 100) / 100;
+
+  if(rounded > 0) return `+${formatAttributeNumber(rounded, 2)}%`;
+  if(rounded < 0) return `${formatAttributeNumber(rounded, 2)}%`;
+  return "0%";
 }
 
 function multiplierPercent(multiplier){
