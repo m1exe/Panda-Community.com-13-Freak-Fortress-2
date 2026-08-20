@@ -1,10 +1,11 @@
 import { parseKeyValues, extractItems } from "./parser/cfg-parser.js";
 
-const [weaponsData, bossesData, commandsData, changelogData] = await Promise.all([
+const [weaponsData, bossesData, commandsData, changelogData, mapsData] = await Promise.all([
   fetch("./data/weapons.json", { cache: "no-store" }).then(r => r.json()),
   fetch("./data/bosses.json", { cache: "no-store" }).then(r => r.json()),
   fetch("./data/commands.json", { cache: "no-store" }).then(r => r.json()),
-  fetch("./data/changelog.json", { cache: "no-store" }).then(r => r.json())
+  fetch("./data/changelog.json", { cache: "no-store" }).then(r => r.json()),
+  fetch("./data/maps.json", { cache: "no-store" }).then(r => r.json())
 ]);
 
 const weapons = Array.isArray(weaponsData) ? weaponsData : [weaponsData];
@@ -14,6 +15,7 @@ const bosses = {
 };
 const commands = Array.isArray(commandsData) ? commandsData : [commandsData];
 const changelog = Array.isArray(changelogData) ? changelogData : [changelogData];
+const maps = Array.isArray(mapsData) ? mapsData : [];
 
 const views = [...document.querySelectorAll(".view")];
 
@@ -239,6 +241,27 @@ function renderBosses(query = ""){
   if(duoCount) duoCount.textContent = duoList.length;
 }
 
+function renderMaps(query = ""){
+  const q = query.toLowerCase().trim();
+
+  const list = maps.filter(map =>
+    String(map).toLowerCase().includes(q)
+  );
+
+  const count = document.querySelector("#map-result-count");
+  if(count) count.textContent = list.length;
+
+  const target = document.querySelector("#map-list");
+  if(!target) return;
+
+  target.innerHTML = list.map((map, index) => `
+    <div class="map-name-item">
+      <span class="map-number">${index + 1}</span>
+      <code>${escapeHtml(map)}</code>
+    </div>
+  `).join("") || `<div class="empty-state">No maps found.</div>`;
+}
+
 function renderCommands(query = ""){
   const q = query.toLowerCase().trim();
   const list = commands.filter(c =>
@@ -294,6 +317,9 @@ document.querySelector("#weapon-class-filter").addEventListener("change", e => {
   renderWeapons();
 });
 document.querySelector("#boss-search").addEventListener("input", e => renderBosses(e.target.value));
+document.querySelector("#map-search")?.addEventListener("input", e => {
+  renderMaps(e.target.value);
+});
 
 
 document.querySelector("#command-search").addEventListener("input", e => renderCommands(e.target.value));
@@ -407,5 +433,6 @@ function escapeAttr(value){
 
 renderWeapons();
 renderBosses();
+renderMaps();
 renderCommands();
 renderChangelog();
