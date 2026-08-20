@@ -5,8 +5,11 @@ A static TF2 / Freak Fortress 2 analyzer designed for GitHub Pages.
 ## Features in this starter
 - Browser-side VDF/KeyValues `.cfg` parsing
 - Weapon database
+  - Better readability for players.
+  - Kept the old readability for config comparing.
 - FF2 boss database
 - Map database
+  - Shows map images.
 - Searchable weapons, bosses & maps
 - No backend required for the analyzer
 
