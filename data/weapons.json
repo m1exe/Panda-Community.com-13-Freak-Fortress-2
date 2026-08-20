@@ -3504,7 +3504,7 @@
       {
         "attributes": {
           "damage bonus": "1.15",
-          "maxammo secondary increased": "2"
+          "maxammo secondary increased": "1.25"
         },
         "custom": {
           "knockback modifier": "0.6",
@@ -3554,7 +3554,7 @@
       {
         "attributes": {
           "damage bonus": "1.15",
-          "maxammo secondary increased": "2"
+          "maxammo secondary increased": "1.25"
         },
         "custom": {
           "knockback modifier": "0.6",
@@ -3596,7 +3596,7 @@
       {
         "attributes": {
           "damage bonus": "1.15",
-          "maxammo secondary increased": "2"
+          "maxammo secondary increased": "1.25"
         },
         "custom": {
           "knockback modifier": "0.6",
@@ -3635,7 +3635,7 @@
       {
         "attributes": {
           "damage bonus": "1.15",
-          "maxammo secondary increased": "2"
+          "maxammo secondary increased": "1.25"
         },
         "custom": {
           "knockback modifier": "0.6",
