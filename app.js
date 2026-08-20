@@ -610,10 +610,45 @@ function describeWeaponAttribute(name, value, custom = false){
       return row("Backstab effect", enabled ? "Triggers an RTD effect" : "Disabled", "", "special");
     }
 
-    // These are implementation/display settings rather than useful player stats.
+    // Confirmed Panda FF2 meanings.
+    if(key === "jarate limit" && n !== null){
+      return row(
+        "Maximum damage taken before Jarate effect disappears",
+        formatAttributeNumber(n),
+        "",
+        "special"
+      );
+    }
+
+    if(key === "jarate is rage loss" && n !== null){
+      return row(
+        "Rage lost upon getting Jarate'd",
+        `${formatAttributeNumber(n)}%`,
+        "",
+        n > 0 ? "negative" : ""
+      );
+    }
+
+    if(key === "mod crit type glow"){
+      return row(
+        "Forced Crit / Glow Type",
+        ff2CritTypeText(value),
+        "",
+        "special"
+      );
+    }
+
+    if(key === "mod crit type on bosses"){
+      return row(
+        "Forced Crit Type Against Bosses",
+        ff2CritTypeText(value),
+        "",
+        "special"
+      );
+    }
+
+    // Meanings for these are still intentionally not guessed.
     if([
-      "mod crit type glow",
-      "mod crit type on bosses",
       "mod airblast rage",
       "charge outlines bosses"
     ].includes(key)){
@@ -644,6 +679,16 @@ function describeWeaponAttribute(name, value, custom = false){
     "Exact technical value is available below.",
     "neutral"
   );
+}
+
+function ff2CritTypeText(value){
+  const n = weaponAttributeNumber(value);
+
+  if(n === 1) return "Minicrits";
+  if(n === 2) return "Crits";
+  if(n === 0) return "None";
+
+  return `Type ${String(value)}`;
 }
 
 function normalizeWeaponAttribute(name){
