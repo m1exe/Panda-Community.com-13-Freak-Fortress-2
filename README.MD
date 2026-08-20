@@ -11,6 +11,6 @@ A static TF2 / Freak Fortress 2 analyzer designed for GitHub Pages.
 - No backend required for the analyzer
 
 ## Next steps
-1. Replace the example weapon/boss data.
-2. Add the real weapon and boss images.
+Done 1. Replace the example weapon/boss data.
+Half-Done 2. Add the real weapon and boss images.
 3. Expand the attribute dictionaries and formatted display.
