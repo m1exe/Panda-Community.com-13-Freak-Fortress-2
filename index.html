@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#24231f">
   <title>Panda FF2 · Wikipedia</title>
-  <link rel="stylesheet" href="style.css?v=20260815-1537">
+  <link rel="stylesheet" href="style.css?v=20260820-0335">
+  <link rel="stylesheet" href="maps.css?v=20260820-0335">
 </head>
 <body>
   <header class="site-header">
@@ -19,6 +20,7 @@
         <button class="nav-btn active" data-view="home">Home</button>
         <button class="nav-btn" data-view="weapons">Weapons</button>
         <button class="nav-btn" data-view="bosses">Bosses</button>
+        <button class="nav-btn" data-view="maps">Maps</button>
         <button class="nav-btn" data-view="commands">Commands</button>
         <button class="nav-btn" data-view="changelog">Changelog</button>
         <button class="nav-btn" data-view="analyzer">CFG Analyzer</button>
@@ -80,6 +82,12 @@
         <button class="home-card blu-card" data-view-link="bosses">
           <strong>Bosses</strong>
           <span>Browse the current solo and duo boss roster.</span>
+        </button>
+
+
+        <button class="home-card" data-view-link="maps">
+          <strong>Maps</strong>
+          <span>Browse the current FF2 map cycle.</span>
         </button>
 
         <button class="home-card" data-view-link="commands">
@@ -183,6 +191,31 @@
       </section>
     </section>
 
+
+    <section id="maps" class="view">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">SERVER ROTATION</p>
+          <h2>Map Cycle</h2>
+          <p>Maps currently listed in the Panda Freak Fortress 2 rotation.</p>
+        </div>
+
+        <input
+          id="map-search"
+          class="search"
+          placeholder="Search maps..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="map-list-meta">
+        <strong id="map-result-count">0</strong>
+        <span>maps shown</span>
+      </div>
+
+      <div id="map-list" class="map-grid"></div>
+    </section>
+
     <section id="commands" class="view">
       <div class="section-head">
         <div>
@@ -270,6 +303,7 @@
     <span>Team Fortress 2 and related trademarks belong to their respective owners.</span>
   </footer>
 
-  <script type="module" src="app.js?v=20260815-1537"></script>
+  <script type="module" src="app.js?v=20260820-0335"></script>
+  <script type="module" src="maps.js?v=20260820-0335"></script>
 </body>
 </html>
